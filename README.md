@@ -1,4 +1,5 @@
 # ComputacionCientificaUNAB
-Proyecto de curso de 5 integrantes en la cual implementamos métodos numericos para simular funciones y poder solucionar problemas de ingenieria.
 
-This project can be view connecting through SSH.
+It is a project grade by five members that implement numerical methods e.g: nonlinear function, numerical approaches, among others, for simulating math function that used on the engineering and can be solved.
+
+This project at this time can be seen through a SSH connection.
