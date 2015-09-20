@@ -1,3 +1,7 @@
 # Nonlinear function - Brent
 
-His code can be found in main.cc and writting command make on terminal to have a .exe for then to run the program.
+His code can be found in main.cc.
+
+What need to do for run program?
+
+In command-line, writting make to in order to have a file called Brent that is the executable and then next one run the program.
