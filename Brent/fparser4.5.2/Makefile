@@ -22,7 +22,7 @@ all:
 	$(MAKE) fparser
 
 fparser: $(OBJ)
-	$(CC) -o ../fparser $(OBJ) $(CFLAGS)
+	$(CC) -o ../Brent $(OBJ) $(CFLAGS)
 
 clean: 
 	/bin/rm -f $(ODIR)/*.o ../fparser *~ ._* $(IDIR)/*~ $(IDIR)/._* 
