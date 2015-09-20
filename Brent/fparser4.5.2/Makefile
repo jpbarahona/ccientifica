@@ -25,6 +25,6 @@ fparser: $(OBJ)
 	$(CC) -o ../Brent $(OBJ) $(CFLAGS)
 
 clean: 
-	/bin/rm -f $(ODIR)/*.o ../fparser *~ ._* $(IDIR)/*~ $(IDIR)/._* 
+	/bin/rm -f $(ODIR)/*.o ../Brent *~ ._* $(IDIR)/*~ $(IDIR)/._* 
 
 fparser.o: $(AR)
