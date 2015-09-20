@@ -1,4 +1,4 @@
-# Nonlinear function - Brent
+# Nonlinear function - Brent C++
 
 His code can be found in main.cc.
 
