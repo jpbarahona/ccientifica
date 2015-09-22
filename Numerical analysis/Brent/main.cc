@@ -88,22 +88,25 @@ int main()
     std::ofstream of("output.txt");
 
     of << "\nf(x) = " << function << "\n"
-			  << "xi = " << xi << "\n"
-			  << "xf = " << xf << "\n"
-			  << "errto = " << errto << "\n"
-			  << "imax = " << imax << "\n\n";
+       << "xi = " << xi << "\n"
+       << "xf = " << xf << "\n"
+       << "errto = " << errto << "\n"
+       << "imax = " << imax << "\n\n";
 
-	of << "\n" << "Numero de" << "\n" << "Iteracion" 
-	        << std::setw(14) << "Xi-2(xi)" 
-	        << std::setw(16) << "Xi-1(x)"
-	        << std::setw(16) << "Xi(xf)"
-	        << std::setw(20) << "Raiz"
-	   		<< std::setw(20) << "Error"
-	        << std::setw(16) << "Tolerancia"
-	        << std::setw(18) << "f(Raiz)\n" << std::endl;
-	double raiz = brent(fparser, xi, xf, errto, imax,of);
-	of << "\n" << "La raíz aproximada es: "<< raiz << "\n" << std::endl;
-	of.close();
+    of << "\n" << "Numero de" << "\n" << "Iteracion" 
+       << std::setw(14) << "Xi-2(xi)" 
+       << std::setw(16) << "Xi-1(x)"
+       << std::setw(16) << "Xi(xf)"
+       << std::setw(20) << "Raiz"
+       << std::setw(20) << "Error"
+       << std::setw(16) << "Tolerancia"
+       << std::setw(18) << "f(Raiz)\n" << std::endl;
+    
+    double raiz = brent(fparser, xi, xf, errto, imax,of);
+    
+    of << "\n" << "La raíz aproximada es: "<< raiz << "\n" << std::endl;
+    
+    of.close();
 }
 
 double f (FunctionParser fparser, double x)
