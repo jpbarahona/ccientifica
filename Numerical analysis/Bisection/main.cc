@@ -1,6 +1,6 @@
 /*
 * Autor: Alfredo González
-*		 Juan-pablo Barahona
+*	 Juan-pablo Barahona
 * Date: 21/09/2015
 */
 
@@ -11,7 +11,7 @@
 #include <iomanip>		/* std::setw(), std::setprecision*/
 #include <fstream>		/* std::ifstream */
 #include <cstring>		/* compare, std::string, std::stod (convert string to double value *pero no funciona...), std::strcpy */
-#include <cstdlib>     	/* atoi, atof (return double value) */
+#include <cstdlib>     		/* atoi, atof (return double value) */
 
 double f(double x);
 double biseccion(FunctionParser fparser, double xi, double xf, double errto, int imax, std::ostream& of);
@@ -90,12 +90,12 @@ int main()
     std::ofstream of("output.txt");
 
     of << "\nf(x) =" << function << "\n"
-	   << "Xi = " << xi << "\n"
-	   << "Xf = " << xf << "\n"
-	   << "errto = " << errto << "\n"
-	   << "imax = " << imax << "\n\n";
+       << "Xi = " << xi << "\n"
+       << "Xf = " << xf << "\n"
+       << "errto = " << errto << "\n"
+       << "imax = " << imax << "\n\n";
 
-	of << "\n" << "Numero de" << "\n" << "Iteracion" 
+    of << "\n" << "Numero de" << "\n" << "Iteracion" 
        << std::setw(14) << "Xi" 
        << std::setw(16) << "Xf"
        << std::setw(16) << "Raiz"
