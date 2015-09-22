@@ -1,6 +1,6 @@
 /*
 * Autor: Antonio Lefimil
-* 		 Juan-pablo Barahona
+*        Juan-pablo Barahona
 * Date: 17/09/2015
 */
 
@@ -11,7 +11,7 @@
 #include <iomanip>		/* std::setw() */
 #include <fstream>		/* std::ifstream */
 #include <cstring>		/* compare, std::string, std::stod (convert string to double value *pero no funciona...), std::strcpy */
-#include <cstdlib>     	/* atoi, atof (return double value) */
+#include <cstdlib>     		/* atoi, atof (return double value) */
 
 double fun(FunctionParser fparser,double x);
 double dvalue(int pos_cstr, char* cstr);
@@ -96,12 +96,12 @@ int main ()
 	   << "imax = " << imax << "\n\n";
 
 	of << "\n" << "Numero de" << "\n" << "Iteracion" 
-       << std::setw(14) << "Xi" 
+       	   << std::setw(14) << "Xi" 
 	   << std::setw(16) << "Xf"
 	   << std::setw(16) << "Raiz"
 	   << std::setw(20) << "Error"
-       << std::setw(20) << "Tolerancia"
-       << std::setw(18) << "f(Raiz)\n" << std::endl;
+       	   << std::setw(20) << "Tolerancia"
+       	   << std::setw(18) << "f(Raiz)\n" << std::endl;
 	
 	double xr = 0,error = 1,anterior;
 	/*
@@ -122,18 +122,18 @@ int main ()
 	    fxr = fun(fparser,xr);
 
 		of   << "  " << std::setw(2) << cont << "  "
-			 << "  " << std::setw(16) << xi
-			 << "  " << std::setw(16) << xf
-			 << "  |" << std::setw(16) << std::setprecision(14) << xr
-			 << "  " << std::setw(20) << error
-			 << "  " << std::setw(8) << errto 
-			 << "  " << std::setw(22) << fxr<< std::endl;
+		     << "  " << std::setw(16) << xi
+	             << "  " << std::setw(16) << xf
+		     << "  |" << std::setw(16) << std::setprecision(14) << xr
+		     << "  " << std::setw(20) << error
+		     << "  " << std::setw(8) << errto 
+		     << "  " << std::setw(22) << fxr<< std::endl;
 
 		xi=xf;
 		xf=xr;
 	}
 	
-	of << "\n" << "La raíz aproximada es: "<< xr << "\n" << std::endl;
+	of << "\n" << "La raÃ­z aproximada es: "<< xr << "\n" << std::endl;
 	return 0;
 }
 
