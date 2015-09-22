@@ -10,7 +10,7 @@
 #include <iomanip>		/* std::setw(), std::setprecision*/
 #include <fstream>		/* std::ifstream */
 #include <cstring>		/* compare, std::string, std::stod (convert string to double value *pero no funciona...), std::strcpy */
-#include <cstdlib>     	/* atoi, atof (return double value) */
+#include <cstdlib>     		/* atoi, atof (return double value) */
 
 double f (FunctionParser fparser, double x);
 double dvalue(int pos_cstr, char* cstr);
