@@ -1,6 +1,6 @@
 /*
 * Autor: Matias Greco
-*		 Juan-pablo Barahona
+*	 Juan-pablo Barahona
 * Date: 21/09/2015
 */
 
@@ -11,7 +11,7 @@
 #include <iomanip>		/* std::setw() */
 #include <fstream>		/* std::ifstream */
 #include <cstring>		/* compare, std::string, std::stod (convert string to double value *pero no funciona...), std::strcpy */
-#include <cstdlib>     	/* atoi, atof (return double value) */
+#include <cstdlib>     		/* atoi, atof (return double value) */
 
 double f(FunctionParser fparser,double x);
 double dvalue(int pos_cstr, char* cstr);
@@ -89,12 +89,12 @@ int main()
     std::ofstream of("output.txt");
 
     of << "\nf(x) =" << function << "\n"
-	   << "Xi = " << xi << "\n"
-	   << "Xf = " << xf << "\n"
-	   << "errto = " << errto << "\n"
-	   << "imax = " << imax << "\n\n";
+       << "Xi = " << xi << "\n"
+       << "Xf = " << xf << "\n"
+       << "errto = " << errto << "\n"
+       << "imax = " << imax << "\n\n";
 
-	of << "\n" << "Numero de" << "\n" << "Iteracion" 
+    of << "\n" << "Numero de" << "\n" << "Iteracion" 
        << std::setw(14) << "Xi" 
        << std::setw(16) << "Xf"
        << std::setw(16) << "Raiz"
@@ -102,9 +102,11 @@ int main()
        << std::setw(20) << "Tolerancia" 
        << std::setw(18) << "f(Raiz)\n" << std::endl;
 
-	double raiz = ReglaFalsa(fparser, xi, xf, errto, imax,of);
-	of << "\n" << "La raíz aproximada es: "<< raiz << "\n" << std::endl;
-	of.close();
+   double raiz = ReglaFalsa(fparser, xi, xf, errto, imax,of);
+   
+   of << "\n" << "La raíz aproximada es: "<< raiz << "\n" << std::endl;
+   
+   of.close();
 }
 
 double f(FunctionParser fparser,double x){
@@ -152,17 +154,16 @@ double ReglaFalsa(FunctionParser fparser,double xi, double xf, double errto,doub
 
         fxr = f(fparser,xr);
 
-        //error = (sqrt((xr-anterior)*(xr-anterior)))/xr;
         error = fabs((xr - anterior)/xr) * 100;  // pagina 100 del libro (criterio de paro)
         iteracion++;
 
         of << "  " << std::setw(2) << iteracion
-		   << "  " << std::setw(16) << xi
-		   << "  " << std::setw(16) << xf
-		   << "  |" << std::setw(16) << std::setprecision(14) << xr
-		   << "  " << std::setw(20) << error 
-		   << "  " << std::setw(8) << errto 
-		   << "  " << std::setw(22) << fxr << std::endl;
+	   << "  " << std::setw(16) << xi
+	   << "  " << std::setw(16) << xf
+	   << "  |" << std::setw(16) << std::setprecision(14) << xr
+	   << "  " << std::setw(20) << error 
+	   << "  " << std::setw(8) << errto 
+	   << "  " << std::setw(22) << fxr << std::endl;
 
         if(fxi*fxr < 0)
            xf = xr;
