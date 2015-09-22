@@ -4,7 +4,7 @@
 * Date: 21/09/2015
 */
 
-#include "fparser4.5.2/fparser.hh"
+#include "../fparser4.5.2/fparser.hh"
 
 #include <iostream>		/* std::cout, std::cin, std::endl */
 #include <cmath>		/* abs() */
@@ -17,7 +17,8 @@ double f(double x);
 double puntoFijo(FunctionParser fparser, double xi, double xf, double errto, int imax, std::ostream& of);
 double dvalue(int pos_cstr, char* cstr);
 
-int main() {
+int main()
+{
 
 	std::string function;
 	double xi,xf,errto,imax;
@@ -75,6 +76,7 @@ int main() {
     FunctionParser fparser;
 
     fparser.AddConstant("pi", 3.1415926535897932);
+    fparser.AddConstant("e", 2.718281828);
 
     while(true)
     {

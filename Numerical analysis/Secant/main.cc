@@ -1,18 +1,17 @@
 /*
-* Autor: Juan-pablo Barahona
-* 		 Antonio Lefimil
+* Autor: Antonio Lefimil
+* 		 Juan-pablo Barahona
 * Date: 17/09/2015
 */
 
-#include "fparser4.5.2/fparser.hh"
+#include "../fparser4.5.2/fparser.hh"
 
-#include <iostream>
-#include <cstdio>
-#include <cmath>		/* abs () */
+#include <iostream>		/* std::cout, std::cin, std::endl */
+#include <cmath>		/* abs() */
+#include <iomanip>		/* std::setw() */
 #include <fstream>		/* std::ifstream */
 #include <cstring>		/* compare, std::string, std::stod (convert string to double value *pero no funciona...), std::strcpy */
 #include <cstdlib>     	/* atoi, atof (return double value) */
-#include <iomanip>		/* std::setw(), std::setprecision() */
 
 double fun(FunctionParser fparser,double x);
 double dvalue(int pos_cstr, char* cstr);
@@ -77,6 +76,7 @@ int main ()
     FunctionParser fparser;
 
     fparser.AddConstant("pi", 3.1415926535897932);
+    fparser.AddConstant("e", 2.718281828);
 
     while(true)
     {

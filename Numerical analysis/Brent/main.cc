@@ -74,6 +74,7 @@ int main()
     FunctionParser fparser;
 
     fparser.AddConstant("pi", 3.1415926535897932);
+    fparser.AddConstant("e", 2.718281828);
 
     while(true)
     {

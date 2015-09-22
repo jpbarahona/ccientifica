@@ -1,5 +1,5 @@
 all:
-	$(MAKE) -C Brent all
+	$(MAKE) -C fparser4.5.2 all
 
 clean:
-	$(MAKE) -C Brent clean
+	$(MAKE) -C fparser4.5.2 clean
