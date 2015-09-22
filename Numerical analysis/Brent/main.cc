@@ -3,7 +3,7 @@
 * Date: 17/09/2015
 */
 
-#include "fparser4.5.2/fparser.hh"
+#include "../fparser4.5.2/fparser.hh"
 
 #include <iostream>		/* std::cout, std::cin, std::endl */
 #include <cmath>		/* abs() */

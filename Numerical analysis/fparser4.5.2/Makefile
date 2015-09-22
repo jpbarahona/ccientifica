@@ -1,6 +1,6 @@
 TREE_TYPE = TWO_LEVEL_TREE
 CC = g++
-ODIR = OBJ
+ODIR = ../Brent/OBJ
 CFLAGS =  -O3 -Wall -D$(TREE_TYPE) -g
 
 AR = fparser.cc fparser.hh
@@ -12,16 +12,16 @@ OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 $(ODIR)/%.o: %.cc
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-$(ODIR)/%.o: ../%.cc
+$(ODIR)/%.o: ../Brent/%.cc
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 .PHONY: 
 	all clean
 
 all:
-	$(MAKE) fparser
+	$(MAKE) Brent
 
-fparser: $(OBJ)
+Brent: $(OBJ)
 	$(CC) -o ../Brent $(OBJ) $(CFLAGS)
 
 clean: 
