@@ -1,5 +1,5 @@
 F(x) = x * log(x/3) - x
-xi = 1.5
-xf = 20.2
+xl = 1.5
+xr = 20.2
 errto = 0.00001
 imax = 25

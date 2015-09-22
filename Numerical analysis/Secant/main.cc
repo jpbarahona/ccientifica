@@ -12,16 +12,16 @@
 #include <fstream>		/* std::ifstream */
 #include <cstring>		/* compare, std::string, std::stod (convert string to double value *pero no funciona...), std::strcpy */
 #include <cstdlib>     	/* atoi, atof (return double value) */
-#include <iomanip>		/* std::setw(), std::setprecision() */
+#include <iomanip>		/* std::setw() */
 
-double fun(FunctionParser fparser,double x);
+float fun(FunctionParser fparser,float x);
 double dvalue(int pos_cstr, char* cstr);
 
 int main ()
 {
 
 	std::string function;
-	double xi = 0,xf = 0,errto = 0,imax = 0;
+	double xl = 0,xr = 0,errto = 0,imax = 0;
 	
 	//===================================================================
 	//================= Leer parametros desde input.txt =================
@@ -50,13 +50,13 @@ int main ()
 				std::string sfx(fx);
 				function = sfx;
 			}
-			if(line.compare(0,5,"xi = ") == 0)
+			if(line.compare(0,5,"xl = ") == 0)
 		 	{
-				xi = dvalue(5,cstr);
+				xl = dvalue(5,cstr);
 			}
-			if(line.compare(0,5,"xf = ") == 0)
+			if(line.compare(0,5,"xr = ") == 0)
 		 	{
-				xf = dvalue(5,cstr);
+				xr = dvalue(5,cstr);
 			}
 			if(line.compare(0,8,"errto = ") == 0)
 		 	{
@@ -89,55 +89,42 @@ int main ()
 	
 	std::ofstream of("output.txt");
 	
-	of << "\nf(x) = " << function << "\n"
-	   << "Xi = " << xi << "\n"
-	   << "Xf = " << xf << "\n"
-	   << "errto = " << errto << "\n"
-	   << "imax = " << imax << "\n\n";
+	of << "\nf(x) =" << function << "\n"
+			  << "xl = " << xl << "\n"
+			  << "xr = " << xr << "\n"
+			  << "errto = " << errto << "\n"
+			  << "imax = " << imax << "\n\n";
 
-	of << "\n" << "Numero de" << "\n" << "Iteracion" 
-       << std::setw(14) << "Xi" 
-	   << std::setw(16) << "Xf"
-	   << std::setw(16) << "Raiz"
-	   << std::setw(20) << "Error"
-       << std::setw(20) << "Tolerancia"
-       << std::setw(18) << "f(Raiz)\n" << std::endl;
+	of  << "\n" << "Numero de" << "\n" << "Iteracion" 
+		<< std::setw(12) << "xl" 
+		<< std::setw(14) << "xr"
+		<< std::setw(14) << "raiz"
+		<< std::setw(14) << "Error"
+		<< std::setw(14) << "Tolerancia\n" << std::endl;
 	
-	double xr = 0,error = 1,anterior;
-	/*
-	* xr: raiz.
-	*/
-	int cont = 0;
-	double fxr = 0;
+	float z,error = errto+1;
+	int cont = 1;
 	
 	while(error > errto && cont < imax)
 	{
-		anterior = xr;
-		
-		xr = (xf-((xi - xf)/(fun(fparser,xi)-fun(fparser,xf))*fun(fparser,xf)));
-
-		error = fabs((xr - anterior)/xr) * 100;	
-	    cont++;
-
-	    fxr = fun(fparser,xr);
-
-		of   << "  " << std::setw(2) << cont << "  "
-			 << "  " << std::setw(16) << xi
-			 << "  " << std::setw(16) << xf
-			 << "  |" << std::setw(16) << std::setprecision(14) << xr
-			 << "  " << std::setw(20) << error
-			 << "  " << std::setw(8) << errto 
-			 << "  " << std::setw(22) << fxr<< std::endl;
-
-		xi=xf;
-		xf=xr;
+		z = (xr-((xl-xr)/(fun(fparser,xl)-fun(fparser,xr))*fun(fparser,xr)));
+		of   << std::setw(5) << cont << "  "
+			 << std::setw(14) << xl
+			 << std::setw(14) << xr
+			 << std::setw(14) << z
+			 << std::setw(14) << error
+			 << std::setw(14) << errto << std::endl;
+		error=(fabs(xr-z));	
+		xl=xr;
+		xr=z;
+	        cont++;
 	}
 	
-	of << "\n" << "La raíz aproximada es: "<< xr << "\n" << std::endl;
+	of << "\n" << "La raíz aproximada es: "<< z << "\n" << std::endl;
 	return 0;
 }
 
-double fun(FunctionParser fparser,double x){
+float fun(FunctionParser fparser,float x){
 	double vals[] = { 0 };
 	
     vals[0] = x;
