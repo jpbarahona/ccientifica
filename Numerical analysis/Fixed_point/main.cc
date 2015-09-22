@@ -1,6 +1,6 @@
 /*
 * Autor: Gonzalo Cifuentes
-*		 Juan-pablo Barahona
+*	 Juan-pablo Barahona
 * Date: 21/09/2015
 */
 
@@ -11,7 +11,7 @@
 #include <iomanip>		/* std::setw(), std::setprecision*/
 #include <fstream>		/* std::ifstream */
 #include <cstring>		/* compare, std::string, std::stod (convert string to double value *pero no funciona...), std::strcpy */
-#include <cstdlib>     	/* atoi, atof (return double value) */
+#include <cstdlib>     		/* atoi, atof (return double value) */
 
 double f(double x);
 double puntoFijo(FunctionParser fparser, double xi, double xf, double errto, int imax, std::ostream& of);
@@ -90,22 +90,23 @@ int main()
     std::ofstream of("output.txt");
 
     of << "\nf(x) =" << function << "\n"
-	   << "Xi = " << xi << "\n"
-	   << "Xf = " << xf << "\n"
-	   << "errto = " << errto << "\n"
-	   << "imax = " << imax << "\n\n";
+       << "Xi = " << xi << "\n"
+       << "Xf = " << xf << "\n"
+       << "errto = " << errto << "\n"
+       << "imax = " << imax << "\n\n";
 
-	of << "\n" << "Numero de" << "\n" << "Iteracion" 
+    of << "\n" << "Numero de" << "\n" << "Iteracion" 
        << std::setw(14) << "Xi"
        << std::setw(16) << "Raiz"
        << std::setw(20) << "Error" 
        << std::setw(20) << "Tolerancia" 
        << std::setw(18) << "f(Raiz)\n" << std::endl;
 
-	double raiz = puntoFijo(fparser, xi, xf, errto, imax,of);
-	of << "\n" << "La raíz aproximada es: "<< raiz << "\n" << std::endl;
-	of.close();
-
+    double raiz = puntoFijo(fparser, xi, xf, errto, imax,of);
+    
+    of << "\n" << "La raíz aproximada es: "<< raiz << "\n" << std::endl;
+    
+    of.close();
 }
 
 double f (FunctionParser fparser, double x)
