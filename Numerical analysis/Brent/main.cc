@@ -153,8 +153,6 @@ double brent(FunctionParser fparser, double xi, double xf, double errto, int ima
     double delta = xf;
     double s = 0;
 
-    //::ifstream of("output.txt");
-
     if (f(fparser,xi) * f(fparser,xf) >= 0.0)
         return nan("");
  
@@ -216,7 +214,7 @@ double brent(FunctionParser fparser, double xi, double xf, double errto, int ima
         iterCount += 1;
 
         errnoo = fabs((s - xfold)/s) * 100;
-        //errnoo = fabs(xr - xl);
+        
         of << "  " << std::setw(2) << iterCount
 	   << "  " << std::setw(16) << xi
 	   << "  " << std::setw(16) << x 
