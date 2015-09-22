@@ -1,27 +1,26 @@
 /*
-* Autor: Juan-pablo Barahona
-* 		 Antonio Lefimil
-* Date: 17/09/2015
+* Autor: Matias Greco
+*		 Juan-pablo Barahona
+* Date: 21/09/2015
 */
 
 #include "fparser4.5.2/fparser.hh"
 
-#include <iostream>
-#include <cstdio>
-#include <cmath>		/* abs () */
+#include <iostream>		/* std::cout, std::cin, std::endl */
+#include <cmath>		/* abs() */
+#include <iomanip>		/* std::setw() */
 #include <fstream>		/* std::ifstream */
 #include <cstring>		/* compare, std::string, std::stod (convert string to double value *pero no funciona...), std::strcpy */
 #include <cstdlib>     	/* atoi, atof (return double value) */
-#include <iomanip>		/* std::setw(), std::setprecision() */
 
-double fun(FunctionParser fparser,double x);
+double f(FunctionParser fparser,double x);
 double dvalue(int pos_cstr, char* cstr);
+double ReglaFalsa(FunctionParser fparser,double xi, double xf, double errto,double imax, std::ostream& of);
 
-int main ()
+int main()
 {
-
 	std::string function;
-	double xi = 0,xf = 0,errto = 0,imax = 0;
+	double xi,xf,errto,imax;
 	
 	//===================================================================
 	//================= Leer parametros desde input.txt =================
@@ -73,7 +72,6 @@ int main ()
 	
 	//================================================================
 	
-	
     FunctionParser fparser;
 
     fparser.AddConstant("pi", 3.1415926535897932);
@@ -86,10 +84,10 @@ int main ()
         std::cout << std::string(res+7, ' ') << "^\n"
                   << fparser.ErrorMsg() << "\n\n";
     }
-	
-	std::ofstream of("output.txt");
-	
-	of << "\nf(x) = " << function << "\n"
+    
+    std::ofstream of("output.txt");
+
+    of << "\nf(x) =" << function << "\n"
 	   << "Xi = " << xi << "\n"
 	   << "Xf = " << xf << "\n"
 	   << "errto = " << errto << "\n"
@@ -97,48 +95,19 @@ int main ()
 
 	of << "\n" << "Numero de" << "\n" << "Iteracion" 
        << std::setw(14) << "Xi" 
-	   << std::setw(16) << "Xf"
-	   << std::setw(16) << "Raiz"
-	   << std::setw(20) << "Error"
-       << std::setw(20) << "Tolerancia"
+       << std::setw(16) << "Xf"
+       << std::setw(16) << "Raiz"
+       << std::setw(20) << "Error" 
+       << std::setw(20) << "Tolerancia" 
        << std::setw(18) << "f(Raiz)\n" << std::endl;
-	
-	double xr = 0,error = 1,anterior;
-	/*
-	* xr: raiz.
-	*/
-	int cont = 0;
-	double fxr = 0;
-	
-	while(error > errto && cont < imax)
-	{
-		anterior = xr;
-		
-		xr = (xf-((xi - xf)/(fun(fparser,xi)-fun(fparser,xf))*fun(fparser,xf)));
 
-		error = fabs((xr - anterior)/xr) * 100;	
-	    cont++;
-
-	    fxr = fun(fparser,xr);
-
-		of   << "  " << std::setw(2) << cont << "  "
-			 << "  " << std::setw(16) << xi
-			 << "  " << std::setw(16) << xf
-			 << "  |" << std::setw(16) << std::setprecision(14) << xr
-			 << "  " << std::setw(20) << error
-			 << "  " << std::setw(8) << errto 
-			 << "  " << std::setw(22) << fxr<< std::endl;
-
-		xi=xf;
-		xf=xr;
-	}
-	
-	of << "\n" << "La raíz aproximada es: "<< xr << "\n" << std::endl;
-	return 0;
+	double raiz = ReglaFalsa(fparser, xi, xf, errto, imax,of);
+	of << "\n" << "La raÃ­z aproximada es: "<< raiz << "\n" << std::endl;
+	of.close();
 }
 
-double fun(FunctionParser fparser,double x){
-	double vals[] = { 0 };
+double f(FunctionParser fparser,double x){
+    double vals[] = { 0 };
 	
     vals[0] = x;
 	
@@ -157,4 +126,49 @@ double dvalue(int pos_cstr, char* cstr)
 	}while(cstr[pos_cstr] != '\0');
 	
 	return atof(cstrcpy);
+}
+
+double ReglaFalsa(FunctionParser fparser,double xi, double xf, double errto,double imax, std::ostream& of)
+{
+	/*
+	 *	xi: inicio intervalo
+	 *	xf: fin intervalo
+	 *	xr: raiz (en esa iteracion)
+	 *	errto (porcentaje de error maximo, como criterio de paro)
+	*/
+
+    int iteracion = 0;
+    double xr = 0, error = errto + 1, anterior;
+
+    double fxi,fxf,fxr;
+
+    while (error > errto && iteracion < imax) {
+        anterior = xr;
+        fxf = f(fparser,xf);
+        fxi = f(fparser,xi);
+
+        xr = xf -((fxf*(xi-xf)))/(fxi-fxf);
+
+        fxr = f(fparser,xr);
+
+        //error = (sqrt((xr-anterior)*(xr-anterior)))/xr;
+        error = fabs((xr - anterior)/xr) * 100;  // pagina 100 del libro (criterio de paro)
+        iteracion++;
+
+        of << "  " << std::setw(2) << iteracion
+		   << "  " << std::setw(16) << xi
+		   << "  " << std::setw(16) << xf
+		   << "  |" << std::setw(16) << std::setprecision(14) << xr
+		   << "  " << std::setw(20) << error 
+		   << "  " << std::setw(8) << errto 
+		   << "  " << std::setw(22) << fxr << std::endl;
+
+        if(fxi*fxr < 0)
+           xf = xr;
+       	else
+           xi = xr;
+    }
+
+    return xr;
+
 }

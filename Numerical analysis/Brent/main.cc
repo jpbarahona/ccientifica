@@ -7,19 +7,19 @@
 
 #include <iostream>		/* std::cout, std::cin, std::endl */
 #include <cmath>		/* abs() */
-#include <iomanip>		/* std::setw() */
+#include <iomanip>		/* std::setw(), std::setprecision*/
 #include <fstream>		/* std::ifstream */
 #include <cstring>		/* compare, std::string, std::stod (convert string to double value *pero no funciona...), std::strcpy */
 #include <cstdlib>     	/* atoi, atof (return double value) */
 
 double f (FunctionParser fparser, double x);
 double dvalue(int pos_cstr, char* cstr);
-double brent(FunctionParser fparser, double xl, double xr, double errto, double imax, std::ostream& of);
+double brent(FunctionParser fparser, double xi, double xf, double errto, int imax, std::ostream& of);
 
 int main()
 {	
 	std::string function;
-	double xl,xr,errto,imax;
+	double xi,xf,errto,imax;
 	
 	//===================================================================
 	//================= Leer parametros desde input.txt =================
@@ -48,13 +48,13 @@ int main()
 				std::string sfx(fx);
 				function = sfx;
 			}
-			if(line.compare(0,5,"xl = ") == 0)
+			if(line.compare(0,5,"xi = ") == 0)
 		 	{
-				xl = dvalue(5,cstr);
+				xi = dvalue(5,cstr);
 			}
-			if(line.compare(0,5,"xr = ") == 0)
+			if(line.compare(0,5,"xf = ") == 0)
 		 	{
-				xr = dvalue(5,cstr);
+				xf = dvalue(5,cstr);
 			}
 			if(line.compare(0,8,"errto = ") == 0)
 		 	{
@@ -86,20 +86,21 @@ int main()
     
     std::ofstream of("output.txt");
 
-    of << "\nf(x) =" << function << "\n"
-			  << "xl = " << xl << "\n"
-			  << "xr = " << xr << "\n"
+    of << "\nf(x) = " << function << "\n"
+			  << "xi = " << xi << "\n"
+			  << "xf = " << xf << "\n"
 			  << "errto = " << errto << "\n"
 			  << "imax = " << imax << "\n\n";
 
 	of << "\n" << "Numero de" << "\n" << "Iteracion" 
-	        << std::setw(14) << "Xi-2(xl)" 
+	        << std::setw(14) << "Xi-2(xi)" 
 	        << std::setw(16) << "Xi-1(x)"
-	        << std::setw(16) << "Xi(xr)"
+	        << std::setw(16) << "Xi(xf)"
+	        << std::setw(20) << "Raiz"
+	   		<< std::setw(20) << "Error"
 	        << std::setw(16) << "Tolerancia"
-	        << std::setw(14) << "Raiz"
-	        << std::setw(16) << "f(Raiz)" << std::endl;
-	double raiz = brent(fparser, xl, xr, errto, imax,of);
+	        << std::setw(18) << "f(Raiz)\n" << std::endl;
+	double raiz = brent(fparser, xi, xf, errto, imax,of);
 	of << "\n" << "La raíz aproximada es: "<< raiz << "\n" << std::endl;
 	of.close();
 }
@@ -127,15 +128,13 @@ double dvalue(int pos_cstr, char* cstr)
 	return atof(cstrcpy);
 }
 
-double brent(FunctionParser fparser, double xl, double xr, double errto, double imax, std::ostream& of)
+double brent(FunctionParser fparser, double xi, double xf, double errto, int imax, std::ostream& of)
 {
     /*
     Brent : Retorna la raiz de la función.
  
-    brent(xl, xr, errto=0.001, imax=500)
- 
-    * xl: Intervalo izquierdo
-    * xr: Intervalo derecho
+    * xi: Intervalo izquierdo
+    * xf: Intervalo derecho
     * errto: tolerancia de error
     * imax: Número maximo de iteraciones
  
@@ -143,23 +142,23 @@ double brent(FunctionParser fparser, double xl, double xr, double errto, double 
     */
     double errnoo = errto + 1;
     double iterCount = 0;
-    double x = xl;
-    double y = xr;
-    double xrold = 0;
+    double x = xi;
+    double y = xf;
+    double xfold = 0;
     bool mflag = true;
-    double delta = xr;
-    double s;
+    double delta = xf;
+    double s = 0;
 
     //::ifstream of("output.txt");
 
-    if (f(fparser,xl) * f(fparser,xr) >= 0.0)
+    if (f(fparser,xi) * f(fparser,xf) >= 0.0)
         return nan("");
  
-    if (std::abs(f(fparser,xl)) < std::abs(f(fparser,xr)))
+    if (std::abs(f(fparser,xi)) < std::abs(f(fparser,xf)))
     {
-		double aux = xl;
-		xl = xr;
-		xr = aux;
+		double aux = xi;
+		xi = xf;
+		xf = aux;
 	}
 	
 	double fl;
@@ -168,8 +167,9 @@ double brent(FunctionParser fparser, double xl, double xr, double errto, double 
 	
     while (errnoo > errto && iterCount < imax)
     {
-       fl = f(fparser,xl);
-       fr = f(fparser,xr);
+       xfold = s;
+       fl = f(fparser,xi);
+       fr = f(fparser,xf);
        fx = f(fparser,x);
  
         // Interpolación inversa cuadrática
@@ -184,66 +184,61 @@ double brent(FunctionParser fparser, double xl, double xr, double errto, double 
             delta[5] = fr - fl;
             delta[6] = fr - fx;
  
-            s = fx * fr * xl / (delta[1] * delta[2]) +
+            s = fx * fr * xi / (delta[1] * delta[2]) +
                 fl * fr * x / (delta[3] * delta[4]) +
-                fl * fx * xr / (delta[5] * delta[6]);
+                fl * fx * xf / (delta[5] * delta[6]);
                 
             delete delta;
 		}
         // Secante
         else
-            s = xr - fl*(xr - xl)/(fr - fl);
+            s = xf - ((xi - xf)/(fl - fr)*fr);
  
-        if ((!(s > (3 * xl + xr)/4 && s < xr)) ||
-            (mflag && std::abs(s - xr) >= std::abs(xr - x)/2) ||
-            (!mflag && std::abs(s - xr) >= std::abs(x - y)/2) ||
-            (mflag && std::abs(xr - x) < std::abs(delta)) ||
+        if ((!(s > (3 * xi + xf)/4 && s < xf)) ||
+            (mflag && std::abs(s - xf) >= std::abs(xf - x)/2) ||
+            (!mflag && std::abs(s - xf) >= std::abs(x - y)/2) ||
+            (mflag && std::abs(xf - x) < std::abs(delta)) ||
             (!mflag && std::abs(x - y) < std::abs(delta)))
             {
                 // Bisección
-                s = (xr + xl)/2;
+                s = (xf + xi)/2;
                 mflag = true;
             }
         else
             mflag = false;
  
         double fs = f(fparser,s);
-        
-        of << "  " << std::setw(3) << iterCount
-				  << "  " << std::setw(14) << xl
-				  << "  " << std::setw(14) << x 
-				  << "  " << std::setw(14) << xr
-				  << "  |" << std::setw(14) << errto 
-				  << "  " << std::setw(14) << s 
-				  << "  " << std::setw(14) << fs << std::endl;
+
+        iterCount += 1;
+
+        errnoo = fabs((s - xfold)/s) * 100;
+        //errnoo = fabs(xr - xl);
+        of << "  " << std::setw(2) << iterCount
+		   << "  " << std::setw(16) << xi
+		   << "  " << std::setw(16) << x 
+		   << "  " << std::setw(16) << xf
+	 	   << "  |" << std::setw(16) << std::setprecision(14) << s 
+	 	   << "  " << std::setw(20) << errnoo 
+	 	   << "  " << std::setw(8) << errto
+	 	   << "  " << std::setw(22) << fs << std::endl;
         
         y = x;
-        x = xr;
-        
+        x = xf;
 		
         if (fl * fs < 0.0)
-            xr = s;
+            xf = s;
         else
-            xl = s;
+            xi = s;
  
-        if (std::abs(f(fparser,xl)) < std::abs(f(fparser,xr)))
+        if (std::abs(f(fparser,xi)) < std::abs(f(fparser,xf)))
         {
-			double aux = xl;
-			xl = xr;
-			xr = aux;
+			double aux = xi;
+			xi = xf;
+			xf = aux;
 		}
  
-        if (fs == 0 || f(fparser,xr) == 0)
+        if (fs == 0 || f(fparser,xf) == 0)
             break;
- 
-        if (std::abs(xr - xrold) < delta)
-            delta = std::abs(xr - xrold);
- 
-        xrold = xr;
-        iterCount += 1;
-        errnoo = fabs(xr - xl);
 	}
-
-	//of.close();
-    return xr;
+    return xf;
 }
