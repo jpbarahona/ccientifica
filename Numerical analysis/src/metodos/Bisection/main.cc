@@ -1,6 +1,6 @@
 /*
 * Autor: Alfredo González
-*		 Juan-pablo Barahona
+*	 Juan-pablo Barahona
 * Date: 21/09/2015
 */
 
@@ -82,12 +82,12 @@ int main(){
     std::ofstream of(file);
 
     of << "\nf(x) =" << function << "\n"
-	   << "Xi = " << xi << "\n"
-	   << "Xf = " << xf << "\n"
-	   << "errto = " << errto << "\n"
-	   << "imax = " << imax << "\n\n";
+       << "Xi = " << xi << "\n"
+       << "Xf = " << xf << "\n"
+       << "errto = " << errto << "\n"
+       << "imax = " << imax << "\n\n";
 
-	of << "\n" << "Numero de" << "\n" << "Iteracion" 
+    of << "\n" << "Numero de" << "\n" << "Iteracion" 
        << std::setw(14) << "Xi" 
        << std::setw(16) << "Xf"
        << std::setw(16) << "Raiz"

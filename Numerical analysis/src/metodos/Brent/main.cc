@@ -122,19 +122,17 @@ double brent(FunctionParser fparser, double xi, double xf, double errto, int ima
     double delta = xf;
     double s = 0;
 
-    //::ifstream of("output.txt");
-
     if (f(fparser,xi) * f(fparser,xf) >= 0.0)
         return nan("");
  
     if (std::abs(f(fparser,xi)) < std::abs(f(fparser,xf)))
     {
-		double aux = xi;
-		xi = xf;
-		xf = aux;
-	}
+	double aux = xi;
+	xi = xf;
+	xf = aux;
+    }
 	
-	double fl;
+    double fl;
     double fr;
     double fx;
 	
@@ -187,13 +185,13 @@ double brent(FunctionParser fparser, double xi, double xf, double errto, int ima
         errnoo = fabs((s - xfold)/s) * 100;
         
         of << "  " << std::setw(2) << iterCount
-		   << "  " << std::setw(16) << xi
-		   << "  " << std::setw(16) << x 
-		   << "  " << std::setw(16) << xf
-	 	   << "  |" << std::setw(16) << std::setprecision(14) << s 
-	 	   << "  " << std::setw(20) << errnoo 
-	 	   << "  " << std::setw(8) << errto
-	 	   << "  " << std::setw(22) << fs << std::endl;
+	   << "  " << std::setw(16) << xi
+	   << "  " << std::setw(16) << x 
+	   << "  " << std::setw(16) << xf
+ 	   << "  |" << std::setw(16) << std::setprecision(14) << s 
+ 	   << "  " << std::setw(20) << errnoo 
+ 	   << "  " << std::setw(8) << errto
+ 	   << "  " << std::setw(22) << fs << std::endl;
         
         y = x;
         x = xf;
@@ -205,10 +203,10 @@ double brent(FunctionParser fparser, double xi, double xf, double errto, int ima
  
         if (std::abs(f(fparser,xi)) < std::abs(f(fparser,xf)))
         {
-			double aux = xi;
-			xi = xf;
-			xf = aux;
-		}
+	    double aux = xi;
+	    xi = xf;
+	    xf = aux;
+	}
  
         if (fs == 0 || f(fparser,xf) == 0)
             break;

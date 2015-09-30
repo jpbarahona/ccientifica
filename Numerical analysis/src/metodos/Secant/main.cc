@@ -97,9 +97,6 @@ int main ()
        << std::setw(18) << "f(Raiz)\n" << std::endl;
 	
 	double xr = 0,error = 1,anterior;
-	/*
-	* xr: raiz.
-	*/
 	int cont = 0;
 	double fxr = 0;
 	
