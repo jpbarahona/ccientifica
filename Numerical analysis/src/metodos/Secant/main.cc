@@ -1,20 +1,11 @@
 /*
-* Autor: Antonio Lefimil
-* 		 Juan-pablo Barahona
+* Autor: Antonio Lefimil 
+*		 Juan-pablo Barahona
 * Date: 17/09/2015
 */
 
-#include "../fparser4.5.2/fparser.hh"
-
-#include <iostream>		/* std::cout, std::cin, std::endl */
-#include <cmath>		/* abs() */
-#include <iomanip>		/* std::setw() */
-#include <fstream>		/* std::ifstream */
-#include <cstring>		/* compare, std::string, std::stod (convert string to double value *pero no funciona...), std::strcpy */
-#include <cstdlib>     	/* atoi, atof (return double value) */
-
-double fun(FunctionParser fparser,double x);
-double dvalue(int pos_cstr, char* cstr);
+#include "../../fparser4.5.2/fparser.hh"
+#include "../../INCLUDE/raiz.hh"
 
 int main ()
 {
@@ -27,7 +18,7 @@ int main ()
 	
 	std::string line;
 	char * fx = new char [25];
-	std::ifstream fe ("input.txt");
+	std::ifstream fe ("inputs/input.txt");
 	int i = 0,j;
 	if (fe == NULL) perror ("Error abrir archivo");
 	else
@@ -87,7 +78,9 @@ int main ()
                   << fparser.ErrorMsg() << "\n\n";
     }
 	
-	std::ofstream of("output.txt");
+    char * file = fichero("out", "cc", "er", "se","out","txt",100);
+
+	std::ofstream of(file);
 	
 	of << "\nf(x) = " << function << "\n"
 	   << "Xi = " << xi << "\n"
@@ -114,12 +107,12 @@ int main ()
 	{
 		anterior = xr;
 		
-		xr = (xf-((xi - xf)/(fun(fparser,xi)-fun(fparser,xf))*fun(fparser,xf)));
+		xr = (xf-((xi - xf)/(f(fparser,xi)-f(fparser,xf))*f(fparser,xf)));
 
 		error = fabs((xr - anterior)/xr) * 100;	
 	    cont++;
 
-	    fxr = fun(fparser,xr);
+	    fxr = f(fparser,xr);
 
 		of   << "  " << std::setw(2) << cont << "  "
 			 << "  " << std::setw(16) << xi
@@ -134,27 +127,7 @@ int main ()
 	}
 	
 	of << "\n" << "La raíz aproximada es: "<< xr << "\n" << std::endl;
+
+	free(file);
 	return 0;
-}
-
-double fun(FunctionParser fparser,double x){
-	double vals[] = { 0 };
-	
-    vals[0] = x;
-	
-	return fparser.Eval(vals);
-}
-
-double dvalue(int pos_cstr, char* cstr)
-{
-	int j = 0;
-	char * cstrcpy = new char[25];
-	
-	do
-	{
-		cstrcpy[j]=cstr[pos_cstr];
-		pos_cstr++;j++;
-	}while(cstr[pos_cstr] != '\0');
-	
-	return atof(cstrcpy);
 }

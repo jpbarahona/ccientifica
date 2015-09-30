@@ -3,30 +3,22 @@
 * Date: 17/09/2015
 */
 
-#include "../fparser4.5.2/fparser.hh"
+#include "../../fparser4.5.2/fparser.hh"
+#include "../../INCLUDE/raiz.hh"
 
-#include <iostream>		/* std::cout, std::cin, std::endl */
-#include <cmath>		/* abs() */
-#include <iomanip>		/* std::setw(), std::setprecision*/
-#include <fstream>		/* std::ifstream */
-#include <cstring>		/* compare, std::string, std::stod (convert string to double value *pero no funciona...), std::strcpy */
-#include <cstdlib>     	/* atoi, atof (return double value) */
+int main(){
 
-double f (FunctionParser fparser, double x);
-double dvalue(int pos_cstr, char* cstr);
-double brent(FunctionParser fparser, double xi, double xf, double errto, int imax, std::ostream& of);
+	double brent(FunctionParser fparser, double xi, double xf, double errto, int imax, std::ostream& of);
 
-int main()
-{	
 	std::string function;
 	double xi,xf,errto,imax;
-	
+
 	//===================================================================
 	//================= Leer parametros desde input.txt =================
 	
 	std::string line;
 	char * fx = new char [25];
-	std::ifstream fe ("input.txt");
+	std::ifstream fe ("inputs/input.txt");
 	int i = 0,j;
 	if (fe == NULL) perror ("Error abrir archivo");
 	else
@@ -85,7 +77,9 @@ int main()
                   << fparser.ErrorMsg() << "\n\n";
     }
     
-    std::ofstream of("output.txt");
+	char * file = fichero("out", "cc", "er", "br","out","txt",100);
+
+    std::ofstream of(file);
 
     of << "\nf(x) = " << function << "\n"
 			  << "xi = " << xi << "\n"
@@ -104,29 +98,7 @@ int main()
 	double raiz = brent(fparser, xi, xf, errto, imax,of);
 	of << "\n" << "La raíz aproximada es: "<< raiz << "\n" << std::endl;
 	of.close();
-}
-
-double f (FunctionParser fparser, double x)
-{
-	double vals[] = { 0 };
-	
-    vals[0] = x;
-	
-	return fparser.Eval(vals);
-}
-
-double dvalue(int pos_cstr, char* cstr)
-{
-	int j = 0;
-	char * cstrcpy = new char[25];
-	
-	do
-	{
-		cstrcpy[j]=cstr[pos_cstr];
-		pos_cstr++;j++;
-	}while(cstr[pos_cstr] != '\0');
-	
-	return atof(cstrcpy);
+	free(file);
 }
 
 double brent(FunctionParser fparser, double xi, double xf, double errto, int imax, std::ostream& of)
@@ -139,7 +111,7 @@ double brent(FunctionParser fparser, double xi, double xf, double errto, int ima
     * errto: tolerancia de error
     * imax: Número maximo de iteraciones
  
-    return: raiz aproximada
+    * return: raiz aproximada
     */
     double errnoo = errto + 1;
     double iterCount = 0;
@@ -213,7 +185,7 @@ double brent(FunctionParser fparser, double xi, double xf, double errto, int ima
         iterCount += 1;
 
         errnoo = fabs((s - xfold)/s) * 100;
-        //errnoo = fabs(xr - xl);
+        
         of << "  " << std::setw(2) << iterCount
 		   << "  " << std::setw(16) << xi
 		   << "  " << std::setw(16) << x 

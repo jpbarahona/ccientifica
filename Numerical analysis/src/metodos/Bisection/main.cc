@@ -1,24 +1,16 @@
 /*
-* Autor: Matias Greco
+* Autor: Alfredo González
 *		 Juan-pablo Barahona
 * Date: 21/09/2015
 */
 
-#include "../fparser4.5.2/fparser.hh"
+#include "../../fparser4.5.2/fparser.hh"
+#include "../../INCLUDE/raiz.hh"
 
-#include <iostream>		/* std::cout, std::cin, std::endl */
-#include <cmath>		/* abs() */
-#include <iomanip>		/* std::setw() */
-#include <fstream>		/* std::ifstream */
-#include <cstring>		/* compare, std::string, std::stod (convert string to double value *pero no funciona...), std::strcpy */
-#include <cstdlib>     	/* atoi, atof (return double value) */
+int main(){
 
-double f(FunctionParser fparser,double x);
-double dvalue(int pos_cstr, char* cstr);
-double ReglaFalsa(FunctionParser fparser,double xi, double xf, double errto,double imax, std::ostream& of);
+	double biseccion(FunctionParser fparser, double xi, double xf, double errto, int imax, std::ostream& of);
 
-int main()
-{
 	std::string function;
 	double xi,xf,errto,imax;
 	
@@ -27,7 +19,7 @@ int main()
 	
 	std::string line;
 	char * fx = new char [25];
-	std::ifstream fe ("input.txt");
+	std::ifstream fe ("inputs/input.txt");
 	int i = 0,j;
 	if (fe == NULL) perror ("Error abrir archivo");
 	else
@@ -39,7 +31,6 @@ int main()
 		 	if(line.compare(0,7,"F(x) = ") == 0)
 		 	{
 				j = 0;i = 7;
-				
 				do
 				{
 					fx[j] = cstr[i];
@@ -86,7 +77,9 @@ int main()
                   << fparser.ErrorMsg() << "\n\n";
     }
     
-    std::ofstream of("output.txt");
+    char * file = fichero("out", "cc", "er", "bi","out","txt",100);
+
+    std::ofstream of(file);
 
     of << "\nf(x) =" << function << "\n"
 	   << "Xi = " << xi << "\n"
@@ -102,74 +95,40 @@ int main()
        << std::setw(20) << "Tolerancia" 
        << std::setw(18) << "f(Raiz)\n" << std::endl;
 
-	double raiz = ReglaFalsa(fparser, xi, xf, errto, imax,of);
+	double raiz = biseccion(fparser, xi, xf, errto, imax,of);
 	of << "\n" << "La raíz aproximada es: "<< raiz << "\n" << std::endl;
 	of.close();
+	free(file);
 }
 
-double f(FunctionParser fparser,double x){
-    double vals[] = { 0 };
-	
-    vals[0] = x;
-	
-	return fparser.Eval(vals);
-}
-
-double dvalue(int pos_cstr, char* cstr)
-{
-	int j = 0;
-	char * cstrcpy = new char[25];
-	
-	do
-	{
-		cstrcpy[j]=cstr[pos_cstr];
-		pos_cstr++;j++;
-	}while(cstr[pos_cstr] != '\0');
-	
-	return atof(cstrcpy);
-}
-
-double ReglaFalsa(FunctionParser fparser,double xi, double xf, double errto,double imax, std::ostream& of)
-{
-	/*
-	 *	xi: inicio intervalo
-	 *	xf: fin intervalo
-	 *	xr: raiz (en esa iteracion)
-	 *	errto (porcentaje de error maximo, como criterio de paro)
-	*/
-
-    int iteracion = 0;
+double biseccion(FunctionParser fparser, double xi, double xf, double errto, int imax, std::ostream& of){
     double xr = 0, error = errto + 1, anterior;
+    int cant_iteraciones = 0;
 
-    double fxi,fxf,fxr;
+    do
+    {
+    	anterior = xr;
+    	
+        xr = (xi+xf)/2;
 
-    while (error > errto && iteracion < imax) {
-        anterior = xr;
-        fxf = f(fparser,xf);
-        fxi = f(fparser,xi);
-
-        xr = xf -((fxf*(xi-xf)))/(fxi-fxf);
-
-        fxr = f(fparser,xr);
-
-        //error = (sqrt((xr-anterior)*(xr-anterior)))/xr;
         error = fabs((xr - anterior)/xr) * 100;  // pagina 100 del libro (criterio de paro)
-        iteracion++;
+        cant_iteraciones++;
 
-        of << "  " << std::setw(2) << iteracion
+        of << "  " << std::setw(2) << cant_iteraciones
 		   << "  " << std::setw(16) << xi
 		   << "  " << std::setw(16) << xf
 		   << "  |" << std::setw(16) << std::setprecision(14) << xr
 		   << "  " << std::setw(20) << error 
 		   << "  " << std::setw(8) << errto 
-		   << "  " << std::setw(22) << fxr << std::endl;
+		   << "  " << std::setw(22) << f(fparser,xr) << std::endl;
 
-        if(fxi*fxr < 0)
+        if(f(fparser,xi)*f(fparser,xr) < 0)
            xf = xr;
        	else
            xi = xr;
     }
 
-    return xr;
+   while((error > errto) && cant_iteraciones < imax);
 
+   return xr;
 }

@@ -1,5 +1,5 @@
 all:
-	$(MAKE) -C fparser4.5.2 all
+	$(MAKE) -C src all
 
 clean:
-	$(MAKE) -C fparser4.5.2 clean
+	$(MAKE) -C src clean

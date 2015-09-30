@@ -1,0 +1,16 @@
+
+f(x) =x * log(x/3) - x
+Xi = 1.5
+Xf = 20.2
+errto = 1e-05
+imax = 25
+
+
+Numero de
+Iteracion            Xi            Raiz               Error          Tolerancia          f(Raiz)
+
+   1               1.5  |-1.0397207708399                   100     1e-05                       0
+   2  -1.0397207708399  |-1.0397207708399                     0     1e-05                       0
+
+La raíz aproximada es: -1.0397207708399
+

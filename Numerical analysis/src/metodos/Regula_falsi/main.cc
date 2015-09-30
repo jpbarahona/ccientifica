@@ -1,24 +1,15 @@
 /*
-* Autor: Gonzalo Cifuentes
+* Autor: Matias Greco
 *		 Juan-pablo Barahona
 * Date: 21/09/2015
 */
 
-#include "../fparser4.5.2/fparser.hh"
-
-#include <iostream>		/* std::cout, std::cin, std::endl */
-#include <cmath>		/* abs() */
-#include <iomanip>		/* std::setw(), std::setprecision*/
-#include <fstream>		/* std::ifstream */
-#include <cstring>		/* compare, std::string, std::stod (convert string to double value *pero no funciona...), std::strcpy */
-#include <cstdlib>     	/* atoi, atof (return double value) */
-
-double f(double x);
-double puntoFijo(FunctionParser fparser, double xi, double xf, double errto, int imax, std::ostream& of);
-double dvalue(int pos_cstr, char* cstr);
+#include "../../fparser4.5.2/fparser.hh"
+#include "../../INCLUDE/raiz.hh"
 
 int main()
 {
+	double ReglaFalsa(FunctionParser fparser,double xi, double xf, double errto,double imax, std::ostream& of);
 
 	std::string function;
 	double xi,xf,errto,imax;
@@ -28,7 +19,7 @@ int main()
 	
 	std::string line;
 	char * fx = new char [25];
-	std::ifstream fe ("input.txt");
+	std::ifstream fe ("inputs/input.txt");
 	int i = 0,j;
 	if (fe == NULL) perror ("Error abrir archivo");
 	else
@@ -87,7 +78,9 @@ int main()
                   << fparser.ErrorMsg() << "\n\n";
     }
     
-    std::ofstream of("output.txt");
+    char * file = fichero("out", "cc", "er", "rf","out","txt",100);
+
+    std::ofstream of(file);
 
     of << "\nf(x) =" << function << "\n"
 	   << "Xi = " << xi << "\n"
@@ -96,63 +89,60 @@ int main()
 	   << "imax = " << imax << "\n\n";
 
 	of << "\n" << "Numero de" << "\n" << "Iteracion" 
-       << std::setw(14) << "Xi"
+       << std::setw(14) << "Xi" 
+       << std::setw(16) << "Xf"
        << std::setw(16) << "Raiz"
        << std::setw(20) << "Error" 
        << std::setw(20) << "Tolerancia" 
        << std::setw(18) << "f(Raiz)\n" << std::endl;
 
-	double raiz = puntoFijo(fparser, xi, xf, errto, imax,of);
+	double raiz = ReglaFalsa(fparser, xi, xf, errto, imax,of);
 	of << "\n" << "La raíz aproximada es: "<< raiz << "\n" << std::endl;
 	of.close();
-
+	free(file);
 }
 
-double f (FunctionParser fparser, double x)
+double ReglaFalsa(FunctionParser fparser,double xi, double xf, double errto,double imax, std::ostream& of)
 {
-	double vals[] = { 0 };
-	
-    vals[0] = x;
-	
-	return fparser.Eval(vals);
-}
+	/*
+	 *	xi: inicio intervalo
+	 *	xf: fin intervalo
+	 *	xr: raiz (en esa iteracion)
+	 *	errto (porcentaje de error maximo, como criterio de paro)
+	*/
 
-double dvalue(int pos_cstr, char* cstr)
-{
-	int j = 0;
-	char * cstrcpy = new char[25];
-	
-	do
-	{
-		cstrcpy[j]=cstr[pos_cstr];
-		pos_cstr++;j++;
-	}while(cstr[pos_cstr] != '\0');
-	
-	return atof(cstrcpy);
-}
+    int iteracion = 0;
+    double xr = 0, error = errto + 1, anterior;
 
-double puntoFijo(FunctionParser fparser, double xi, double xf, double errto, int imax, std::ostream& of)
-{
+    double fxi,fxf,fxr;
 
- 	int iterCount = 0;
- 	double error = errto + 1, xr = 0, anterior;
+    while (error > errto && iteracion < imax) {
+        anterior = xr;
+        fxf = f(fparser,xf);
+        fxi = f(fparser,xi);
 
-	while (error > errto && iterCount < imax)
-	{
-		anterior = xr;
-		xr = xi + f(fparser,xi);
+        xr = xf -((fxf*(xi-xf)))/(fxi-fxf);
 
-		error = fabs((xr - anterior)/xr) * 100;
-		iterCount++;
+        fxr = f(fparser,xr);
 
-		of << "  " << std::setw(2) << iterCount
+        //error = (sqrt((xr-anterior)*(xr-anterior)))/xr;
+        error = fabs((xr - anterior)/xr) * 100;  // pagina 100 del libro (criterio de paro)
+        iteracion++;
+
+        of << "  " << std::setw(2) << iteracion
 		   << "  " << std::setw(16) << xi
+		   << "  " << std::setw(16) << xf
 		   << "  |" << std::setw(16) << std::setprecision(14) << xr
 		   << "  " << std::setw(20) << error 
 		   << "  " << std::setw(8) << errto 
-		   << "  " << std::setw(22) << f(fparser,xr) << std::endl;
+		   << "  " << std::setw(22) << fxr << std::endl;
 
-		xi=xr; 
+        if(fxi*fxr < 0)
+           xf = xr;
+       	else
+           xi = xr;
     }
-return xr;
+
+    return xr;
+
 }
