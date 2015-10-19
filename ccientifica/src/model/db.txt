@@ -1,0 +1,4 @@
+x*log(x/3)-x1.520.11.0E-525Ecuacion de raicesBiseccion|img/ecuacion_de_raices/biseccion/1445032503test22gr.jpg|app/out/ecuacion_de_raices/biseccion/CCECUBI001OUT.txt
+x*log(x/3)-x1.520.11.0E-525Ecuacion de raicesSecante|img/ecuacion_de_raices/secante/1445032520test22gr.jpg|app/out/ecuacion_de_raices/secante/CCECUSE001OUT.txt
+x*log(x/3)-x1.520.11.0E-525Ecuacion de raicesBrent|img/ecuacion_de_raices/brent/1445032549test22gr.jpg|app/out/ecuacion_de_raices/brent/CCECUBR001OUT.txt
+x*log(x/3)-x1.520.11.0E-525Ecuacion de raicesRegla_falsa|img/ecuacion_de_raices/regla_falsa/1445032566test22gr.jpg|app/out/ecuacion_de_raices/regla_falsa/CCECURE001OUT.txt

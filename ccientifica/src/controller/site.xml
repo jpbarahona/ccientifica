@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<siteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:noNamespaceSchemaLocation="http://blackapps.cl/ofw/ofw.xsd">
+	
+	<!--  MENU MAPPING -->
+	<requestMapping name="index" class="MenuController" method="index"/>
+	<!--  ./MENU MAPPING -->
+		<!--  SUBMENU MAPPING -->
+		<requestMapping name="algoritmos/sidebar-left/" class="SubMenuController" method="algBrent"/>
+		<!--  ./SUBMENU MAPPING -->
+	
+	<!-- CONTROLADOR EJECUTAR MÉTODO -->
+	<requestMapping name="exeMetodo" class="AlgoritmoController" method="exeMetodo" ajaxResponse="json"/>
+</siteMap>
