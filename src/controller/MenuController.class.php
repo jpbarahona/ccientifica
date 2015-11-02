@@ -4,12 +4,17 @@
 		public function MenuController(){
 			parent::Controller();
 		}
-		
-		/**
-		 *@Privilege AUTHENTICATED
-		 */
 		public function index(){
 			return 'index';
+		}
+		public function algBrent(){
+			return 'example';
+		}
+		public function repost(){
+			return 'repost';
+		}
+			public function calculator(){
+			return 'sidebar-left';
 		}
 	}
 ?>

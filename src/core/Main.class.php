@@ -4,6 +4,7 @@ include 'Annotation.class.php';
 include 'Logger.class.php';
 include 'Controller.class.php';
 include 'AjaxException.class.php';
+
 class Main {
 
 	private $logger;

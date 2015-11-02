@@ -3,16 +3,14 @@
 	xsi:noNamespaceSchemaLocation="http://blackapps.cl/ofw/ofw.xsd">
 	
 	<!--  MENU MAPPING -->
-	<requestMapping name="index" class="MenuController" method="index"/>
-	<!--  ./MENU MAPPING -->
-		<!--  SUBMENU MAPPING -->
-		<requestMapping name="ecuaciones-no-lineales/biseccion/" class="SubMenuController" method="algBiseccion"/>
-		<requestMapping name="ecuaciones-no-lineales/brent/" class="SubMenuController" method="algBrent"/>
-		<requestMapping name="ecuaciones-no-lineales/secante/" class="SubMenuController" method="algSecante"/>
-		<requestMapping name="ecuaciones-no-lineales/punto-fijo/" class="SubMenuController" method="algPuntoFijo"/>
-		<requestMapping name="ecuaciones-no-lineales/regla-falsa/" class="SubMenuController" method="algReglaFalsa"/>
-		<!--  ./SUBMENU MAPPING -->
+	<requestMapping name="index" 			class="MenuController" method="index"/>
+	<requestMapping name="example" 			class="MenuController" method="algBrent"/>
+	<requestMapping name="repost" 			class="MenuController" method="repost"/>
+	<requestMapping name="calculator" 			class="MenuController" method="calculator"/>
+
+
 	
 	<!-- CONTROLADOR EJECUTAR MÉTODO -->
 	<requestMapping name="exeMetodo" class="AlgoritmoController" method="exeMetodo" ajaxResponse="json"/>
+	
 </siteMap>
