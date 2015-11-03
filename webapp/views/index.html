@@ -4,55 +4,11 @@
 		<title>Computacion Científica UNAB</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">		
-		<link href="webapp/views/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">		
-		<link href="webapp/views/css/owl.carousel.css" rel="stylesheet" type="text/css" media="all">		
-		<link href="webapp/views/css/owl.theme.css" rel="stylesheet" type="text/css" media="all">		
-		<link href="webapp/views/css/owl.transitions.css" rel="stylesheet" type="text/css" media="all">
-		<link href="webapp/views/css/layout.css" rel="stylesheet" type="text/css" media="all">
-		<!-- JAVASCRIPTS -->
-		<script src="webapp/views/js/jquery.min.js"></script> 
-		<script src="webapp/views/js/jquery.backtotop.js"></script> 
-		<script src="webapp/views/js/jquery.mobilemenu.js"></script>
-		<script src="webapp/views/js/owl.carousel.js"></script>
-		<script>
-			$(function(){
-				$("#work2").hide();
-				$("#work3").hide();
-				$("#work4").hide();
-				$("#seeMore").click(function(){
-				    $("#work2").show();
-				    $("#seeMore").hide();
-				    $("#seeMore1").show();
-				});
-				$("#seeMore1").click(function(){
-				    $("#work3").show();
-				    $("#seeMore1").hide();
-				    $("#seeMore2").show();
-				});
-				$("#seeMore2").click(function(){
-				    $("#work4").show();
-				    $("#seeMore2").hide();
-				});
-				$("#seeMore4").click(function(){
-				    $("#work5").show();
-				    $("#seeMore4").hide();
-				});
-				$("#noSee").click(function(){
-					$("#work5").hide();
-					$("#work4").hide();
-				    $("#work3").hide();
-				    $("#work2").hide();
-				    $("#seeMore").show();
-				});
-				$("#owl-demo").owlCarousel({
-				  autoPlay: 3000, //Set AutoPlay to 3 seconds
-				  items : 3,
-				  itemsDesktop : [1199,3],
-				  itemsDesktopSmall : [979,3]
-
-				});
-			});
-		</script>				
+		<link href="webapp/views/src/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">		
+		<link href="webapp/views/src/css/owl.carousel.css" rel="stylesheet" type="text/css" media="all">		
+		<link href="webapp/views/src/css/owl.theme.css" rel="stylesheet" type="text/css" media="all">		
+		<link href="webapp/views/src/css/owl.transitions.css" rel="stylesheet" type="text/css" media="all">
+		<link href="webapp/views/src/css/layout.css" rel="stylesheet" type="text/css" media="all">
 	</head>
 	<body id="top">
 		<div class="wrapper row0">
@@ -70,7 +26,7 @@
 			<header id="header" class="clear"> 
 				<div class="table">
 					<div class="table-cell center" >
-						<h1><a class="navbar-brand" href="index.html"><img src="webapp/views/img/logo-unab-2015.png" alt="" /></a></h1>
+						<h1><a class="navbar-brand" href="index.html"><img src="webapp/views/src/img/logo-unab-2015.png" alt="" /></a></h1>
 						<h1><a href="index.html">Computación Científica UNAB</a></h1>
 					</div>
 				</div>
@@ -93,7 +49,7 @@
 				</ul>
 			</nav>
 		</div>
-		<div class="wrapper bgded overlay blue" style="background-image:url('webapp/views/images/timthumb.jpg')">
+		<div class="wrapper bgded overlay blue" style="background-image:url('webapp/views/src/images/timthumb.jpg')">
 			<section id="pageintro" class="container clear btminspace-0"> 
 				<div class="introtxt">
 					<h2 class="heading uppercase">Computación Científica</h2>
@@ -295,7 +251,7 @@
 				<h2 class="font-x2 uppercase" align="center">Equipo de Trabajo</h2><hr>
 					<div id="owl-demo">
 						<div class="item">
-							<img src="webapp/views/images/pp.jpg" alt="Owl Image">
+							<img src="webapp/views/src/images/pp.jpg" alt="Owl Image">
 							<h6 class="title">JuanPablo Barahona</h6>
 							<address class="btmspace-15">
 							Estudiante Univerdad<br>
@@ -307,7 +263,7 @@
 							</ul>
 						</div>
 						<div class="item">
-							<img src="webapp/views/images/pp0.jpg" alt="Owl Image">
+							<img src="webapp/views/src/images/pp0.jpg" alt="Owl Image">
 							<h6 class="title">J. Antonio Lefimil</h6>
 							<address class="btmspace-15">
 							Estudiante Universidad<br>
@@ -319,7 +275,7 @@
 							</ul>
 						</div>
 						<div class="item">
-							<img src="webapp/views/images/pp2.jpg" alt="Owl Image">
+							<img src="webapp/views/src/images/pp2.jpg" alt="Owl Image">
 							<h6 class="title">Gonzalo Cifuentes</h6>
 							<address class="btmspace-15">
 							Estudiante Univerdad<br>
@@ -331,7 +287,7 @@
 							</ul>
 						</div>
 						<div class="item">
-							<img src="webapp/views/images/pp3.jpg" alt="Owl Image">
+							<img src="webapp/views/src/images/pp3.jpg" alt="Owl Image">
 							<h6 class="title">Alfredo González</h6>
 							<address class="btmspace-15">
 							Estudiante Universidad<br>
@@ -343,7 +299,7 @@
 							</ul>
 						</div>
 						<div class="item">
-							<img src="webapp/views/images/pp3.jpg" alt="Owl Image">
+							<img src="webapp/views/src/images/pp3.jpg" alt="Owl Image">
 							<h6 class="title">Gustavo Gatica</h6>
 							<address class="btmspace-15">
 								Universidad Andrés Bello<br>
@@ -355,7 +311,7 @@
 							</ul>
 						</div>
 						<div class="item">
-							<img src="webapp/views/images/pp.jpg" alt="Owl Image">
+							<img src="webapp/views/src/images/pp.jpg" alt="Owl Image">
 							<h6 class="title">Matías Greco</h6>
 							<address class="btmspace-15">
 							Estudiante Univerdad<br>
@@ -376,5 +332,49 @@
 			</div>
 		</div>
 		<a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+		<!-- JAVASCRIPTS -->
+		<script src="webapp/views/src/js/jquery.min.js"></script> 
+		<script src="webapp/views/src/js/jquery.backtotop.js"></script> 
+		<script src="webapp/views/src/js/jquery.mobilemenu.js"></script>
+		<script src="webapp/views/src/js/owl.carousel.js"></script>
+		<script>
+			$(function(){
+				$("#work2").hide();
+				$("#work3").hide();
+				$("#work4").hide();
+				$("#seeMore").click(function(){
+				    $("#work2").show();
+				    $("#seeMore").hide();
+				    $("#seeMore1").show();
+				});
+				$("#seeMore1").click(function(){
+				    $("#work3").show();
+				    $("#seeMore1").hide();
+				    $("#seeMore2").show();
+				});
+				$("#seeMore2").click(function(){
+				    $("#work4").show();
+				    $("#seeMore2").hide();
+				});
+				$("#seeMore4").click(function(){
+				    $("#work5").show();
+				    $("#seeMore4").hide();
+				});
+				$("#noSee").click(function(){
+					$("#work5").hide();
+					$("#work4").hide();
+				    $("#work3").hide();
+				    $("#work2").hide();
+				    $("#seeMore").show();
+				});
+				$("#owl-demo").owlCarousel({
+				  autoPlay: 3000, //Set AutoPlay to 3 seconds
+				  items : 3,
+				  itemsDesktop : [1199,3],
+				  itemsDesktopSmall : [979,3]
+
+				});
+			});
+		</script>
 	</body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+
 	/* Class Leer_archivo.class.php
 	*
 	* Permite rescatar los resultados de los metodos, hubicados en un archivo de texto.
@@ -18,13 +19,42 @@
 	
 	class Leer_archivo{
 
-		private  $resultado_final, $p_nombre, $p_entrada, $resultados, $txt;
+		private  $resultado_final, $p_nombre, $p_entrada, $tabla_resultados, $txt;
 
 		public function __construct($txt){
-			$this->resultados = array();
+			$this->tabla_resultados = array();
 			$this->p_nombre = array();
 			$this->p_entrada = array();
 			$this->txt = $txt;
+		}
+
+		/*
+		* Reconoce el tipo de método y fundamento del archivo, los cuales se encuentra en la parte inicial del archivo.
+		* 
+		* return:
+		* 	* $parametros: (array);
+		*/
+		public function parametros_nombre(){
+			$myfile = fopen($this->txt, "r") or die("No se encuentra el archivo!");
+			while(!feof($myfile)) {
+				$string = fgets($myfile);
+				/*Detecta F(x) que está estandarizado en todos los archivos de texto com el inicio de los parametros de entrada*/
+				if(strncmp("fundamento =",$string,12) == 0){
+					for ($i=0; $i < 2; $i++) {
+						/*Validar si el primer caracter es un EOL*/
+						if($string[0] == "\r" || $string[0] == "\n")break;
+						/*Valor del parametro*/
+						$token = strtok($string," ");
+						$token = strtok("=");
+						$token = strtok($token,"\r\n");
+						$this->p_nombre[$i] = $this->dfspace(strtolower($token));
+						$string = fgets($myfile);
+					}
+				break;
+				}
+			}
+			fclose($myfile);
+			return $this->p_nombre;
 		}
 
 		/*Identifica los valores de entrada utilizados en el archivo de texto de salida.
@@ -35,28 +65,23 @@
 			while(!feof($myfile)) {
 				$string = fgets($myfile);
 				/*Detecta F(x) que está estandarizado en todos los archivos de texto com el inicio de los parametros de entrada*/
-				if(strncmp("f(x) =",$string,5) == 0){
+				if(strncmp("f(x)",$string,4) == 0){
 					$i=0;
-					while (1) {
+					while ($string[0] != PHP_EOL) {
 						$j = 0;
-						/*Validar si el primer caracter es un EOL*/
-						if($string[0] == "\r" || $string[0] == "\n")break;
 						/*Nombre del parametro*/
 						$token = strtok($string, " ");
 						$this->p_entrada[$i][$j] = $token;
 						/*Valor del parametro*/
 						$token = strtok(" = ");
-						$token = strtok($token,"\r");
-						/*Identifica f(x) para añadir el signo dolar ($)*/
-						if (strtok($string, " ") == "f(x)") {
-							$this->p_entrada[$i++][++$j] = $this->add_dolar($token.".");
-						}else $this->p_entrada[$i++][++$j] = $token;
+						$token = strtok($token,"\r\n");
+						$this->p_entrada[$i++][++$j] = $token;
 						$string = fgets($myfile);
 					}
-				break;	
+					fclose($myfile);
+					break;
 				}
 			}
-			fclose($myfile);
 			return $this->p_entrada;
 		}
 
@@ -72,7 +97,7 @@
 					$token = strtok($token, " ");
 					/*Ingresa los nombres de los parametros del metodo y los cuales son evaluados*/
 					while ($token != false) {
-						$this->resultados[$j][$i] = $token;
+						$this->tabla_resultados[$j][$i] = $token;
 						$token = strtok(" ");
 						if ($token != false) $i++;
 						else $j++;
@@ -96,7 +121,7 @@
 
 						/*Separando resultados*/
 						while ($token != false) {
-							$this->resultados[$j][$i] = $token;
+							$this->tabla_resultados[$j][$i] = $token;
 							$token = strtok(" ");
 							if ($token != false) $i++;
 							else $j++;
@@ -106,52 +131,7 @@
 				}
 			}
 			fclose($myfile);
-			return $this->resultados;
-		}
-
-		/*Colocar signo dolar ($) en las x de la funcion f(x)*/
-		private function add_dolar($str){
-			$str1 = "a";/*Se instancia la variables, sino no funciona el método*/
-			$i=$j=0;
-			while(1){ 
-				if ($str[$i] == 'x') {
-					$str1[$j] = '$';
-					$j++;
-				}
-				$str1[$j] = $str[$i];
-				$i++;$j++;
-				if ($str[$i]=='.') {break;}
-			}
-			return $str1; /*$x*log($x/3)-$x*/
-		}
-
-		/*
-		* Reconoce el tipo de método y fundamento del archivo, los cuales se encuentra en la parte inicial del archivo.
-		* 
-		* return:
-		* 	* $parametros: (array);
-		*/
-		public function p_nombre(){
-			$myfile = fopen($this->txt, "r") or die("No se encuentra el archivo!");
-			while(!feof($myfile)) {
-				$string = fgets($myfile);
-				/*Detecta F(x) que está estandarizado en todos los archivos de texto com el inicio de los parametros de entrada*/
-				if(strncmp("fundamento =",$string,12) == 0){
-					for ($i=0; $i < 2; $i++) {
-						/*Validar si el primer caracter es un EOL*/
-						if($string[0] == "\r" || $string[0] == "\n")break;
-						/*Valor del parametro*/
-						$token = strtok($string," ");
-						$token = strtok("=");
-						$token = strtok($token,"\r");
-						$this->p_nombre[$i] = $this->dfspace(strtolower($token));
-						$string = fgets($myfile);
-					}
-				break;
-				}
-			}
-			fclose($myfile);
-			return $this->p_nombre;
+			return $this->tabla_resultados;
 		}
 
 		/*
@@ -162,6 +142,7 @@
 		* returns:
 		*	* mismo string sin el espacio de la primera posición.
 		*/
+		
 		private function dfspace($string){
 			$str = array();
 			for ($i=1; $i < strlen($string) ; $i++) { 
@@ -178,4 +159,3 @@
 			return $this->resultado_final;
 		}
 	}
-?>
