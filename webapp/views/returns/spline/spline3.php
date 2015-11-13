@@ -19,7 +19,7 @@ foreach($valy as $vy){
 	if($vy != '')
 		array_push($ydata, $vy);
 }
-
+array_multisort($xdata,$ydata);
 
 //* CALCULO DE COEFICIENTES */
 $h = array();

@@ -20,7 +20,9 @@ foreach($valy as $vy){
 		array_push($ydata, $vy);
 }
 
+array_multisort($xdata,$ydata);
 
+var_dump($xdata);
 
 // Get the interpolated values by creating
 // a new Spline object.
