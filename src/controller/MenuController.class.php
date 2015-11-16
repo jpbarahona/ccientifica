@@ -19,5 +19,9 @@
 		public function SPLine(){
 			return 'spline';
 		}
+
+		public function lagrange(){
+			return 'lagrange';
+		}
 	}
 ?>

@@ -103,13 +103,12 @@
 						else $j++;
 					}
 					/*Tabla de resultados*/
+					$i=1;
 					while(!feof($myfile)) {
-						$i = 0;
+						$j=0;
 						$string = fgets($myfile);
 						/*Validar si el primer caracter es un EOL*/
-						if($string[0] == "\r" || $string[0] == "\n")break;
-						$token = strtok($string, "|");
-						$token = strtok($token, " ");
+						if($string[0] == "\n")break;
 
 						/*Final del archivo*/
 						if(strncmp("La raíz aproximada",$string,1) == 0){
@@ -118,14 +117,13 @@
 							$this->setResultado_final($this->resultado_final);
 							break;
 						}
-
-						/*Separando resultados*/
-						while ($token != false) {
-							$this->tabla_resultados[$j][$i] = $token;
-							$token = strtok(" ");
-							if ($token != false) $i++;
-							else $j++;
-						}	
+						$result = preg_split("/ +/", $string);
+						foreach ($result as $row) {
+							$a = strtok("\n",$row);
+							echo $a;
+							$this->tabla_resultados[$i][$j++] = $row;
+						}
+						$i++;
 					}
 					break;
 				}

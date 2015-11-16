@@ -38,6 +38,32 @@
 		}
 
 		/**
+		 * @ClassDependency: {'model.Principal'}
+		 */
+		public function exeLagrange(){
+			$p_entrada = array();
+			$p_entrada["fx"] = $this->request->getParam('fx');
+			$p_entrada["x"] = $this->request->getParam('x');
+			$p_entrada["g"] = $this->request->getParam('g');
+			$p_entrada["xptos"] = $this->request->getParam('xptos');
+			
+			$exeFundamento = $this->request->getParam('exeFundamento');
+			$exeMetodo = $this->request->getParam('exeMetodo');
+
+			/*=============================================================================*/
+			/*Ejecucion de los algoritmos y creacion de los resultados*/
+			$main = new Principal($p_entrada, $exeFundamento, $exeMetodo);
+
+			/*parametros de retorno y almacenamiento en la db.*/
+			$result ['img'] = $main->getRutaImg();
+			$result ['resultados'] = $main->getTabla_resultados();
+			//$result ['archivo'] = $main->getRutaArchivo();
+			/*=============================================================================*/
+
+			return $result;
+		}
+
+		/**
 		 * @ClassDependency: {'model.Grafico'}
 		 */
 		public function exeSpline(){

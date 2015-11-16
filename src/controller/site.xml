@@ -8,11 +8,13 @@
 	<requestMapping name="repost" 			class="MenuController" method="repost"/>
 	<requestMapping name="calculator" 			class="MenuController" method="calculator"/>
 	<requestMapping name="spline" 			class="MenuController" method="spline"/>
+	<requestMapping name="lagrange" 			class="MenuController" method="lagrange"/>
 
 
 	
 	<!-- CONTROLADOR EJECUTAR MÉTODO -->
 	<requestMapping name="exeMetodo" class="AlgoritmoController" method="exeMetodo" ajaxResponse="json"/>
 	<requestMapping name="exeSpline" class="AlgoritmoController" method="exeSpline" ajaxResponse="json"/>
+	<requestMapping name="exeLagrange" class="AlgoritmoController" method="exeLagrange" ajaxResponse="json"/>
 	
 </siteMap>

@@ -5,6 +5,7 @@
 	require_once ($dir.'jpgraph_line.php');
 	require_once ($dir.'jpgraph_scatter.php');
 	require_once ($dir.'jpgraph_regstat.php');
+	require_once ($dir.'jpgraph_utils.inc.php');
 
 	require_once "Crear_archivos_directorios.class.php";
 	require_once "eos-1.0.0/eos.class.php";
@@ -133,9 +134,6 @@
 				}break;
 				
 				case 'ajuste_de_curvas':{
-
-					$xinicio = -5;
-					$xfin = 5;
 					
 					// Create the graph
 					$g = new Graph(800,600);
@@ -150,34 +148,37 @@
 
 					// We want 1 decimal for the X-label
 					$g->xaxis->SetLabelFormat('%1.0f');
-
-					$val = 0;
-
-					for($i = $xinicio; $i <= $xfin; $i+=0.1){
-						$this->xdata[$val] = $i;
-						$this->ydata[$val] = $this->f($this->tabla_resultados[1][3],$i);
-						$val++;	
-					}
-
-					$lplot = new LinePlot($this->ydata, $this->xdata);
-					$g->Add($lplot);
-
-					$val = 0;
-
-					for($i = $xinicio; $i <= $xfin; $i+=0.1){
-						$this->xdata[$val] = $i;
-						$this->ydata[$val] = $this->f($this->tabla_resultados[2][3],$i);
-						$val++;	
-					}
-
-					$lplot = new LinePlot($this->ydata, $this->xdata);
-					$g->Add($lplot);
 					
+					$ecuacion = "";
+					for ($i=1; $i < count($this->tabla_resultados); $i++) { 
+						$ecuacion .= "+".$this->tabla_resultados[$i][3];
+					}
+
+					$f = new FuncGenerator($this->add_dolar($ecuacion));
+					list($xdata,$ydata) = $f->E(0.1, 20);
+
+					$lplot = new LinePlot($ydata,$xdata); 
+					$g->Add($lplot);
+
+					$f2 = new FuncGenerator($this->add_dolar($this->p_entrada[0][1]));
+					list($xdata,$ydata) = $f2->E(0.1, 20);
+
+					$lplot = new LinePlot($ydata,$xdata); 
+					$g->Add($lplot);
+
+					for ($i=1; $i < count($this->tabla_resultados); $i++) {
+						$pplot = new ScatterPlot(array($this->f($this->p_entrada[0][1],$this->p_entrada[$i+1][1])),array($this->p_entrada[$i+1][1]));
+						$g->Add($pplot);
+						$pplot->SetImpuls();
+					}
+
+					$g->SetScale('lin',-4,4); 
+
 					$img = time().'test22gr.png';
 					$rutaImg = $this->cad->directorios(SAVE_IMAGEN."/".$this->p_nombre[0]."/".$this->p_nombre[1])."/".$img;
 					$g->Stroke($rutaImg);
 
-					return $this->cad->union(LOAD_MODEL."/img/".$this->p_nombre[0]."/".$this->p_nombre[1])."/".$img;
+					return $this->cad->union(LOAD_IMG."/".$this->p_nombre[0]."/".$this->p_nombre[1])."/".$img;
 				}break;
 
 
