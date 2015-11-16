@@ -37,3 +37,22 @@ function ejecutarCodigo(exeFundamento,exeMetodo){
 			};
 		});
 	}
+
+function ejecutarLagrange(exeFundamento,exeMetodo){
+	var fx = $('#fxx').val();
+	var x = $('#xxx').val();
+	var g = $('#grade').val();
+	var xptos = $('#xptos').val();
+
+	var $loading = $('#kkmolida').append("<div id='load' style=''><img src='/ccientifica/webapp/views/src/images/ajax-loader.gif'/></div>");
+	$.getJSON('exeLagrange',{'fx': fx, 'x': x, 'g': g, 'xptos': xptos, 'exeFundamento': exeFundamento,
+							'exeMetodo': exeMetodo})
+		.fail(function(){
+			alert(fx+" "+x+" "+g+" "+xptos);
+			alert("Ocurrio un error en el servidor");
+		})
+		.done(function(d){
+
+		});
+	}
+}
