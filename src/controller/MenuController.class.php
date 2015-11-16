@@ -16,5 +16,8 @@
 			public function calculator(){
 			return 'sidebar-left';
 		}
+		public function SPLine(){
+			return 'spline';
+		}
 	}
 ?>

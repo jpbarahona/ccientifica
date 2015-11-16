@@ -63,17 +63,7 @@
 				$("#btnEjecutarSPL").click(function(){
 					var grado;
 					grado = $("#gradoSPL").val();
-					switch(grado){
-						case '0': 
-							var url = "http://matjazz.ddns.net:8080/ccientifica/webapp/views/returns/spline/spline0.php"; 
-						break;
-						case '1': 
-							var url = "http://matjazz.ddns.net:8080/ccientifica/webapp/views/returns/spline/spline1.php"; 
-						break;
-						case '3': 
-							var url = "http://matjazz.ddns.net:8080/ccientifica/webapp/views/returns/spline/spline3.php"; 
-						break;
-					}
+					var url = "exeSpline"; 
 				    $.ajax({
 				           type: "GET",
 				           url: url,

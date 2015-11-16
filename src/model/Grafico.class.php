@@ -180,9 +180,150 @@
 					return $this->cad->union(LOAD_MODEL."/img/".$this->p_nombre[0]."/".$this->p_nombre[1])."/".$img;
 				}break;
 
+
 				default:
 					# code...
 					break;
 			}
+		}
+		public function graficarSPLINE($xdata, $ydata, $grado){
+			switch($grado){
+				case 0:{
+					$spline = new Spline($xdata,$ydata);
+
+					list($newx,$newy) = $spline->Get0();
+
+					$linex = array();
+					$liney = array();
+					
+					
+					// Create the graph
+					$g = new Graph(800,600);
+					$g->SetMargin(30,20,40,30);
+					$g->title->Set("SPline grado 0");
+					//$g->title->SetFont(FF_ARIAL,FS_NORMAL,12);
+					$g->subtitle->Set('(Puntos ingresados en rojo)');
+					$g->subtitle->SetColor('darkred');
+					$g->SetMarginColor('lightblue');
+
+					
+					$g->SetScale('int');
+
+					// We want 1 decimal for the X-label
+					$g->xaxis->SetLabelFormat('%1.0f');
+
+					
+					$splot = new ScatterPlot($ydata,$xdata);
+					$splot->mark->SetFillColor('red@0.3');
+					$splot->mark->SetColor('red@0.5');
+
+					foreach($xdata as $key => $x) {
+						if(isset($xdata[$key+1])){
+							$lplot[$key] = new LinePlot(array($ydata[$key],$ydata[$key]),array($xdata[$key],$xdata[$key+1]));
+							$lplot[$key]->SetColor('#0000FF');
+							$g->Add($lplot[$key] ); // lineas
+						}
+					}
+
+					// Add the plots to the graph and stroke
+					$g->Add($splot); // puntos
+					
+				}
+				break;
+				case 1:{
+					// Create the graph
+					$g = new Graph(800,600);
+					$g->SetMargin(30,20,40,30);
+					$g->title->Set("SPline grado 1");
+					//$g->title->SetFont(FF_ARIAL,FS_NORMAL,12);
+					$g->subtitle->Set('(Puntos ingresados en rojo)');
+					$g->subtitle->SetColor('darkred');
+					$g->SetMarginColor('lightblue');
+
+					//$g->img->SetAntiAliasing();
+
+					// We need a linlin scale since we provide both
+					// x and y coordinates for the data points.
+					$g->SetScale('int');
+
+					// We want 1 decimal for the X-label
+					$g->xaxis->SetLabelFormat('%1.0f');
+
+					// We use a scatterplot to illustrate the original
+					// contro points.
+
+
+					$splot = new ScatterPlot($ydata,$xdata);
+					$splot->mark->SetFillColor('red@0.3');
+					$splot->mark->SetColor('red@0.5');
+
+					foreach($xdata as $key => $x) {
+						if(isset($xdata[$key+1])){
+							$a[$key] = ($ydata[$key+1] - $ydata[$key])/($xdata[$key+1] - $xdata[$key]);
+							$lplot[$key] = new LinePlot(array($ydata[$key],$ydata[$key+1]),array($xdata[$key],$xdata[$key+1]));
+							$lplot[$key]->SetColor('#0000FF');
+							$g->Add($lplot[$key] ); // lineas
+						}
+					}
+					$g->Add($splot); // puntos
+				}
+				break;
+				case 3:{
+					$spline = new Spline($xdata,$ydata);
+
+					// For the new data set we want 40 points to
+					// get a smooth curve.
+					list($newx,$newy) = $spline->Get(50);
+
+					// Create the graph
+					$g = new Graph(800,600);
+					$g->SetMargin(30,20,40,30);
+					$g->title->Set("SPLine cúbico");
+					//$g->title->SetFont(FF_ARIAL,FS_NORMAL,12);
+					$g->subtitle->Set('(Puntos ingresados en rojo)');
+
+					$g->subtitle->SetColor('darkred');
+					$g->SetMarginColor('lightblue');
+
+					//$g->img->SetAntiAliasing();
+
+					// We need a linlin scale since we provide both
+					// x and y coordinates for the data points.
+					$g->SetScale('int');
+
+					// We want 1 decimal for the X-label
+					$g->xaxis->SetLabelFormat('%1.1f');
+
+					// We use a scatterplot to illustrate the original
+					// contro points.
+					$splot = new ScatterPlot($ydata,$xdata);
+
+					// 
+					$splot->mark->SetFillColor('red@0.3');
+					$splot->mark->SetColor('red@0.5');
+
+					// And a line plot to stroke the smooth curve we got
+					// from the original control points
+					$lplot = new LinePlot($newy,$newx);
+					$lplot->SetColor('navy');
+
+					// Add the plots to the graph and stroke
+					$g->Add($lplot);
+					$g->Add($splot);
+				}
+				break;
+
+				
+
+			}
+			$nombrearchivo = implode($xdata).'-'.implode($ydata).'-'.time().'sp0.png';
+				$name = SAVE_IMAGEN."/ajuste_de_curvas/SPline/".$nombrearchivo;
+				if(!file_exists($name))
+					$g->Stroke($name);
+
+				$rutaImg = $this->cad->directorios(SAVE_IMAGEN."/ajuste_de_curvas/SPline/").$name;
+					
+				$larutaadevoilver =  "src/model/img/ajuste_de_curvas/SPline/".$nombrearchivo;
+				echo '<img src="'.$larutaadevoilver.'" />';
 		}
 	}

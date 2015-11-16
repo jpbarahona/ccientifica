@@ -7,10 +7,12 @@
 	<requestMapping name="example" 			class="MenuController" method="algBrent"/>
 	<requestMapping name="repost" 			class="MenuController" method="repost"/>
 	<requestMapping name="calculator" 			class="MenuController" method="calculator"/>
+	<requestMapping name="spline" 			class="MenuController" method="spline"/>
 
 
 	
 	<!-- CONTROLADOR EJECUTAR MÉTODO -->
 	<requestMapping name="exeMetodo" class="AlgoritmoController" method="exeMetodo" ajaxResponse="json"/>
+	<requestMapping name="exeSpline" class="AlgoritmoController" method="exeSpline" ajaxResponse="json"/>
 	
 </siteMap>
