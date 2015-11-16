@@ -9,85 +9,6 @@
 		<link href="webapp/views/src/css/owl.theme.css" rel="stylesheet" type="text/css" media="all">		
 		<link href="webapp/views/src/css/owl.transitions.css" rel="stylesheet" type="text/css" media="all">
 		<link href="webapp/views/src/css/layout.css" rel="stylesheet" type="text/css" media="all">			
-
-
-
-
-		<!-- AGREGADO POR MI -->
-		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-		<style>
-			.lineay {
-				width:40%;
-				float:left;
-			}
-			.lineax {
-				width:40%;
-				float:left;
-			}
-			#btnEjecutar {
-				clear:both;
-				display:block;
-				position:relative;
-			}
-			.paresordenados {
-				clear:both;
-				display:block;
-				overflow:hidden;
-				width:625px;
-				margin:auto;
-			}
-			#respuesta {
-				display: none;
-			}
-			span.intervalo {
-				margin-left: 20px;
-				font-size: 0.8em;
-
-			}
-			#btnEjecutarSPL {
-				background: #5cb85c;
-				border:1px solid #4cae4c;
-				color: #FFF;
-			}
-			.grado {
-				display: block;
-				position: relative;
-				text-align: left;
-			}
-			.grado select {
-				display: inline;
-			}
-		</style>
-		<script>  
-			$(function(){
-				$("#btnEjecutarSPL").click(function(){
-					var grado;
-					grado = $("#gradoSPL").val();
-					var url = "exeSpline"; 
-				    $.ajax({
-				           type: "GET",
-				           url: url,
-				           data: $("#formcoordenadas").serialize(), // Adjuntar los campos del formulario enviado.
-
-				           success: function(data)
-				           {
-				               $("#respuesta").html(data); // Mostrar la respuestas del script PHP.
-				               $("#respuesta").slideDown();
-				               $("#respuesta").fadeIn();
-
-				           }
-				    });
-				    return false; // Evitar ejecutar el submit del formulario.
-				});
-				
-			});
-			$(function(){
-				$("#agregarLinea").click(function(){
-					$("#lx").append('<li><input type="text" name="valx[]"></li>');
-					$("#ly").append('<li><input type="text" name="valy[]"></li>');
-				});
-			});
-		</script>
 	</head>
 	<body id="top">
 		<div class="wrapper row0">
@@ -143,42 +64,31 @@
 					<section id="pageintro" class="container clear btminspace-0"> 
 						<div id="kkmolida">
 							<div id="comments">
-                            
-                            	<form id="formcoordenadas" method="get" >
-	                            	<div class="paresordenados">
-	                            		<div class="grado">
-	                            			Seleccione el grado del SPLine: 
-		                            		<select name="gradoSPL" id="gradoSPL">
-		                            			<option value="0">Grado 0</option>
-		                            			<option value="1">Grado 1</option>
-		                            			<option value="3">Grado 3</option>
-		                            		</select>
-		                            	</div>
-	                                    <div class="lineax" >
-	                                    	Valores de X
-	                                        <ol id="lx">
-	                                        	<li><input type="text" name="valx[]"></li>
-	                                        	<li><input type="text" name="valx[]"></li>
-	                                        </ol>
-	                                    </div>
-	                                    <div class="lineay" >
-	                                    	Valores de Y
-	                                        <ol id="ly">
-	                                            <li><input type="text" name="valy[]"></li>
-	                                            <li><input type="text" name="valy[]"></li>
-	                                        </ol>
-	                                    </div>
-	                            	</div>
-	                            	<div class="lineaparabtn">
-	                            		<button type="button" class="btn btn-danger" id="agregarLinea">Agregar nuevo punto</button>
-	                            	</div>
-	                            	<div>
-										<button type="button" class="btn" id="btnEjecutarSPL" >Ejecutar</button>
-									</div>
-                            	</form>
-
-								<div id="respuesta"></div>
-								
+								<div id="fx" class="one_third first">
+									<label>F(x) <span>*</span></label>
+									<input type="text" id="fxx" size="22">
+								</div>
+								<div id="xi" class="one_third">
+									<label>Xi <span>*</span></label>
+									<input type="text" id="xii" size="22">
+								</div>          
+								<div id="xf" class="one_third">
+									<label>Xf <span>*</span></label>
+									<input type="text" id="xff" size="22">
+								</div>
+								<div id="te" class="one_third first">
+									<label>Tolerancia error <span>*</span></label>
+									<input type="text" id="errto" value="" size="22">
+								</div>
+								<div id="ni" class="one_third">
+									<label>N&uacute;mero de iteraciones <span>*</span></label>
+									<input type="text" id="imax"size="22">
+								</div>          
+								<div class="one_third" style="height: 68px;">
+								</div>
+								<div>
+								<input id="btnEjecutar" type="submit" value="Ejecutar">
+								</div>
 							</div>
 						</div>
 					</section>
@@ -277,10 +187,9 @@
 		<script src="webapp/views/src/js/jquery.backtotop.js"></script> 
 		<script src="webapp/views/src/js/jquery.mobilemenu.js"></script>
 		<script src="webapp/views/src/js/owl.carousel.js"></script>
-
 		<script>
 			$(function(){
-			    $('#btnEjecutar').bind('click',function(event, ui){ejecutarCodigo("Ecuacion de raices", "Secante");});
+			    $('#btnEjecutar').bind('click',function(event, ui){ejecutarLagrange("Ajuste de curva", "Lagrange");});
 				$("#owl-demo").owlCarousel({
 				  autoPlay: 3000, //Set AutoPlay to 3 seconds
 				  items : 3,
