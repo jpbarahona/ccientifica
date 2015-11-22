@@ -1,6 +1,6 @@
 <?php
 	/* app config */
-	define("CTX_PATH", $_SERVER['DOCUMENT_ROOT'].'/ccientifica');
+	define("CTX_PATH", $_SERVER['DOCUMENT_ROOT'].'ccientifica');
 	define("SITE_MAP", CTX_PATH."/src/controller/site.xml");
 	define("WELCOME_PAGE", "index");
 	define('LOG_DIR', CTX_PATH.'/logs');
