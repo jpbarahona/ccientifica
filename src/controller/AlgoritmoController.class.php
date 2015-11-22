@@ -71,7 +71,7 @@
 			$valy = $this->request->getParam('valy');
 			$grado = $this->request->getParam('gradoSPL');
 
-			$xdata = array();
+			$xdata = array()
 			$ydata = array();
 
 			foreach($valx as $key1=>$vx){

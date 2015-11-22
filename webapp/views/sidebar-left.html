@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>Funciones trigonométricas.</title> 
+<style type="text/css">
+* { font-family: arial; margin: 0; padding: 0 }
+#izda { width: 20%; float: left; background-color: #e3f2ff }
+#dcha { width: 80%; float: left }
+h1 { padding: 0.3em ; text-align: center; }
+h2 { padding: 0.2em 3em; }
+h4, p { padding: 0.2em 1em; }
+</style>
+</head>
+<body>
+<h1>Funciones trigonométricas:</h1>
+<div id="izda">
+<form action="#" method="post">
+<h4>Elige un número:</h4>
+<p>n = <input type="text" name="num" maxlength="10" size="10" /></p>
+<h4>Operar en: </h4>
+<p><input type="radio" name="modo" value="gr" checked="checked" /> Grados.</p>
+<p><input type="radio" name="modo" value="rad" /> Radianes.</p>
+<h4>Elige operación</h4>
+<p><input type="checkbox" name="sen" /> Seno.</p>
+<p><input type="checkbox" name="cos" /> Coseno.</p>
+<p><input type="checkbox" name="tan" /> Tangente.</p>
+<p><input type="checkbox" name="asen" /> Arco-seno.</p>
+<p><input type="checkbox" name="acos" /> Arco-coseno.</p>
+<p><input type="checkbox" name="atan" /> Arco-tangente.</p>
+<p><input type="submit" value="Ver resultados" />
+</form>
+</div>
+<div id="dcha">
+<h2>Resultados:</h2>
+<?php  
+$num=$_POST["num"];
+$modo=$_POST["modo"];
+$opsen=$_POST["sen"];
+$opcos=$_POST["cos"];
+$optan=$_POST["tan"];
+$opasen=$_POST["asen"];
+$opacos=$_POST["acos"];
+$opatan=$_POST["atan"];
+echo "<h4> Las operaciones se realizarán en ";
+if ($modo=="gr") {echo "grados.</h4>"; $s="º";}//especifica el modo, grados o radianes.
+else {echo "radianes.</h4>"; $s="rad";}
+function grados ($g){ //pasa radianes a grados.
+         $d=rad2deg($g);
+         return $d;
+         }
+function radianes ($r){ //pasa grados a radianes.
+         $d=deg2rad($r);
+         return $d;
+         }
+if ($opsen=="on") { //calcular seno
+   if ($modo=="gr") {$n=radianes($num);} //pasar a radianes para calcular
+   else {$n=$num;}
+   $sen=sin($n);
+   echo "<p>Seno de $num $s = $sen</p>";
+   }
+if ($opcos=="on") { //calcular coseno
+   if ($modo=="gr") {$n=radianes($num);}
+   else {$n=$num;}
+   $cos=cos($n);
+   echo "<p>Coseno de $num $s = $cos</p>";
+   } 
+if ($optan=="on") { //calcular tangente
+   if ($modo=="gr") {$n=radianes($num);}
+   else {$n=$num;}
+   $tan=tan($n);
+   echo "<p>Tangente de $num $s = $tan</p>";
+   } 	 
+if ($opasen=="on") { //calcular arco-seno
+   $asin=asin($num);
+   if ($modo=="gr") {$asin=grados($asin);}
+   if ($num<0 or $num>1) { //Texto alternativo cuando el número no está entre 0 y 1.
+      echo "<p>Número no válido, éste debe estar comprendido entre 0 y 1.</p>";
+      }
+	 else {
+        echo "<p>Arco-seno de $num = $asin $s.</p>";
+        }
+   }
+if ($opacos=="on") { //calcular arco-coseno
+   $acos=acos($num);
+   if ($modo=="gr") {$acos=grados($acos);}
+   if ($num<0 or $num>1) {
+      echo "<p>Número no válido, éste debe estar comprendido entre 0 y 1.</p>";
+      }
+   else {
+        echo "<p>Arco-coseno de $num = $acos $s.</p>";
+        }
+   }
+if ($opatan=="on") { //calcular arco-tengente
+   $atan=atan($num);
+   if ($modo=="gr") {$atan=grados($atan);}
+   echo "<p>Arco-tangente de $num = $atan $s.</p>";
+   }
+?>
+</div>
+</body>
+</html>

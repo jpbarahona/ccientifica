@@ -319,6 +319,7 @@
 			}
 			$nombrearchivo = implode($xdata).'-'.implode($ydata).'-'.time().'sp0.png';
 				$name = SAVE_IMAGEN."/ajuste_de_curvas/SPline/".$nombrearchivo;
+				
 				if(!file_exists($name))
 					$g->Stroke($name);
 

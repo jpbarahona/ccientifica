@@ -1,0 +1,18 @@
+fundamento = Ajuste de curvas
+metodo = Interpolacion de lagrange
+
+f(x) = log(x)
+x = 2
+X0 = 1
+X1 = 4
+X2 = 6
+
+
+Iteracion       f(Xi)      Resultados                                                                                                                Ecuacion
+1            f(1)               0                                                                                                                             (x-4)/(1-4)*(x-6)/(1-6)*0
+2            f(4)        0.924196                                                                                                                       (x-1)/(4-1)*(x-6)/(4-6)*1.38629
+3            f(6)       -0.358352                                                                                                                       (x-1)/(6-1)*(x-4)/(6-4)*1.79176
+
+Resultado f(x): 0.693147
+Suma final metodo: 0.565844
+Error: 18.3659%
