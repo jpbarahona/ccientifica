@@ -197,7 +197,6 @@
 					$linex = array();
 					$liney = array();
 					
-					
 					// Create the graph
 					$g = new Graph(800,600);
 					$g->SetMargin(30,20,40,30);
@@ -206,7 +205,6 @@
 					$g->subtitle->Set('(Puntos ingresados en rojo)');
 					$g->subtitle->SetColor('darkred');
 					$g->SetMarginColor('lightblue');
-
 					
 					$g->SetScale('int');
 
@@ -325,7 +323,7 @@
 
 				$rutaImg = $this->cad->directorios(SAVE_IMAGEN."/ajuste_de_curvas/SPline/").$name;
 					
-				$larutaadevoilver =  "src/model/img/ajuste_de_curvas/SPline/".$nombrearchivo;
+				$larutaadevoilver =  "../src/model/img/ajuste_de_curvas/SPline/".$nombrearchivo;
 				echo '<img src="'.$larutaadevoilver.'" />';
 		}
 	}
