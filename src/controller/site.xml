@@ -4,23 +4,13 @@
 	
 	<!--  MENU MAPPING -->
 	<requestMapping name="index" 			class="MenuController" method="index"/>
-	<requestMapping name="example" 			class="MenuController" method="algBrent"/>
-	<requestMapping name="repost" 			class="MenuController" method="repost"/>
-	<requestMapping name="calculator" 			class="MenuController" method="calculator"/>
 	<requestMapping name="spline" 			class="MenuController" method="spline"/>
-	<requestMapping name="lagrange" 			class="MenuController" method="lagrange"/>
+	<requestMapping name="lagrange" 			class="MenuController" method="lagrangee"/>
 
-
-	
 	<!-- CONTROLADOR EJECUTAR MÉTODO -->
 	<requestMapping name="exeMetodo" class="AlgoritmoController" method="exeMetodo" ajaxResponse="json"/>
 	<requestMapping name="exeSpline" class="AlgoritmoController" method="exeSpline" ajaxResponse="json"/>
 	<requestMapping name="exeLagrange" class="AlgoritmoController" method="exeLagrange" ajaxResponse="json"/>
-
-	<!-- CONTROLADOR EJECUTAR MÉTODO -->
-	<requestMapping name="exeMetodo" 	class="AlgoritmoController" method="exeMetodo" ajaxResponse="json"/>
-	<requestMapping name="exeSpline" 	class="AlgoritmoController" method="exeSpline" ajaxResponse="json"/>
-	<requestMapping name="exeLagrange" 	class="AlgoritmoController" method="exeLagrange" ajaxResponse="json"/>
 	
 	<!--Menu Mappinga Index -->
 	<requestMapping name="raices-de-ecuaciones/metodo-biseccion"  	class="MenuController" method="Biseccion"/>

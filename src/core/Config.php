@@ -20,7 +20,7 @@
 	define("LOAD_ALG", '../model/app');
 
 	/*LOAD_IMG */
-	define("LOAD_IMG", 'src/model/img');
+	define("LOAD_IMG", '../src/model/img');
 
 	/*ALOJAR IMAGENES */
 	define("SAVE_IMAGEN", CTX_PATH.'/src/model/img');
