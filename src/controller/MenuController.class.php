@@ -7,10 +7,6 @@
 		public function index(){
 			return 'index';
 		}
-		public function lagrangee(){
-			return 'lagrange';
-		}
-
 		public function Biseccion(){
 			return 'algoritmos/raices-de-ecuaciones/biseccion';
 		}
