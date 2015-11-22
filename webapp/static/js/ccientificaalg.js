@@ -39,7 +39,7 @@ function ejecutarCodigo(exeFundamento,exeMetodo){
 	}
 
 function ejecutarLagrange(exeFundamento,exeMetodo,i){
-	/*var map = {};
+	var map = {};
 	var xptos = [];
 	var cat = "";
 	$(".valx").each(function() {
@@ -53,15 +53,15 @@ function ejecutarLagrange(exeFundamento,exeMetodo,i){
 	cat += xptos[xptos.length-1];
 	var fx = $('#fxx').val();
 	var x = $('#xxx').val();
-	var g = i;*/
+	var g = i;
 
-	var fx = "log(x)";
+	/*var fx = "log(x)";
 	var x = 2;
 	var g = 2;
-	var cat = "1;4;6";
+	var cat = "1;4;6";*/
 
 	var $loading = $('#kkmolida').append("<div id='load' style=''><img src='/ccientifica/webapp/views/src/images/ajax-loader.gif'/></div>");
-	$.getJSON('exeLagrange',{'fx': fx, 'x': x, 'g': g, 'xptos': cat, 'exeFundamento': exeFundamento,
+	$.getJSON('../exeLagrange',{'fx': fx, 'x': x, 'g': g, 'xptos': cat, 'exeFundamento': exeFundamento,
 							'exeMetodo': exeMetodo})
 		.fail(function(){
 			alert("Ocurrio un error en el servidor");
