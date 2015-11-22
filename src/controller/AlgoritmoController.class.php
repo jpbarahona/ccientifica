@@ -37,7 +37,10 @@
 			return $result;
 		}
 
-		/*public function exeLagrange(){
+		/**
+		 * @ClassDependency: {'model.Principal'}
+		 */
+		public function exeLagrange(){
 			$p_entrada = array();
 			$p_entrada["fx"] = $this->request->getParam('fx');
 			$p_entrada["x"] = $this->request->getParam('x');
@@ -49,18 +52,21 @@
 
 			/*=============================================================================*/
 			/*Ejecucion de los algoritmos y creacion de los resultados*/
-			//$main = new Principal($p_entrada, $exeFundamento, $exeMetodo);
+			$main = new Principal($p_entrada, $exeFundamento, $exeMetodo);
 
 			/*parametros de retorno y almacenamiento en la db.*/
-			//$result ['img'] = $main->getRutaImg();
-			//$result ['resultados'] = $main->getTabla_resultados();
+			$result ['img'] = $main->getRutaImg();
+			$result ['resultados'] = $main->getTabla_resultados();
 			//$result ['archivo'] = $main->getRutaArchivo();
 			/*=============================================================================*/
 
-			/*return $result;
-		}*/
+			return $result;
+		}
 
-		/*public function exeSpline(){
+		/**
+		 * @ClassDependency: {'model.Grafico'}
+		 */
+		public function exeSpline(){
 			$valx = $this->request->getParam('valx');
 			$valy = $this->request->getParam('valy');
 			$grado = $this->request->getParam('gradoSPL');
@@ -109,7 +115,7 @@
 				break;
 				case 3:{*/
 					//* CALCULO DE COEFICIENTES */
-					/*$h = array();
+					$h = array();
 					$b = array(); 
 					$u = array();
 					$v = array(); 
@@ -158,7 +164,7 @@
 			}
 			return $grafico->graficarSPLINE($xdata, $ydata, $grado);
 		}
-		*/
+		
 	}
 
 ?>
