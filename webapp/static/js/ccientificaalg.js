@@ -12,7 +12,7 @@ function ejecutarCodigo(exeFundamento,exeMetodo){
 	var imax = 25;*/
 
 	var $loading = $('#kkmolida').append("<div id='load' style=''><img src='/ccientifica/webapp/views/src/images/ajax-loader.gif'/></div>");
-	$.getJSON('exeMetodo',{'fx': fx, 'xi': xi, 'xf': xf, 'errto': errto, 'imax': imax, 'exeFundamento': exeFundamento,
+	$.getJSON('../exeMetodo',{'fx': fx, 'xi': xi, 'xf': xf, 'errto': errto, 'imax': imax, 'exeFundamento': exeFundamento,
 							'exeMetodo': exeMetodo})
 		.fail(function(){
 			alert(fx+" "+xi+" "+xf+" "+errto+" "+imax+" "+exeFundamento+" "+exeMetodo);
