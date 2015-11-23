@@ -1,5 +1,6 @@
 <?php
 
+
 	$dir = "jpgraph/";
 	require_once ($dir.'jpgraph.php');
 	require_once ($dir.'jpgraph_line.php');
@@ -65,7 +66,7 @@
 
 		private function f($f,$x) {
 			$f = $this->add_dolar($f);
-			eval("\$fx = \"$f\";");
+			//eval("\$fx = \"$f\";");
 			$eq = new eqEOS();
 			return $eq->solveIF($fx);
 		}
@@ -323,7 +324,7 @@
 
 				$rutaImg = $this->cad->directorios(SAVE_IMAGEN."/ajuste_de_curvas/SPline/").$name;
 					
-				$larutaadevoilver =  "../src/model/img/ajuste_de_curvas/SPline/".$nombrearchivo;
+				$larutaadevoilver =  "/ccientifica/src/model/img/ajuste_de_curvas/SPline/".$nombrearchivo;
 				echo '<img src="'.$larutaadevoilver.'" />';
 		}
 	}

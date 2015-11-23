@@ -60,49 +60,18 @@
 			</header>
 		</div>
 		<div class="wrapper row3">
+			<div class="container explicacion">
+				<h2>Método de Bisección</h2><hr>
+				<p>El Método de Bisección es un algoritmo de búsqueda de raíces de funciones, es conocido también como “Método del Intervalo Medio” y en inglés es conocido como “Binary Search Method” aplicado a un arreglo ordenado, este algoritmo toma un intervalo que contiene la raíz y lo divide en subintervalos, nos quedamos en el intervalo que contiene a la raíz y se vuelve a dividir, es por esto que se le agrupa	dentro de los algoritmos de “divide y conquista”.</p>
+				<p>El método es aplicado para resolver numéricamentela ecuación f(x) = 0 para una variable real x donde f es una función continua definida dentro del intervalo cerrado [a, b] y donde f(a) y f(b) tienen signos opuestos. En este caso se dice que la raíz se encuentra entre a y b por el Teorema del Valor Medio que establece que la función continua f debe tener al menos una raíz entre (a, b).</p>
+				<p>En cada paso el algoritmo divide el intervalo en dos calculando el valor medio p = (a+b)/2 y también la función evaluada en el punto p, f(p). A menos de que p sea la raíz de la	función (lo que es poco probable, pero posible) quedan solo dos posibilidades: f(a) y f(p) tienen signos opuestos y encierran en un intervalo a la raíz o f(p) y f(b) tienen signos opuestos y encierran en un intervalo a la raíz. El método selecciona el subintervalo que de seguro contiene a la raíz para ser usado en el siguiente paso, de esta manera, el intervalo que contiene el cero de la función f se reduce a la mitad. El proceso continúa hasta que el intervalo sea lo suficientemente pequeño.</p>
+				<p>Si f(a) y f(p) tienen signos opuestos, entonces el método escoge p como nuevo valor para b y si f(p) y f(b) tienen signos opuestos, entonces el método escoge p como un nuevo a. En el caso de que f(p) = 0, entonces p se toma como la solución y el proceso termina. En ambos casos, los nuevos f(a) y f(b) tienen signos opuestos, por lo que el método es aplicable al nuevo intervalo.</p>
+			</div>
+
 			<main class="container clear"> 
 				<div class="btmspace-80 center">
-					<h2 class="font-x2 uppercase">Método de Bisección</h2><hr>
-					<p>El Método de Bisección es un algoritmo de búsqueda de raíces de
+					
 
-					funciones, es conocido también como “Método del Intervalo Medio” y en inglés es
-
-					conocido como “Binary Search Method” aplicado a un arreglo ordenado, este algoritmo
-
-					toma un intervalo que contiene la raíz y lo divide en subintervalos, nos quedamos en
-
-					el intervalo que contiene a la raíz y se vuelve a dividir, es por esto que se le agrupa
-
-					dentro de los algoritmos de “divide y conquista”.</p>
-					<p>El método es aplicado para resolver numéricamentela ecuación f(x) = 0 para una
-
-					variable real x donde f es una función continua definida dentro del intervalo cerrado [a, b] y donde
-
-					f(a) y f(b) tienen signos opuestos. En este caso se dice que la raíz se encuentra entre a y b por el
-
-					Teorema del Valor Medio que establece que la función continua f debe tener al menos una raíz
-
-					entre (a, b).</p>
-					<p>En cada paso el algoritmo divide el intervalo en dos calculando el valor medio
-
-					p = (a+b)/2 y también la función evaluada en el punto p, f(p). A menos de que p sea la raíz de la
-
-					función (lo que es poco probable, pero posible) quedan solo dos posibilidades: f(a) y f(p) tienen
-
-					signos opuestos y encierran en un intervalo a la raíz o f(p) y f(b) tienen signos opuestos y encierran
-
-					en un intervalo a la raíz. El método selecciona el subintervalo que de seguro contiene a la raíz para
-
-					ser usado en el siguiente paso, de esta manera, el intervalo que contiene el cero de la función f se
-
-					reduce a la mitad. El proceso continúa hasta que el intervalo sea lo suficientemente pequeño.</p>
-					<p>Si f(a) y f(p) tienen signos opuestos, entonces el método escoge p como nuevo valor para
-
-					b y si f(p) y f(b) tienen signos opuestos, entonces el método escoge p como un nuevo a. En el caso
-
-					de que f(p) = 0, entonces p se toma como la solución y el proceso termina. En ambos casos, los
-
-					nuevos f(a) y f(b) tienen signos opuestos, por lo que el método es aplicable al nuevo intervalo.</p>
 					<h2 class="font-x2 uppercase">Complete el formulario</h2><hr>
 					<section id="pageintro" class="container clear btminspace-0"> 
 						<div id="kkmolida">

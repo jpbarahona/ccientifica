@@ -10,6 +10,7 @@ File: Layout CSS
 
 @import url("fontawesome-4.3.0.min.css");
 @import url("framework.css");
+@import url(https://fonts.googleapis.com/css?family=Lato:300,100|Roboto:100|Inconsolata:700);
 
 /* Rows
 --------------------------------------------------------------------------------------------------------------- */
@@ -28,7 +29,7 @@ File: Layout CSS
 
 /* Header
 --------------------------------------------------------------------------------------------------------------- */
-#header{padding:50px 0;}
+#header{padding:50px 0;height: 170px}
 
 #header .table .table-cell{width:33.33333333333333%; vertical-align:middle;}
 #header .table .table-cell *{margin:0; padding:0; list-style:none;}
@@ -150,7 +151,10 @@ nav ul, nav ol{margin:0; padding:0; list-style:none;}
 #mainav .drop::after, #mainav li li .drop::after, #breadcrumb li a::after, .sidebar nav a::after{position:absolute; font-family:"FontAwesome"; font-size:10px; line-height:10px;}
 
 /* Top Navigation */
-#mainav{}
+nav#mainav{
+	top:-80px;
+	position: relative;
+}
 #mainav ul{}
 #mainav ul ul{z-index:9999; position:absolute; width:160px; text-align:left;}
 #mainav ul ul ul{left:160px; top:0;}
@@ -391,4 +395,27 @@ table a, #comments a{background-color:inherit;}
 	.latest figure{max-width:480px;}
 	.latest img, .latest figcaption{display:block; float:none; width:auto;}
 	.latest figcaption{padding:5%; border-width:0 1px 1px 1px;}
+}
+
+
+
+
+
+
+
+
+
+.explicacion {
+	font-family: 'Roboto', sans-serif;
+	font-size: 18px;
+	line-height: 1.5em;
+}
+.explicacion h2 {
+	font-family: 'Inconsolata';
+	font-size: 35px;
+	font-weight: bold;
+}
+.explicacion img {
+	text-align: center;
+	margin: auto;
 }

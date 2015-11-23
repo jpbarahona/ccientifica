@@ -1,6 +1,6 @@
 <?php
 	/* app config */
-	define("CTX_PATH", $_SERVER['DOCUMENT_ROOT'].'ccientifica');
+	define("CTX_PATH", $_SERVER['DOCUMENT_ROOT'].'/ccientifica');
 	define("SITE_MAP", CTX_PATH."/src/controller/site.xml");
 	define("WELCOME_PAGE", "index");
 	define('LOG_DIR', CTX_PATH.'/logs');
@@ -20,7 +20,7 @@
 	define("LOAD_ALG", '../model/app');
 
 	/*LOAD_IMG */
-	define("LOAD_IMG", '../src/model/img');
+	define("LOAD_IMG", CTX_PATH.'../src/model/img');
 
 	/*ALOJAR IMAGENES */
 	define("SAVE_IMAGEN", CTX_PATH.'/src/model/img');
