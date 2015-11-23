@@ -1,0 +1,6 @@
+#Redirect index page
+DirectoryIndex src/core/Main.class.php
+
+#Rewrite rules for frontal controller
+RewriteEngine On
+RewriteRule ^([-\w]+)?/?([-\w]+)?/?([-\w]+)?/?$ src/core/Main.class.php

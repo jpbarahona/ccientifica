@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Computacion Científica UNAB</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">   
+    <link href="webapp/static/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">   
+    <link href="webapp/static/css/owl.carousel.css" rel="stylesheet" type="text/css" media="all">   
+    <link href="webapp/static/css/owl.theme.css" rel="stylesheet" type="text/css" media="all">    
+    <link href="webapp/static/css/owl.transitions.css" rel="stylesheet" type="text/css" media="all">
+    <link href="webapp/static/css/layout.css" rel="stylesheet" type="text/css" media="all">
+    <!-- JAVASCRIPTS -->
+    <script src="webapp/static/js/jquery.min.js"></script> 
+    <script src="webapp/static/js/jquery.backtotop.js"></script> 
+    <script src="webapp/static/js/jquery.mobilemenu.js"></script>
+    <script src="webapp/static/js/owl.carousel.js"></script>
+    <script src="webapp/static/js/common.js"></script>  
+    <script>
+      $(function(){     
+        $("#work2").hide();
+        $("#work3").hide();
+        $("#work4").hide();
+        $("#seeMore").click(function(){
+            $("#work2").show();
+            $("#seeMore").hide();
+            $("#seeMore1").show();
+        });
+        $("#seeMore1").click(function(){
+            $("#work3").show();
+            $("#seeMore1").hide();
+            $("#seeMore2").show();
+        });
+        $("#seeMore2").click(function(){
+            $("#work4").show();
+            $("#seeMore2").hide();
+        });
+        $("#seeMore4").click(function(){
+            $("#work5").show();
+            $("#seeMore4").hide();
+        });
+        $("#noSee").click(function(){
+          $("#work5").hide();
+          $("#work4").hide();
+            $("#work3").hide();
+            $("#work2").hide();
+            $("#seeMore").show();
+        });
+        $("#owl-demo").owlCarousel({
+          autoPlay: 3000, //Set AutoPlay to 3 seconds
+          items : 3,
+          itemsDesktop : [1199,3],
+          itemsDesktopSmall : [979,3]
+
+        });
+      });
+    </script>       
+  </head>
+  <body id="top">
+    <div class="wrapper row0">
+      <div id="topbar" class="clear">
+      <div class="fl_right">
+        <ul class="faico clear">
+          <li><a href="https://github.com/Jupaba/ccientifica"><i class="fa fa-github"></i></a></li>
+          <li><a href="http://stackoverflow.com/"><i class="fa fa-stack-overflow"></i></a></li>
+          <li><a href="repost"><i class="fa fa-file-archive-o"></li></a></i>
+        </ul>
+        </div>
+      </div>
+    </div>
+    <header id="header" class="clear">
+      <div class="logo" style="float:left;">
+        <img src="webapp/static/images/logo-unab.png" alt=""></img>
+        </div>
+        <nav id="mainav" class="clear" style="float:right;"> 
+          <ul class="clear">
+            <li class="active"><a href="index">Home</a></li>
+            <li><a class="drop" href="#">Raices de Ecuaciones</a>
+              <ul>
+                <li><a href="raices-de-ecuaciones/metodo-biseccion">Método de Bisección</a></li>
+                <li><a href="Raices-de-Ecuaciones/Metodo-Brent">Método de Brent</a></li>
+                <li><a href="Raices-de-Ecuaciones/Metodo-Secante">Método de La Secante</a></li>
+                <li><a href="Raices-de-Ecuaciones/Metodo-Fijo">Método del Punto Fijo</a></li>
+                <li><a href="Raices-de-Ecuaciones/Metodo-Falsa">Método de Regla Falsa</a></li>
+              </ul>
+            </li>
+            <li><a class="drop" href="#">Ajuste de Curvas</a>
+              <ul>
+                <li><a href="Ajustes-de-Curvas/Regresion-Polinomial">Regresión Polinomial</a></li>
+                <li><a href="Ajustes-de-Curvas/Regresion-Lineal">Regresión Lineal</a></li>
+                <li><a href="Ajustes-de-Curvas/Interpolacion-de-Newton">Interpolación Newton</a></li>
+                <li><a href="Ajustes-de-Curvas/Interpolacion-de-Lagrange">Interpolación Lagrange</a></li>
+                <li><a href="Ajustes-de-Curvas/Minimos-Cuadrados-Continuos">Mínimos Continuos</a></li>
+                <li><a href="Ajustes-de-Curvas/Minimos-Cuadrados-Discretos">Mínimos Discretos</a></li>
+                <li><a href="Ajustes-de-Curvas/Spline">Spline</a></li>
+              </ul>
+            </li>
+            <li><a class="drop" href="#">Otros</a>
+              <ul>
+                <li><a href="Otros/Euler">Euler</a></li>
+                <li><a href="Otros/Runge-Kuta">Runge-Kuta </a></li>
+                <li><a href="Otros/Metodo-de-Heun">Método de Heun</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+    <div class="wrapper bgded overlay blue" style="background-image:url('webapp/static/images/timthumb1.jpg')">
+      <section id="pageintro" class="container clear btminspace-0"> 
+        <div class="introtxt">
+          <h2 class="heading uppercase">Computación Científica</h2>
+          <p>El curso consiste fundamentalmente en identificar, comparar, representar, resolver y analizar técnicas y problemas en los cuales se pueda aplicar la computación.</p>
+        </div>
+        <div class="clear"></div>
+      </section>
+    </div>
+    <div class="wrapper row3">
+      <main class="container clear"> 
+        <div class="btmspace-80 center">
+          <h2 class="font-x2 uppercase">Descripción del Curso</h2><hr>
+          <p>Formar al alumno en el manejo de métodos numéricos y de optimización para problemas de ingeniería, que permiten y apoyan la toma de decisiones en problemas de ingeniería.
+          El curso consiste fundamentalmente en identificar, comparar,  representar, resolver y analizar técnicas y problemas, en los cuales se puede aplicar computación, que no pueden ser resueltos mediante un algoritmos exactos, dado el alto grado combinatorio que presentan.
+          </p>
+        </div>
+        <h2 class="font-x2 uppercase" align="center">Trabajos Realizados</h2><hr>
+        <div id="work1">
+            <ul class="space clear">
+              <li class="one_third first">
+                <article class="infobox"> 
+                  <div class="infobox-details">
+                    <h2 class="heading font-x1 uppercase"><a href="#">Método Secante</a></h2>
+                    <p></p>
+                  </div>
+                  <ul class="infobox-more nospace clear">
+                    <li><a href="#"><i class="fa fa-eye"></i> More</a></li>
+                  </ul>
+                </article>
+              </li>
+              <li class="one_third">
+                <article class="infobox"> 
+                  <div class="infobox-details">
+                    <h2 class="heading font-x1 uppercase"><a href="#">Bisección</a></h2>
+                    <p></p>
+                  </div>
+                  <ul class="infobox-more nospace clear">
+                    <li><a href="#"><i class="fa fa-eye"></i> More</a></li>
+                  </ul>
+                </article>
+              </li>
+              <li class="one_third">
+                <article class="infobox"> 
+                  <div class="infobox-details">
+                    <h2 class="heading font-x1 uppercase"><a href="#">Brent</a></h2>
+                    <p></p>
+                  </div>
+                  <ul class="infobox-more nospace clear">
+                    <li><a href="#"><i class="fa fa-eye"></i> More</a></li>
+                  </ul>
+                </article>  
+              </li>
+            </ul>
+            <ul>
+              <li class="one_third first">
+                <article class="infobox"> 
+                 <div class="infobox-details">
+                  <h2 class="heading font-x1 uppercase"><a href="#">Punto Fijo</a></h2>
+                  <p></p>
+                </div>
+                  <ul class="infobox-more nospace clear">
+                    <li><a href="#"><i class="fa fa-eye"></i> More</a></li>
+                  </ul>
+                </article>
+              </li>
+              <li class="one_third">
+                <article class="infobox"> 
+                  <div class="infobox-details">
+                    <h2 class="heading font-x1 uppercase"><a href="#">Euler</a></h2>
+                    <p></p>
+                  </div>
+                  <ul class="infobox-more nospace clear">
+                    <li><a href="#"><i class="fa fa-eye"></i> More</a></li>
+                  </ul>
+                </article>
+              </li>
+              <li class="one_third">
+                <article class="infobox"> 
+                  <div class="infobox-details">
+                    <h2 class="heading font-x1 uppercase"><a href="#">Regresión Polinomial</a></h2>
+                    <p></p>
+                  </div>
+                  <ul class="infobox-more nospace clear">
+                    <li><a href="#"><i class="fa fa-eye"></i> More</a></li>
+                  </ul>
+                </article>  
+              </li>
+            </ul>
+            <br></br><br></br><br></br>
+            <p><a class="btn btn-primary" style="margin-left: 450px;" id="seeMore" >Ver más...</a></p>
+          </div>
+          <div id="work2">
+            <ul class="space clear">
+              <li class="one_third first">
+                <article class="infobox"> 
+                  <div class="infobox-details">
+                    <h2 class="heading font-x1 uppercase"><a href="#">Regresión Lineal</a></h2>
+                    <p></p>
+                  </div>
+                  <ul class="infobox-more nospace clear">
+                    <li><a href="#"><i class="fa fa-eye"></i> More</a></li>
+                  </ul>
+                </article>  
+              </li>
+              <li class="one_third">
+                <article class="infobox"> 
+                  <div class="infobox-details">
+                    <h2 class="heading font-x1 uppercase"><a href="#">Interpolación de Newton</a></h2>
+                    <p></p>
+                  </div>
+                  <ul class="infobox-more nospace clear">
+                    <li><a href="#"><i class="fa fa-eye"></i> More</a></li>
+                  </ul>
+                </article>  
+              </li>
+              <li class="one_third">
+                <article class="infobox"> 
+                  <div class="infobox-details">
+                    <h2 class="heading font-x1 uppercase"><a href="#">Interpolación de Lagrange</a></h2>
+                    <p></p>
+                  </div>
+                  <ul class="infobox-more nospace clear">
+                    <li><a href="#"><i class="fa fa-eye"></i> More</a></li>
+                  </ul>
+                </article>  
+              </li>
+            </ul>
+            <p><a class="btn btn-primary" style="margin-left: 450px;" id="seeMore1" >Ver más...</a></p>
+          </div>
+          <div id="work3">
+            <ul class="space clear">
+              <li class="one_third first">
+                <article class="infobox"> 
+                  <div class="infobox-details">
+                    <h2 class="heading font-x1 uppercase"><a href="#">Spline</a></h2>
+                    <p></p>
+                  </div>
+                  <ul class="infobox-more nospace clear">
+                    <li><a href="#"><i class="fa fa-eye"></i> More</a></li>
+                  </ul>
+                </article>  
+              </li>
+              <li class="one_third">
+                <article class="infobox"> 
+                  <div class="infobox-details">
+                    <h2 class="heading font-x1 uppercase"><a href="#">Mínimos Cuadrados Continuos</a></h2>
+                    <p></p>
+                  </div>
+                  <ul class="infobox-more nospace clear">
+                    <li><a href="#"><i class="fa fa-eye"></i> More</a></li>
+                  </ul>
+                </article>  
+              </li>
+              <li class="one_third">
+                <article class="infobox"> 
+                  <div class="infobox-details">
+                    <h2 class="heading font-x1 uppercase"><a href="#">Mínimos Cuadrados Discretos</a></h2>
+                    <p></p>
+                  </div>
+                  <ul class="infobox-more nospace clear">
+                    <li><a href="#"><i class="fa fa-eye"></i> More</a></li>
+                  </ul>
+                </article>  
+              </li>
+            </ul>
+            <p><a class="btn btn-primary" style="margin-left: 450px;" id="seeMore2" >Ver más...</a></p>
+          </div>
+          <div id="work4">
+            <ul class="space clear">
+              <li class="one_third first">
+                <article class="infobox"> 
+                  <div class="infobox-details">
+                    <h2 class="heading font-x1 uppercase"><a href="#">Runge-kuta</a></h2>
+                    <p></p>
+                  </div>
+                  <ul class="infobox-more nospace clear">
+                    <li><a href="#"><i class="fa fa-eye"></i> More</a></li>
+                  </ul>
+                </article>  
+              </li>
+              <li class="one_third">
+                <article class="infobox"> 
+                  <div class="infobox-details">
+                    <h2 class="heading font-x1 uppercase"><a href="#">Método de Heun</a></h2>
+                    <p></p>
+                  </div>
+                  <ul class="infobox-more nospace clear">
+                    <li><a href="#"><i class="fa fa-eye"></i> More</a></li>
+                  </ul>
+                </article>  
+              </li>
+            </ul>
+            <p><a class="btn btn-primary" style="margin-left: 450px;" id="noSee" >Ver menos...</a></p>
+          </div>
+    </main>
+    </div>
+    <div class="container-menu menuFooter" id="navbar-Footer">
+    </div>
+  </body>
+</html>
