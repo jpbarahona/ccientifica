@@ -60,6 +60,16 @@
 			</header>
 		</div>
 		<div class="wrapper row3">
+			<div class="container explicacion">
+				<h2 >Método Brent</h2><hr>
+				<p>Es un método hibrido que combina el método numerico de Biseccion, perteneciente al conjunto de métodos de agrupamiento (cerrado), y dos métodos abiertos, los cuales son: secante e interpolación inversa cuadratica. Este método fue desarrollado por Richard Brent (1973), con base de un algoritmo anterior de Theodorus Dekker (1969), que consta de ubicar raices dentro de una región en un eje de coordenadas mediante la aplicación de un rapido método abierto siempre que sea posible, pero volviendo al confiable método de agrupamiento en regiones cuando sea necesario.</p>
+				<p>Dicho método abierto que permite obtener respuestas inmediatas corresponde a interpolación inversa cuadratica, siendo muy similar a la forma en como se obtiene la raíz con el método secante lineal, sin embargo estima la función pasando por tres puntos, generando una curva y aproximandose drasticamente a la raíz final. <br>
+				</p>
+				<p>Pero este método posee una falla fundamental y es posible que la parábola no intersecte con el eje x. Esto depende de si la parábola resultante contiene raices complejas. Sin embargo al invertir los punto de la parábola ubicada en x a una parábola en y, por lo que se puede designar una función cuadratica que pase por los puntos en y dando la raiz xi+1 que corresponde a y=0 como:</p>
+				<p>da una parábola ladeada que siempre intersecta con el eje x.</p>
+				<p>Tambien existe otro caso en el que la interpolación cuadratica inversa no funciona y es que si los tres valores de y no son distintos (yi-2 = yi-1, o yi-1 = yi), quiere decir que no existe una interpolación cuadratica inversa.</p>
+
+			</div>
 			<main class="container clear"> 
 				<div class="btmspace-80 center">
 					<h2 class="font-x2 uppercase">Complete el formulario</h2><hr>

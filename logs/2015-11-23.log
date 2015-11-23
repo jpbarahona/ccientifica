@@ -1,3 +1,33 @@
+<<<<<<< HEAD
 [2015-11-23 11:43:07][ERROR] var/www/html/ccientifica/src/core/Main.class.php:58 Can't write to file "/var/www/html/ccientifica/src/model/img/ajuste_de_curvas/SPline/12-34-1448289787sp0.png". Check that the process running PHP has enough permission.
 [2015-11-23 11:45:23][ERROR] var/www/html/ccientifica/src/core/Main.class.php:58 Can't write to file "/var/www/html/ccientifica/src/model/img/ajuste_de_curvas/spline/12-34-1448289923sp0.png". Check that the process running PHP has enough permission.
 [2015-11-23 11:45:58][ERROR] var/www/html/ccientifica/src/core/Main.class.php:58 Can't write to file "/var/www/html/ccientifica/src/model/img/ajuste_de_curvas/spline/12-34-1448289958sp0.png". Check that the process running PHP has enough permission.
+=======
+[2015-11-16 22:15:21][ERROR] Main.class.php:53 No existe mapeo para ecuaciones-no-lineales/brent/
+[2015-11-23 05:49:47][ERROR] Main.class.php:53 No existe mapeo para ecuaciones-no-lineales/brent/
+[2015-11-23 05:50:56][ERROR] Main.class.php:58 Can't write to file "D:/xampp/htdocs/ccientifica/src/model/img/ajuste_de_curvas/SPline/12-36-1448254256sp0.png". Check that the process running PHP has enough permission.
+[2015-11-23 05:51:02][ERROR] Main.class.php:58 Can't write to file "D:/xampp/htdocs/ccientifica/src/model/img/ajuste_de_curvas/SPline/12-36-1448254262sp0.png". Check that the process running PHP has enough permission.
+[2015-11-23 05:53:34][ERROR] Main.class.php:58 Can't write to file "D:/xampp/htdocs/ccientifica/src/model/img/ajuste_de_curvas/SPline/12-36-1448254414sp0.png". Check that the process running PHP has enough permission.
+[2015-11-23 05:53:38][ERROR] Main.class.php:58 Can't write to file "D:/xampp/htdocs/ccientifica/src/model/img/ajuste_de_curvas/SPline/12-36-1448254418sp0.png". Check that the process running PHP has enough permission.
+[2015-11-23 05:53:53][ERROR] Main.class.php:58 Can't write to file "D:/xampp/htdocs/ccientifica/src/model/img/ajuste_de_curvas/SPline/1228-3466-1448254433sp0.png". Check that the process running PHP has enough permission.
+[2015-11-23 05:54:00][ERROR] Main.class.php:58 Can't write to file "D:/xampp/htdocs/ccientifica/src/model/img/ajuste_de_curvas/SPline/1228-3466-1448254440sp0.png". Check that the process running PHP has enough permission.
+[2015-11-23 05:55:58][ERROR] Main.class.php:58 Method exeSplines does not exist
+[2015-11-23 05:56:03][ERROR] Main.class.php:58 Method exeSplines does not exist
+[2015-11-23 05:56:07][ERROR] Main.class.php:53 No existe mapeo para exeSplines
+[2015-11-23 05:56:13][ERROR] Main.class.php:53 No existe mapeo para exeSplines
+[2015-11-23 06:00:37][ERROR] Main.class.php:58 Empty input data array specified for plot. Must have at least one data point.
+[2015-11-23 06:00:41][ERROR] Main.class.php:58 Empty input data array specified for plot. Must have at least one data point.
+[2015-11-23 06:01:34][ERROR] Main.class.php:58 Empty input data array specified for plot. Must have at least one data point.
+[2015-11-23 06:01:35][ERROR] Main.class.php:58 Empty input data array specified for plot. Must have at least one data point.
+[2015-11-23 06:01:35][ERROR] Main.class.php:58 Empty input data array specified for plot. Must have at least one data point.
+[2015-11-23 06:01:35][ERROR] Main.class.php:58 Empty input data array specified for plot. Must have at least one data point.
+[2015-11-23 06:03:00][ERROR] Main.class.php:58 Can't write to file "D:/xampp/htdocs/ccientifica/src/model/img/ajuste_de_curvas/SPline/1279-46910-1448254980sp0.png". Check that the process running PHP has enough permission.
+[2015-11-23 06:03:19][ERROR] Main.class.php:58 Can't write to file "D:/xampp/htdocs/ccientifica/src/model/img/ajuste_de_curvas/SPline/1279-46910-1448254999sp0.png". Check that the process running PHP has enough permission.
+[2015-11-23 06:03:25][ERROR] Main.class.php:58 Can't write to file "D:/xampp/htdocs/ccientifica/src/model/img/ajuste_de_curvas/SPline/1279-46910-1448255005sp0.png". Check that the process running PHP has enough permission.
+[2015-11-23 06:04:47][ERROR] Main.class.php:58 Can't write to file "D:/xampp/htdocs/ccientifica/src/model/img/ajuste_de_curvas/SPline/1279-46910-1448255087sp0.png". Check that the process running PHP has enough permission.
+[2015-11-23 06:07:11][ERROR] Main.class.php:58 Can't write to file "D:/xampp/htdocs/ccientifica/src/model/img/ajuste_de_curvas/SPline/1279-46910-1448255231sp0.png". Check that the process running PHP has enough permission.
+[2015-11-23 06:08:56][ERROR] Main.class.php:58 Can't write to file "D:/xampp/htdocs/ccientifica/src/model/img/ajuste_de_curvas/SPline/1279-46910-1448255336sp0.png". Check that the process running PHP has enough permission.
+[2015-11-23 06:09:13][ERROR] Main.class.php:58 Can't write to file "D:/xampp/htdocs/ccientifica/src/model/img/ajuste_de_curvas/SPline/1279-46910-1448255353sp0.png". Check that the process running PHP has enough permission.
+[2015-11-23 06:09:21][ERROR] Main.class.php:58 Can't write to file "D:/xampp/htdocs/ccientifica/src/model/img/ajuste_de_curvas/SPline/1279-46910-1448255361sp0.png". Check that the process running PHP has enough permission.
+[2015-11-23 06:18:42][ERROR] Main.class.php:58 Can't write to file "D:/xampp/htdocs/ccientificas/src/model/img/ajuste_de_curvas/SPline/1279-46910-1448255922sp0.png". Check that the process running PHP has enough permission.
+>>>>>>> a108b1f95d4d343a447aeea497e11e2831deaea3
