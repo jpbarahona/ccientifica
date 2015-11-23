@@ -418,4 +418,5 @@ table a, #comments a{background-color:inherit;}
 .explicacion img {
 	text-align: center;
 	margin: auto;
+	display: block;
 }
