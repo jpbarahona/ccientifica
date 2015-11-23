@@ -316,14 +316,14 @@
 
 			}
 			$nombrearchivo = implode($xdata).'-'.implode($ydata).'-'.time().'sp0.png';
-				$name = SAVE_IMAGEN."/ajuste_de_curvas/SPline/".$nombrearchivo;
+				$name = SAVE_IMAGEN."/ajuste_de_curvas/spline/".$nombrearchivo;
 				
 				if(!file_exists($name))
 					$g->Stroke($name);
 
-				$rutaImg = $this->cad->directorios(SAVE_IMAGEN."/ajuste_de_curvas/SPline/").$name;
+				$rutaImg = $this->cad->directorios(SAVE_IMAGEN."/ajuste_de_curvas/spline/").$name;
 					
-				$larutaadevoilver =  "../src/model/img/ajuste_de_curvas/SPline/".$nombrearchivo;
+				$larutaadevoilver =  "../src/model/img/ajuste_de_curvas/spline/".$nombrearchivo;
 				echo '<img src="'.$larutaadevoilver.'" />';
 		}
 	}

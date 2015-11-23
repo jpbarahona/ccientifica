@@ -1,0 +1,16 @@
+fundamento = Ajuste de curvas
+metodo = Interpolacion de lagrange
+
+f(x) = log(x)
+x = 2
+X0 = 1
+X1 = 4
+
+
+Iteracion       f(Xi)      Resultados                                                                                                                Ecuacion
+1            f(1)               0                                                                                                                                         (x-4)/(1-4)*0
+2            f(4)        0.462098                                                                                                                                   (x-1)/(4-1)*1.38629
+
+Resultado f(x): 0.693147
+Suma final metodo: 0.462098
+Error: 33.3333%
