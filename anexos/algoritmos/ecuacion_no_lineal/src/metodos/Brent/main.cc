@@ -10,8 +10,22 @@ int main(int argc, char *argv[]){
 
 	double brent(FunctionParser fparser, double xi, double xf, double errto, int imax, std::ostream& of);
 
-	std::string function = argv[1];
-	double xi = atof(argv[2]),xf = atof(argv[3]),errto = atof(argv[4]),imax = atoi(argv[5]);
+	if(argv[1]==NULL){
+        std::cout << "Formato ejecución (ejemplo): ./Brent 'x*2*(x^2)' -2 5 0.0001 20 out/test.txt" << std::endl;
+        exit(1);
+    }
+    std::string function = argv[1];
+
+    /**
+     * argv[1] = f();
+     * argv[2] = Origen eje abscisas;
+     * argv[3] = fin eje abscisas;
+     * argv[4] = margen de error;
+     * argv[5] = iteraciones de precisión;
+     * argv[6] = ruta a guardar del archivo i.e out/test.txt
+     */
+
+	double xi = atof(argv[2]), xf = atof(argv[3]), errto = atof(argv[4]), imax = atoi(argv[5]);
    
     FunctionParser fparser;
 
@@ -51,7 +65,6 @@ int main(int argc, char *argv[]){
 	double raiz = brent(fparser, xi, xf, errto, imax,of);
 	of << "\n" << "La raíz aproximada es: "<< raiz << "\n" << std::endl;
 	of.close();
-
 }
 
 double brent(FunctionParser fparser, double xi, double xf, double errto, int imax, std::ostream& of)
