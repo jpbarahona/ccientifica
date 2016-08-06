@@ -9,9 +9,10 @@ using namespace std;
 int main(int argc,char* argv[])
 {
 	/*
-    * Ejemplo: ./out 4 '2;3;4;5' '5;6;7;8' 5 newton.txt
+    * Ejemplo: ./out 4 	'2;3;4;5' '5;6;7;8' 5 newton.txt
     *                n  x[]       y[]      k char[]
     *                argv[1] argv[2] argv[3] argv[4] argv[5]
+    *				 observaciones x's y's pto a evaluar archivo salida
     */
 
     FILE * newton;
@@ -92,8 +93,8 @@ int main(int argc,char* argv[])
 	fprintf(newton, "Resultado = %lf\n", f);
 	//fprintf(newton, os);
 	fclose(newton);
-	cout << "Ejecucion realizada con exito" << endl;
-	cout << "Numero de observaciones = "<< n << endl;
+	cout << "Ejecucion realizada con éxito" << endl;
+	cout << "Número de observaciones = "<< n << endl;
 	cout << "f(" << k << ")" << " = " << f << endl;
 
 	return 0;
