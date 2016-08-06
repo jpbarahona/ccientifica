@@ -1,1 +1,3 @@
 src/model/img/
+.DS_Store
+logs/*
