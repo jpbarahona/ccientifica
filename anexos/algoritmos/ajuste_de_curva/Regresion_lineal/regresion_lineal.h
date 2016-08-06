@@ -64,8 +64,8 @@ public:
         using std::cout;
         using std::endl;
         
-        cout << "Ejecucion realizada con exito" << endl;
-        cout <<"Numero de observaciones: " << cantidad_puntos << endl;
+        cout << "Ejecución realizada con éxito" << endl;
+        cout <<"Número de observaciones: " << cantidad_puntos << endl;
         //cout << "Cantidad de puntos: " << cantidad_puntos << endl;
         //fprintf(txtregresion_lineal, "Cantidad de puntos: %d\n", cantidad_puntos);
         //cout << "Suma de todas las X: " << sumaX << endl;
