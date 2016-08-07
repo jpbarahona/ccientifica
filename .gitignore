@@ -1,6 +1,5 @@
-src/model/img/
 .DS_Store
 logs/*
 src/model/jpgraph2
-src/model/img/*
+src/model/img/
 src/model/app/out/*
