@@ -1,0 +1,1 @@
+#Imágenes de los gráficos de salida
