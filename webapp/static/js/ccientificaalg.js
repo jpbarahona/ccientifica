@@ -11,17 +11,17 @@ function ejecutarCodigo(exeFundamento,exeMetodo){
 	var errto = 0.00001;
 	var imax = 25;*/
 
-	var $loading = $('#kkmolida').append("<div id='load' style=''><img src='/ccientifica/webapp/views/src/images/ajax-loader.gif'/></div>");
+	var $loading = $('#loader').append("<div id='load' style=''><img src='/ccientifica/webapp/views/src/images/ajax-loader.gif'/></div>");
 	$.getJSON('../exeMetodo',{'fx': fx, 'xi': xi, 'xf': xf, 'errto': errto, 'imax': imax, 'exeFundamento': exeFundamento,
 							'exeMetodo': exeMetodo})
 		.fail(function(){
-			alert(fx+" "+xi+" "+xf+" "+errto+" "+imax+" "+exeFundamento+" "+exeMetodo);
-			alert("Ocurrio un error en el servidor");
+			console.log(fx+" "+xi+" "+xf+" "+errto+" "+imax+" "+exeFundamento+" "+exeMetodo);
+			console.log("Ocurrio un error en el servidor");
 		})
 		.done(function(d){
 			$loading.append();
 			$("#load").html($('<img>').attr("src",d['img']));
-			$("#kkmolida").append($('<div>').attr("class","scrollable")
+			$("#loader").append($('<div>').attr("class","scrollable")
 						    .append($('<table>').attr("id","ttable")
 							  	.append($('<thead>')
 							  		.append($('<tr>').attr("id","tthtr")))));
@@ -60,7 +60,7 @@ function ejecutarLagrange(exeFundamento,exeMetodo,i){
 	var g = 2;
 	var cat = "1;4;6";*/
 
-	var $loading = $('#kkmolida').append("<div id='load' style=''><img src='/ccientifica/webapp/views/src/images/ajax-loader.gif'/></div>");
+	var $loading = $('#loader').append("<div id='load' style=''><img src='/ccientifica/webapp/views/src/images/ajax-loader.gif'/></div>");
 	$.getJSON('../exeLagrange',{'fx': fx, 'x': x, 'g': g, 'xptos': cat, 'exeFundamento': exeFundamento,
 							'exeMetodo': exeMetodo})
 		.fail(function(){
@@ -69,7 +69,7 @@ function ejecutarLagrange(exeFundamento,exeMetodo,i){
 		.done(function(d){
 			$loading.append();
 			$("#load").html($('<img>').attr("src",d['img']));
-			$("#kkmolida").append($('<div>').attr("class","scrollable")
+			$("#loader").append($('<div>').attr("class","scrollable")
 						    .append($('<table>').attr("id","ttable")
 							  	.append($('<thead>')
 							  		.append($('<tr>').attr("id","tthtr")))));
