@@ -16,16 +16,16 @@
 		public function Secante(){
 			return 'algoritmos/raices-de-ecuaciones/secante';
 		}
-		public function Punto(){
+		/*public function Punto(){
 			return 'algoritmos/raices-de-ecuaciones/puntofijo';
-		}
+		}*/
 		public function Falsa(){
 			return 'algoritmos/raices-de-ecuaciones/reglafalsa';
 		}
  		/*Curvas*/
-		public function Polinomial(){
+		/*public function Polinomial(){
 			return 'algoritmos/ajustes-de-curvas/polinomial';
-		}
+		}*/
 		public function Lineal(){
 			return 'algoritmos/ajustes-de-curvas/lineal';
 		}
@@ -35,9 +35,9 @@
 		public function Discretos(){
 			return 'algoritmos/ajustes-de-curvas/discretos';
 		}
-		public function Continuos(){
+		/*public function Continuos(){
 			return 'algoritmos/ajustes-de-curvas/continuos';
-		}
+		}*/
 		public function Lagrange(){
 			return 'algoritmos/ajustes-de-curvas/lagrange';
 		}
