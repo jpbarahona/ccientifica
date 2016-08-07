@@ -31,7 +31,7 @@
 			/*parametros de retorno y almacenamiento en la db.*/
 			$result ['img'] = $main->getRutaImg();
 			$result ['resultados'] = $main->getTabla_resultados();
-			//$result ['archivo'] = $main->getRutaArchivo();
+			$result ['archivo'] = $main->getRutaArchivo();
 			/*=============================================================================*/
 
 			return $result;
