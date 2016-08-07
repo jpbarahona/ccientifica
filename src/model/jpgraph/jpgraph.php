@@ -19,7 +19,7 @@ require_once('jpgraph_theme.inc.php');
 require_once('gd_image.inc.php');
 
 // Version info
-define('JPG_VERSION','3.5.0b1');
+define('JPG_VERSION','4.0.0');
 
 // Minimum required PHP version
 define('MIN_PHPVERSION','5.1.0');
@@ -231,13 +231,16 @@ function CheckPHPVersion($aMinVersion) {
     list($majorC, $minorC, $editC) = preg_split('/[\/.-]/', PHP_VERSION);
     list($majorR, $minorR, $editR) = preg_split('/[\/.-]/', $aMinVersion);
 
-    if ($majorC != $majorR) return false;
     if ($majorC < $majorR) return false;
-    // same major - check minor
-    if ($minorC > $minorR) return true;
-    if ($minorC < $minorR) return false;
-    // and same minor
-    if ($editC  >= $editR)  return true;
+
+    if ($majorC == $majorR) {
+        if($minorC < $minorR) return false;
+
+        if($minorC == $minorR){
+            if($editC < $editR) return false;
+        }
+    }
+
     return true;
 }
 

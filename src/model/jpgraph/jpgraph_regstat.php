@@ -103,32 +103,6 @@ class Spline {
         return $a*$this->ydata[$min]+$b*$this->ydata[$max]+
         (($a*$a*$a-$a)*$this->y2[$min]+($b*$b*$b-$b)*$this->y2[$max])*($h*$h)/6.0;
     }
-	
-	function Get0($num=500) {
-        $n = $this->n ;
-        $step = ($this->xdata[$n-1]-$this->xdata[0]) / ($num-1);
-        $xnew=array();
-        $ynew=array();
-        $xnew[0] = $this->xdata[0];
-        $ynew[0] = $this->ydata[0];
-		$nuevovalor = $this->ydata[0];
-		
-		//echo $num;
-		$coun = 0;
-        for( $j=1; $j < $num; ++$j ) {
-            $xnew[$j] = $xnew[0]+$j*$step;
-			
-			if(isset($this->xdata[$coun+1]) and $xnew[$j] <= $this->xdata[$coun+1] and $xnew[$j] >= $this->xdata[$coun]) {
-				$nuevovalor = $this->ydata[$coun];
-				$coun++;
-			}
-			$ynew[$j] = $nuevovalor;
-			
-            
-			//echo $j.' - '.count($this->ydata);
-        }
-        return array($xnew,$ynew);
-    }
 }
 
 //------------------------------------------------------------------------
@@ -235,11 +209,7 @@ class Bezier {
 
         return array($newx, $newy);
     }
-
-	
 }
-
-
 
 // EOF
 ?>
