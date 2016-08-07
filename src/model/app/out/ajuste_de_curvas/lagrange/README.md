@@ -1,0 +1,1 @@
+#Almacena los resultados obtenidos por el sitio
