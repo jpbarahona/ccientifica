@@ -44,12 +44,31 @@
 			/*Codigo utilizado para validar si ya existe la solucion a estos parametros*/
 			$codigo = $this->make_codigo($p_entrada);
 			$this->setCodigo($codigo);
+			/*Ejecuta .exe desde la carpeta app*/
+			$exeFile = fopen(LOAD_MODEL."/app/.cmmdexe", "r") or die("No se encuentra el archivo!");
+			while ( !feof($exeFile)) {
+				$string = fgets($exeFile);$token = strtok($string,"/");$token = strtok(" ");$token = strtok($token,".");
+				if (strncmp($exeMetodo,$token,strlen($exeMetodo)) == 0) {
+					$this->setrutaArchivo($this->exeComando($string, $p_entrada, $exeFundamento, $exeMetodo));
+					$leer = new Leer_archivo($this->getrutaArchivo());
+					$this->setParametros_nombre($leer->parametros_nombre());
+					$this->setParametros_entrada($leer->parametros_entrada());
+					$this->setTabla_resultados($leer->tabla_resultados());
+					$g = new grafico($this->getParametros_nombre(), $this->getParametros_entrada(), $this->getTabla_resultados());
+					$this->setRutaImg($g->genGrafico());
+					break;
+				}
+			}
+			fclose($exeFile);
+
+			/**
+			 * Encontrar métodos resueltos. Preferible realizarlo directamente por BBDD.
+
 			if ($this->Busqueda_metodos_resueltos($codigo)){
 				$leer = new Leer_archivo($this->getrutaArchivo());
 				$this->setResultados($leer->tabla_resultados());
 				$this->setParametros($leer->parametros_entrada());
 			}else{
-			/*Ejecuta .exe desde la carpeta app*/
 				$exeFile = fopen(LOAD_MODEL."/app/.cmmdexe", "r") or die("No se encuentra el archivo!");
 				while ( !feof($exeFile)) {
 					$string = fgets($exeFile);$token = strtok($string,"/");$token = strtok(" ");$token = strtok($token,".");
@@ -65,7 +84,7 @@
 					}
 				}
 				fclose($exeFile);
-			}
+			}*/
 		}
 
 		/*
