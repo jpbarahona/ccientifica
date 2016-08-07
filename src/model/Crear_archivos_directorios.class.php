@@ -34,33 +34,54 @@
 		
 		public function nombre_archivo ($lenguaje, $exeFundamento, $exeMetodo, $stream, $ext, $count){
 			
-			$str = $lenguaje.$this->fundamento($exeFundamento).$this->metodo($exeMetodo)."000";
+			// Para contabilizar la cantidad de archivos generados
+			$intCountArchivo = 000000000;
+
+			/*$str = $lenguaje.$this->fundamento($exeFundamento).$this->metodo($exeMetodo).strval($intCountArchivo);
 			$str2 = strtoupper($stream).".".$ext;
 			
 			$str1 = $this->directorios(CTX_PATH."/src/model/app/out/".strtolower($exeFundamento)."/".strtolower($exeMetodo))."/".strtoupper($str);
 			$salida = $str1.$str2;
 			$len = strlen($str1);
 
+			$salida[$len-7] = '0';
+			$salida[$len-6] = '0';
+			$salida[$len-5] = '0';
+			$salida[$len-4] = '0';
 			$salida[$len-3] = '0';
 			$salida[$len-2] = '0';
-			$salida[$len-1] = '1';
+			$salida[$len-1] = '1';*/
 
 			for ($i = 1; $i <= $count; ++$i){
-				$c = $this->digitos(3,$i+1,$i);
-				$salida[$len-3] = $c[0];
-				$salida[$len-2] = $c[1];
-				$salida[$len-1] = $c[2];
+				/*$c = $this->digitos(7,$i+1,$i);
+				$salida[$len-7] = $c[0];
+				$salida[$len-6] = $c[1];
+				$salida[$len-5] = $c[2];
+				$salida[$len-4] = $c[3];
+				$salida[$len-3] = $c[4];
+				$salida[$len-2] = $c[5];
+				$salida[$len-1] = $c[6];*/
+
+				$str = $lenguaje.$this->fundamento($exeFundamento).$this->metodo($exeMetodo).strval($intCountArchivo);
+				$str2 = strtoupper($stream).".".$ext;
+				
+				$str1 = $this->directorios(CTX_PATH."/src/model/app/out/".strtolower($exeFundamento)."/".strtolower($exeMetodo))."/".strtoupper($str);
+				$salida = $str1.$str2;
+
+				//Si no existe, se genera el nuevo archivo.
 				if ($txtFile = @fopen($salida, "x")){
 					fclose($txtFile);
 					break;
 				}
+
+				$intCountArchivo++;
 			}
 			
 			return $salida;
 		}
 
 		/*
-		* Determina el numero correspondiente al nuevo archivo de texto
+		* Determina el número correspondiente al nuevo archivo de texto
 		*/
 		private function digitos ($dig_len, $limit, $start){
 			$i = $start;
@@ -73,7 +94,8 @@
 			if($start/100 < 10 && $start/100 > 0){
 				$c[0] = $start/100 +'0';
 			}else $c[0] = '0';
-			if($i%10 == 0){ $c[2] = '0'; return $c;}
+			if($i%10 == 0)
+				{ $c[2] = '0'; return $c;}
 			else{
 				$i = $i%10;
 				$j = ($start/10)%10 * 10 ;
