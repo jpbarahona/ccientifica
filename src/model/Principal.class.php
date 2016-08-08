@@ -47,15 +47,24 @@
 			/*Ejecuta .exe desde la carpeta app*/
 			$exeFile = fopen(LOAD_MODEL."/app/.cmmdexe", "r") or die("No se encuentra el archivo!");
 			while ( !feof($exeFile)) {
-				$string = fgets($exeFile);$token = strtok($string,"/");$token = strtok(" ");$token = strtok($token,".");
+				$string = fgets($exeFile);$token = strtok($string,"/");
+				$token = strtok(" ");
+				$token = strtok($token,".");
 				if (strncmp($exeMetodo,$token,strlen($exeMetodo)) == 0) {
-					$this->setrutaArchivo($this->exeComando($string, $p_entrada, $exeFundamento, $exeMetodo));
-					$leer = new Leer_archivo($this->getrutaArchivo());
-					$this->setParametros_nombre($leer->parametros_nombre());
-					$this->setParametros_entrada($leer->parametros_entrada());
-					$this->setTabla_resultados($leer->tabla_resultados());
-					$g = new grafico($this->getParametros_nombre(), $this->getParametros_entrada(), $this->getTabla_resultados());
-					$this->setRutaImg($g->genGrafico());
+					$this->setrutaArchivo(
+						$this->exeComando($string, $p_entrada, $exeFundamento, $exeMetodo)
+					);
+					/**
+					 * Se generan tablas e imágenes para métodos númericos de caracteristicas de Eciaciones de raíces y solo Lagrange para Ajuste de curvas
+					 */ 
+					if ($exeFundamento == "Ecuacion de raices"){
+						$leer = new Leer_archivo($this->getrutaArchivo());
+						$this->setParametros_nombre($leer->parametros_nombre());
+						$this->setParametros_entrada($leer->parametros_entrada());
+						$this->setTabla_resultados($leer->tabla_resultados());
+						$g = new grafico($this->getParametros_nombre(), $this->getParametros_entrada(), $this->getTabla_resultados());
+						$this->setRutaImg($g->genGrafico());
+					}
 					break;
 				}
 			}
@@ -120,7 +129,7 @@
 
 		private function exeComando($string, $p_entrada, $exeFundamento, $exeMetodo){
 			$nv = new Crear_archivos_directorios();
-			$nombre_archivo = $nv->nombre_archivo("cc", $exeFundamento, $exeMetodo,"out","txt",999);
+			$nombre_archivo = $nv->nombre_archivo("cc", $exeFundamento, $exeMetodo,"out","txt",9999999);
 			$pee = new Parametros_entrada_exe();
 			$string = strtok($string, "\r\n");
 			$string = $this->directorioexe($string, $exeFundamento);

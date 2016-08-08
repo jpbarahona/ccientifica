@@ -3,7 +3,7 @@
 	/* Parametros_entrada_exe.class.php
 	* 
 	* Esta clase separa e identifica correctamente los parametros de entrada que
-	* corresponde a cada ejecutador.
+	* corresponde a cada ejecutador o programa.
 	*/
 
 	class Parametros_entrada_exe{
@@ -64,6 +64,10 @@
 			switch ($exeMetodo) {
 				case 'lagrange':
 					return " '".$p_entrada["fx"]."' ".$p_entrada["x"]." ".$p_entrada["g"]." '".$p_entrada["xptos"]."'";
+					break;
+
+				case 'Regresion_lineal':
+					return " ".$p_entrada["i"]." '".$p_entrada["x"]."' '".$p_entrada["y"]."'";
 					break;
 				
 				default:

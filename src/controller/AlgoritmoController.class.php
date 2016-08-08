@@ -64,6 +64,54 @@
 		}
 
 		/**
+		 * @ClassDependency: {'model.Principal'}
+		 */
+		public function exeRegresion_lineal(){
+			$p_entrada = array();
+			$p_entrada["i"] = $this->request->getParam('i');
+			$p_entrada["x"] = $this->request->getParam('x');
+			$p_entrada["y"] = $this->request->getParam('y');
+			
+			$exeFundamento = $this->request->getParam('exeFundamento');
+			$exeMetodo = $this->request->getParam('exeMetodo');
+
+			/*=============================================================================*/
+			/*Ejecucion de los algoritmos y creacion de los resultados*/
+			
+			$main = new Principal($p_entrada, $exeFundamento, $exeMetodo);
+
+			$str = $main->getrutaArchivo();
+
+			$split = explode('/',$str);
+
+			$newStr = '';
+			$flag = false;
+			$foo = 0;
+
+			foreach ($split as $i){
+				$foo++;
+				if($i == "src")
+					$flag = true;
+				if(!$flag)
+					continue;
+				
+				if($foo == count($split))
+					$newStr .= $i;
+				else
+					$newStr .= $i.'/';
+				
+			}
+
+			$result = array(
+					"rutaArchivo" => '../'.$newStr
+				);
+
+			/*=============================================================================*/
+
+			return $result;
+		}
+
+		/**
 		 * @ClassDependency: {'model.Grafico'}
 		 */
 		public function exeSpline(){

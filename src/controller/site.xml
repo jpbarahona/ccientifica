@@ -10,7 +10,9 @@
 	<!-- CONTROLADOR EJECUTAR MÉTODO -->
 	<requestMapping name="exeMetodo" class="AlgoritmoController" method="exeMetodo" ajaxResponse="json"/>
 	<requestMapping name="exeSpline" class="AlgoritmoController" method="exeSpline" ajaxResponse="json"/>
-	<requestMapping name="exeLagrange" class="AlgoritmoController" method="exeLagrange" ajaxResponse="json"/>
+	<requestMapping name="exeLagrange" class="AlgoritmoController" method="exeLagrange" ajaxResponse
+	="json"/>
+	<requestMapping name="exeRegresion_lineal" class="AlgoritmoController" method="exeRegresion_lineal" ajaxResponse="json"/>
 	
 	<!--Menu Mappinga Index -->
 	<requestMapping name="raices-de-ecuaciones/metodo-biseccion"  	class="MenuController" method="Biseccion"/>
