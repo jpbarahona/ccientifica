@@ -1,2 +1,2 @@
 make:
-	g++ -o regresion_lineal regresion_lineal.cpp
+	g++ -o Regresion_lineal regresion_lineal.cpp
