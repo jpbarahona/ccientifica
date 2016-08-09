@@ -14,6 +14,7 @@
 	="json"/>
 	<requestMapping name="exeRegresion_lineal" class="AlgoritmoController" method="exeRegresion_lineal" ajaxResponse="json"/>
 	<requestMapping name="exeInterpolacion_newton" class="AlgoritmoController" method="exeInterpolacion_newton" ajaxResponse="json"/>
+	<requestMapping name="exeMinimos_cuadrados_discretos" class="AlgoritmoController" method="exeMinimos_cuadrados_discretos" ajaxResponse="json"/>
 	
 	<!--Menu Mappinga Index -->
 	<requestMapping name="raices-de-ecuaciones/metodo-biseccion"  	class="MenuController" method="Biseccion"/>

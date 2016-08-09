@@ -74,6 +74,10 @@
 					return " ".$p_entrada["i"]." '".$p_entrada["x"]."' '".$p_entrada["y"]."' ".$p_entrada["evaluar"];
 					break;
 
+				case 'Minimos_cuadrados_discretos':
+					return " ".$p_entrada["i"]." '".$p_entrada["x"]."' '".$p_entrada["y"]."'";
+					break;
+
 				default:
 					return "metodo ingresado incorrecto";
 					break;

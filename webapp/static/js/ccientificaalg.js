@@ -229,4 +229,28 @@ function ejecutarInterpolacionNewton(exeFundamento, exeMetodo, i){
 		});
 }
 
+function ejecutarMinimos_cuadrados_discretos(exeFundamento, exeMetodo, i){
+	var coord = getCoord(i);
+
+	/**
+	 * Número de coordenadas : i,
+	 * x[] : coord.catx,
+	 * y[] : coord.caty
+	 */
+
+	$loading = $('#loader').append("<div id='load' style=''><img src='/ccientifica/webapp/views/src/images/ajax-loader.gif'/></div>");
+	$.getJSON('../exeMinimos_cuadrados_discretos',{'i': i, 'x': coord.catx, 'y': coord.caty,
+							'exeFundamento': exeFundamento, 'exeMetodo': exeMetodo})
+		.fail(function(){
+			$("#load").remove();
+			alert("Ocurrio un error en el servidor");
+		})
+		.done(function(d){
+			$("#load").remove();
+			$("#loader").append(
+				'<a href="'+d.rutaArchivo+'" target="blank_"><button class="btn">Descargar Archivo</button></a>'
+			);
+		});
+}
+
 $("#load").remove();
