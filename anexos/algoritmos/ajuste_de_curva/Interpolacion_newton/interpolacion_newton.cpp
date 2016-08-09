@@ -58,9 +58,12 @@ int main(int argc,char* argv[])
 	fprintf(newton, "\nf(x) = ");
 	do
 	{
-		for (i=1;i<=cont_observaciones-1;i++)
+		for (i=0;i<cont_observaciones;i++)
 		{
-			fprintf(newton, "%.8lf+(x-%.8lf)*", y[i] , y[i]);
+			if(i == cont_observaciones-1)
+				fprintf(newton, "%.3lf+(x-%.3lf)", y[i] , y[i]);
+			else
+				fprintf(newton, "%.3lf+(x-%.3lf)*", y[i] , y[i]);
 			p[i] = ((y[i+1]-y[i])/(x[i+j]-x[i]));
 			y[i]=p[i];
 		}
@@ -93,9 +96,9 @@ int main(int argc,char* argv[])
 	fprintf(newton, "Resultado = %lf\n", f);
 	//fprintf(newton, os);
 	fclose(newton);
-	cout << "Ejecucion realizada con éxito" << endl;
-	cout << "Número de observaciones = "<< n << endl;
-	cout << "f(" << k << ")" << " = " << f << endl;
+	//cout << "Ejecucion realizada con éxito" << endl;
+	//cout << "Número de observaciones = "<< n << endl;
+	//cout << "f(" << k << ")" << " = " << f << endl;
 
 	return 0;
 }
