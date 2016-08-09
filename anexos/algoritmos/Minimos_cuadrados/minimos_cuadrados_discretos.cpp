@@ -113,17 +113,36 @@ int main (int argc, char *argv[]){
 
 	/**
 	 * Ejemplo Ejecución:
-	 * ./minimos out.txt 3 2 3 4 5 6 7
-	 * = ejecutador archivo_salida nº_ptos_a_evaluar puntos (x primero)
+	 * ./minimos 2 '2;3' '4;5' out.txt
+	 * = ejecutador nº obs. puntos(x) puntos(y) archivo_salida
 	 */
 
-	ofstream fs(argv[1]);//Nombre del txt
+	int n = atoi(argv[1]); //cantidad de observaciones.
+	ofstream fs(argv[4]);  //Nombre del txt
+	double p1[n], p2[n];
+	char* token;
+
+	token = strtok(argv[2],";");
+    //printf("\nIngrese los valores de x:\n");
+	for(int i = 1;i <= n;i++)
+	{
+		p1[i] = atof(token);
+		token = strtok(NULL,";");
+	}
+
+    //printf("\nIngrese los correspondientes valores de y:\n");
+	token = strtok(argv[3],";");
+	for(int i = 1;i <= n;i++)
+	{
+		p2[i] = atof(token);
+		token = strtok(NULL,";");
+	}
 
 	fs<<"Fundamento = ajuste de curvas"<<endl;
 	fs<<"Metodo = minimos cuadrados"<<endl;
 
 	int c = 3;
-	int x = atof(argv[2]);//Cantidad de puntos que se ingresan en el arreglo
+	int x = atof(argv[1]);//Cantidad de puntos que se ingresan en el arreglo
 	int u;
 	const int y = 2;
 	/*
@@ -140,8 +159,11 @@ int main (int argc, char *argv[]){
 	for(int i=0; i<x; i++){
 		for(int j=0; j<y; j++){
 		//	cin >> u;
-		u = atof(argv[c]);//Los puntos X e Y que se ingresan en el arreglo (primero se ingresa X luego Y)
-		array1[i][j] = u;
+		//u = atof(argv[c]);//Los puntos X e Y que se ingresan en el arreglo (primero se ingresa X luego Y)
+		if(j==0)
+			array1[i][j] = p1[i];
+		else
+			array1[i][j] = p2[i];
 		fs << array1[i][j];
 		fs << " ";
 		c++;
@@ -168,10 +190,10 @@ int main (int argc, char *argv[]){
 	B0 = (sumaY/x) - (B1*(sumaX/x));
 
 
-	cout<<SPXY<<endl;
+	/*cout<<SPXY<<endl;
 	cout<<SPXX<<endl;
 
-	cout<<B1<<endl;
+	cout<<B1<<endl;*/
 
 	funcion(B0, B1, array1, x);//Genera la funcion de ajuste
 
