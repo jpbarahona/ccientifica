@@ -69,7 +69,11 @@
 				case 'Regresion_lineal':
 					return " ".$p_entrada["i"]." '".$p_entrada["x"]."' '".$p_entrada["y"]."'";
 					break;
-				
+
+				case 'Interpolacion_newton':
+					return " ".$p_entrada["i"]." '".$p_entrada["x"]."' '".$p_entrada["y"]."' ".$p_entrada["evaluar"];
+					break;
+
 				default:
 					return "metodo ingresado incorrecto";
 					break;

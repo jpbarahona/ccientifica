@@ -5,3 +5,4 @@ app/Regla_falsa
 app/Secante
 app/lagrange
 app/Regresion_lineal
+app/Interpolacion_newton

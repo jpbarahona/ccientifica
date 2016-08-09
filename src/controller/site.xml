@@ -13,6 +13,7 @@
 	<requestMapping name="exeLagrange" class="AlgoritmoController" method="exeLagrange" ajaxResponse
 	="json"/>
 	<requestMapping name="exeRegresion_lineal" class="AlgoritmoController" method="exeRegresion_lineal" ajaxResponse="json"/>
+	<requestMapping name="exeInterpolacion_newton" class="AlgoritmoController" method="exeInterpolacion_newton" ajaxResponse="json"/>
 	
 	<!--Menu Mappinga Index -->
 	<requestMapping name="raices-de-ecuaciones/metodo-biseccion"  	class="MenuController" method="Biseccion"/>

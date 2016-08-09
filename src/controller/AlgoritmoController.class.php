@@ -88,6 +88,57 @@
 			$flag = false;
 			$foo = 0;
 
+			// Concatena ruta directa al archivo de salida.
+			foreach ($split as $i){
+				$foo++;
+				if($i == "src")
+					$flag = true;
+				if(!$flag)
+					continue;
+				
+				if($foo == count($split))
+					$newStr .= $i;
+				else
+					$newStr .= $i.'/';
+				
+			}
+
+			$result = array(
+					"rutaArchivo" => '../'.$newStr
+				);
+
+			/*=============================================================================*/
+
+			return $result;
+		}
+
+		/**
+		 * @ClassDependency: {'model.Principal'}
+		 */
+		public function exeInterpolacion_newton(){
+			$p_entrada = array();
+			$p_entrada["i"] = $this->request->getParam('i');
+			$p_entrada["x"] = $this->request->getParam('x');
+			$p_entrada["y"] = $this->request->getParam('y');
+			$p_entrada["evaluar"] = $this->request->getParam('evaluar');
+			
+			$exeFundamento = $this->request->getParam('exeFundamento');
+			$exeMetodo = $this->request->getParam('exeMetodo');
+
+			/*=============================================================================*/
+			/*Ejecucion de los algoritmos y creacion de los resultados*/
+			
+			$main = new Principal($p_entrada, $exeFundamento, $exeMetodo);
+
+			$str = $main->getrutaArchivo();
+
+			$split = explode('/',$str);
+
+			$newStr = '';
+			$flag = false;
+			$foo = 0;
+
+			// Concatena ruta directa al archivo de salida.
 			foreach ($split as $i){
 				$foo++;
 				if($i == "src")

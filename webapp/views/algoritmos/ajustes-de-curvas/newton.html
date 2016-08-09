@@ -40,8 +40,8 @@
 						<li><a class="drop" href="#">Ajuste de Curvas</a>
 							<ul>
 								<!--<li><a href="metodo-regresion-polinomial">Regresión Polinomial</a></li>-->
-								<li><a href="metodo-regresion-lineal">Regresión Lineal</a></li>
-								<li><a href="#">Interpolación Newton</a></li>
+								<li><a href="#">Regresión Lineal</a></li>
+								<li><a href="metodo-interpolacion-newton">Interpolación Newton</a></li>
 								<li><a href="metodo-interpolacion-lagrange">Interpolación Lagrange</a></li>
 								<!--<li><a href="metodo-minimos-cuadrados-continuos">Mínimos Continuos</a></li>-->
 								<li><a href="metodo-minimos-cuadrados-discretos">Mínimos Discretos</a></li>
@@ -61,43 +61,43 @@
 		</div>
 		<div class="wrapper row3">
 			<div class="container explicacion">
-				<h2 >Interpolación de Newton</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea illo, voluptate repellat delectus corporis. Quos id architecto consequatur quae fugit expedita error explicabo cupiditate ipsa iste et, eaque, quam aspernatur.</p>
-				<p>Laborum maiores nemo vel minus saepe quam odio exercitationem maxime a voluptatum, consequatur tempore nostrum expedita ea laudantium qui nobis deserunt tenetur numquam, aliquid. Soluta impedit vitae voluptates cumque dolorum.</p>
-				<p>Minima, esse. Esse corporis hic ad aspernatur ab earum odio quas voluptatem incidunt fuga enim ut, ducimus, accusantium dolore architecto. Eveniet ad similique nesciunt minima. Nemo dicta earum atque, error.</p>
-				<p>Ad, facere consectetur. Nam necessitatibus iure iusto nulla reiciendis tenetur quas vel, quia temporibus ab, facere sunt quae sed sequi fugiat laboriosam neque ea expedita corrupti! Accusamus, quidem optio! Facilis!</p>
-				<!--<p><img src="http://i.imgur.com/swTBFAR.png"></p>-->
+				<h2 >Regresión lineal</h2><hr>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, officiis. Sint vitae deleniti velit voluptatibus sit, consectetur illum iure ex iste est doloribus porro, ratione, suscipit eligendi nihil recusandae! Rerum.</p>
+				<p>Inventore, maxime! Veniam perspiciatis deleniti, quibusdam ex laudantium unde at ipsa. Inventore provident tempore ducimus nostrum ad eum, quos, accusantium. Fugit vero aut inventore pariatur facilis nihil velit. Eaque, nobis!</p>
+				<p>Officia minima, perspiciatis esse, aperiam eligendi accusantium eius omnis maiores. Dolores natus modi incidunt culpa vero, expedita, sit aut quasi iusto maxime numquam eos amet. Accusantium, amet iure vero odio.</p>
+				<p>Dicta, eos, modi. Praesentium, magni culpa quidem placeat vitae quia nulla repellat veritatis natus ducimus pariatur, soluta, officiis libero ipsum sunt voluptatum eos reiciendis iure eligendi consequuntur animi est totam.</p>			
 			</div>
 			<main class="container clear"> 
 				<div class="btmspace-80 center">
 					<h2 class="font-x2 uppercase">Complete el formulario</h2><hr>
 					<section id="pageintro" class="container clear btminspace-0"> 
-						<div id="kkmolida">
-							<div id="comments">
-								<div id="fx" class="one_third first">
-									<label>F(x) <span>*</span></label>
-									<input type="text" id="fxx" size="22">
+						<div id="loader">
+							<div id="comments" style="margin: 0 auto; width:50%;">
+							<div id="formulario">
+								<div style="width:50%; padding:5px;">
+									<label>Número a evaluar <span>*</span></label>
+									<input type="text" id="evaluar" size="22">
 								</div>
-								<div id="xi" class="one_third">
-									<label>Xi <span>*</span></label>
-									<input type="text" id="xii" size="22">
-								</div>          
-								<div id="xf" class="one_third">
-									<label>Xf <span>*</span></label>
-									<input type="text" id="xff" size="22">
+								<div style="float:left; width:50%; padding:5px;">
+									<label>X1 <span>*</span></label>
+									<input type="text" class="valx" size="22">
 								</div>
-								<div id="te" class="one_third first">
-									<label>Tolerancia error <span>*</span></label>
-									<input type="text" id="errto" value="" size="22">
+								<div style="float:left; width:50%; padding:5px;">
+									<label>Y1 <span>*</span></label>
+									<input type="text" class="valy" size="22">
 								</div>
-								<div id="ni" class="one_third">
-									<label>N&uacute;mero de iteraciones <span>*</span></label>
-									<input type="text" id="imax"size="22">
-								</div>          
-								<div class="one_third" style="height: 68px;">
+								<div style="float:left; width:50%; padding:5px;">
+									<label>X2 <span>*</span></label>
+									<input type="text" class="valx" size="22">
 								</div>
+								<div style="float:left; width:50%; padding:5px;">
+									<label>Y2 <span>*</span></label>
+									<input type="text" class="valy" size="22">
+								</div>
+							</div>
 								<div>
-								<input id="btnEjecutar" type="submit" value="Ejecutar">
+	                            	<button style="margin-right:20px;" type="button" class="btn btn-danger" id="agregarPtox">Agregar nuevo punto</button>
+									<input id="btnEjecutar" type="submit" value="Ejecutar">
 								</div>
 							</div>
 						</div>
@@ -192,15 +192,25 @@
 		</div>
 		<a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
 
-
 		<!-- JAVASCRIPTS -->
 		<script src="../webapp/static/js/jquery.min.js"></script> 
 		<script src="../webapp/static/js/jquery.backtotop.js"></script> 
 		<script src="../webapp/static/js/jquery.mobilemenu.js"></script>
-		<script src="../webapp/static/js/owl.carousel.js"></script>
+		<script src="../webapp/static/js/owl.carousel.js"></script>		
 		<script src="../webapp/static/js/common.js"></script>
+		<script src="../webapp/static/js/ccientificaalg.js"></script>
 		<script>
 			$(function(){
+				var i = 2;
+				$("#agregarPtox").click(function(){
+					i++;
+					$("#formulario").append(
+						'<div style="float:left; width:50%; padding:5px;"><label>X'+i+' <span>*</span></label><input type="text" class="valx" size="22"></div><div style="float:left; width:50%; padding:5px;"><label>Y'+i+' <span>*</span></label><input type="text" class="valy" size="22"></div>'
+						);
+				});
+			    $('#btnEjecutar').bind('click',function(event, ui){
+			    	ejecutarInterpolacionNewton("Ajuste de curvas", "Interpolacion_newton",i);
+			    });
 				$("#owl-demo").owlCarousel({
 				  autoPlay: 3000, //Set AutoPlay to 3 seconds
 				  items : 3,
