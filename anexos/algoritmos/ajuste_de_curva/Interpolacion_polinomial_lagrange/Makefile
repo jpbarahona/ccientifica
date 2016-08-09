@@ -15,12 +15,12 @@ $(ODIR)/%.o: %.cc
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 all: $(OBJ)
-	$(CC) -o lagrange $(OBJ) $(CFLAGS)
+	$(CC) -o Lagrange $(OBJ) $(CFLAGS)
 
 #all:
 #	$(CC) -o test test.cc
 
 clean:
-	/bin/rm -f $(ODIR)/*.o lagrange lagrange.exe *~ ._* $(IDIR)/*~ $(IDIR)/._*
+	/bin/rm -f $(ODIR)/*.o Lagrange Lagrange.exe *~ ._* $(IDIR)/*~ $(IDIR)/._*
 
 fparser.o: $(AR)
