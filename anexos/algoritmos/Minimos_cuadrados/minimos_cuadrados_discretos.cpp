@@ -124,7 +124,7 @@ int main (int argc, char *argv[]){
 
 	token = strtok(argv[2],";");
     //printf("\nIngrese los valores de x:\n");
-	for(int i = 1;i <= n;i++)
+	for(int i = 0;i < n;i++)
 	{
 		p1[i] = atof(token);
 		token = strtok(NULL,";");
@@ -132,7 +132,7 @@ int main (int argc, char *argv[]){
 
     //printf("\nIngrese los correspondientes valores de y:\n");
 	token = strtok(argv[3],";");
-	for(int i = 1;i <= n;i++)
+	for(int i = 0;i < n;i++)
 	{
 		p2[i] = atof(token);
 		token = strtok(NULL,";");
@@ -142,7 +142,7 @@ int main (int argc, char *argv[]){
 	fs<<"Metodo = minimos cuadrados"<<endl;
 
 	int c = 3;
-	int x = atof(argv[1]);//Cantidad de puntos que se ingresan en el arreglo
+	int x = n;//Cantidad de puntos que se ingresan en el arreglo
 	int u;
 	const int y = 2;
 	/*
