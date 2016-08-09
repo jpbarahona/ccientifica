@@ -1,4 +1,27 @@
+//==================
+//Global
+//==================
+
 var $loading;
+var numChileRegex = /^-?(?=.*[0-9])\d*(,\d{1,10})?$|^-?[0-9]\d{0,2}(\.\d{3,3})*?(,\d{1,10})?$/g;
+
+// Validar ingreso de números formato Chile.
+function validateFormatterNumber (value){
+	if (!value.match(numChileRegex)){
+		alert("Formato incorrecto "+value+".\nFormato correcto 321321412,2 o 1.323.232,432.");
+		throw new Error();
+	}
+	return 0;
+}
+
+// Completar campos requeridos
+function noEmpty (value){
+	if(value==''){
+		alert("Debe completar todos los campos requeridos.");
+		throw new Error();
+	}
+	return 0;
+}
 
 function getCoord (i){
 
@@ -10,11 +33,15 @@ function getCoord (i){
 
 	$(".valx").each(function() {
    		map[$(this).attr("class")] = $(this).val();
+   		noEmpty(map.valx);
+		validateFormatterNumber(map.valx);
    		xptos.push(map.valx);
 	});
 
 	$(".valy").each(function() {
    		map[$(this).attr("class")] = $(this).val();
+   		noEmpty(map.valy);
+		validateFormatterNumber(map.valy);
    		yptos.push(map.valy);
 	});
 
@@ -37,6 +64,10 @@ function getCoord (i){
 
 }
 
+//==================
+//Funciones
+//==================
+ 
 /**
  * Ejecutar códigos de ecuacion de la recta
  */
@@ -48,6 +79,16 @@ function ejecutarCodigo(exeFundamento,exeMetodo){
 	var errto = $('#errto').val();
 	var imax = $('#imax').val();
 
+	noEmpty(fx);
+	noEmpty(xi);
+	validateFormatterNumber(xi);
+	noEmpty(xf);
+	validateFormatterNumber(xf);
+	noEmpty(errto);
+	validateFormatterNumber(errto);
+	noEmpty(imax);
+	validateFormatterNumber(imax);
+
 	/*var fx = "x*log(x/3)-x";
 	var xi = 1.5;
 	var xf = 20.1;
@@ -55,8 +96,8 @@ function ejecutarCodigo(exeFundamento,exeMetodo){
 	var imax = 25;*/
 
 	$loading = $('#loader').append("<div id='load' style=''><img src='/ccientifica/webapp/views/src/images/ajax-loader.gif'/></div>");
-	$.getJSON('../exeMetodo',{'fx': fx, 'xi': xi, 'xf': xf, 'errto': errto, 'imax': imax, 'exeFundamento': exeFundamento,
-							'exeMetodo': exeMetodo})
+	$.getJSON('../exeMetodo',{'fx': fx, 'xi': xi, 'xf': xf, 'errto': errto, 'imax': imax,
+							'exeFundamento': exeFundamento, 'exeMetodo': exeMetodo})
 		.fail(function(){
 			$("#load").remove();
 			console.log("Ocurrio un error en el servidor");
@@ -87,6 +128,8 @@ function ejecutarLagrange(exeFundamento,exeMetodo,i){
 	var cat = "";
 	$(".valx").each(function() {
    		map[$(this).attr("class")] = $(this).val();
+   		noEmpty(map.valx);
+   		validateFormatterNumber(map.valx);
    		xptos.push(map.valx);
 	});
 
@@ -98,14 +141,18 @@ function ejecutarLagrange(exeFundamento,exeMetodo,i){
 	var x = $('#xxx').val();
 	var g = i;
 
+	noEmpty(fx);
+	noEmpty(x);
+	validateFormatterNumber(x);
+
 	/*var fx = "log(x)";
 	var x = 2;
 	var g = 2;
 	var cat = "1;4;6";*/
 
 	$loading = $('#loader').append("<div id='load' style=''><img src='/ccientifica/webapp/views/src/images/ajax-loader.gif'/></div>");
-	$.getJSON('../exeLagrange',{'fx': fx, 'x': x, 'g': g, 'xptos': cat, 'exeFundamento': exeFundamento,
-							'exeMetodo': exeMetodo})
+	$.getJSON('../exeLagrange',{'fx': fx, 'x': x, 'g': g, 'xptos': cat,
+							'exeFundamento': exeFundamento, 'exeMetodo': exeMetodo})
 		.fail(function(){
 			$("#load").remove();
 			alert("Ocurrio un error en el servidor");
@@ -136,20 +183,47 @@ function ejecutarRegLineal(exeFundamento, exeMetodo, i){
 	/**
 	 * Número de coordenadas : i,
 	 * x[] : coord.catx,
-	 * y[] : coord.caty,
+	 * y[] : coord.caty
 	 */
 
 	$loading = $('#loader').append("<div id='load' style=''><img src='/ccientifica/webapp/views/src/images/ajax-loader.gif'/></div>");
-	$.getJSON('../exeRegresion_lineal',{'i': i, 'x': coord.catx, 'y': coord.caty, 'exeFundamento': exeFundamento,
-							'exeMetodo': exeMetodo})
+	$.getJSON('../exeRegresion_lineal',{'i': i, 'x': coord.catx, 'y': coord.caty,
+							'exeFundamento': exeFundamento, 'exeMetodo': exeMetodo})
 		.fail(function(){
 			$("#load").remove();
 			alert("Ocurrio un error en el servidor");
 		})
 		.done(function(d){
 			$("#load").remove();
+			$("#loader").append(
+				'<a href="'+d.rutaArchivo+'" target="blank_"><button class="btn">Descargar Archivo</button></a>'
+			);
+		});
+}
+
+function ejecutarInterpolacionNewton(exeFundamento, exeMetodo, i){
+	/**
+	 * Número de coordenadas : i,
+	 * x[] : coord.catx,
+	 * y[] : coord.caty,
+	 * Número a evaluar : evaluar
+	 */
+	var coord = getCoord(i);
+	var evaluar = $("#evaluar").val();
+
+	noEmpty(evaluar);
+	validateFormatterNumber(evaluar);
+
+	$loading = $('#loader').append("<div id='load' style=''><img src='/ccientifica/webapp/views/src/images/ajax-loader.gif'/></div>");
+	$.getJSON('../exeInterpolacion_newton',{'i': i, 'x': coord.catx, 'y': coord.caty, 'evaluar': evaluar,
+							'exeFundamento': exeFundamento, 'exeMetodo': exeMetodo})
+		.fail(function(){
+			$("#load").remove();
+			alert("Ocurrio un error en el servidor");
+		})
+		.done(function(d){
 			console.log(d.rutaArchivo);
-			//$("#load").html($('<img>').attr("src",d['img']));
+			$("#load").remove();
 			$("#loader").append(
 				'<a href="'+d.rutaArchivo+'" target="blank_"><button class="btn">Descargar Archivo</button></a>'
 			);
