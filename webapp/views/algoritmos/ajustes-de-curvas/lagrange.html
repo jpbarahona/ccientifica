@@ -77,7 +77,7 @@
 				<div class="btmspace-80 center">
 					<h2 class="font-x2 uppercase">Complete el formulario</h2><hr>
 					<section id="pageintro" class="container clear btminspace-0"> 
-						<div id="kkmolida">
+						<div id="loader">
 							<div id="comments" style="margin: 0 auto; width:50%;">
 							<div id="formulario">
 								<div style="float:left;display:block; width:100%;">
@@ -209,7 +209,7 @@
 					i++;
 					$("#formulario").append('<div style="float:left; width:50%; padding:5px;"><label>X'+i+' <span>*</span></label><input type="text" class="valx" size="22"></div>');
 				});
-			    $('#btnEjecutar').bind('click',function(event, ui){ejecutarLagrange("Ajuste de curvas", "lagrange",i);});
+			    $('#btnEjecutar').bind('click',function(event, ui){ejecutarLagrange("Ajuste de curvas", "Lagrange",i);});
 				$("#owl-demo").owlCarousel({
 				  autoPlay: 3000, //Set AutoPlay to 3 seconds
 				  items : 3,

@@ -3,6 +3,6 @@ app/Brent
 app/Punto_fijo
 app/Regla_falsa
 app/Secante
-app/lagrange
+app/Lagrange
 app/Regresion_lineal
 app/Interpolacion_newton

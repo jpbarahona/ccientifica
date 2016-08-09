@@ -57,7 +57,7 @@
 					/**
 					 * Se generan tablas e imágenes para métodos númericos de caracteristicas de Eciaciones de raíces y solo Lagrange para Ajuste de curvas
 					 */ 
-					if ($exeFundamento == "Ecuacion de raices"){
+					if ($exeFundamento == "Ecuacion de raices" || $exeMetodo == "Lagrange"){
 						$leer = new Leer_archivo($this->getrutaArchivo());
 						$this->setParametros_nombre($leer->parametros_nombre());
 						$this->setParametros_entrada($leer->parametros_entrada());

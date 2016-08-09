@@ -62,7 +62,7 @@
 
 		private function ajuste_de_curva($p_entrada, $exeMetodo){
 			switch ($exeMetodo) {
-				case 'lagrange':
+				case 'Lagrange':
 					return " '".$p_entrada["fx"]."' ".$p_entrada["x"]." ".$p_entrada["g"]." '".$p_entrada["xptos"]."'";
 					break;
 

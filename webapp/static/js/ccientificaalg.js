@@ -158,7 +158,6 @@ function ejecutarLagrange(exeFundamento,exeMetodo,i){
 			alert("Ocurrio un error en el servidor");
 		})
 		.done(function(d){
-			$("#load").remove();
 			$("#load").html($('<img>').attr("src",d['img']));
 			$("#loader").append($('<div>').attr("class","scrollable")
 						    .append($('<table>').attr("id","ttable")
