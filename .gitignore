@@ -3,3 +3,4 @@ logs/*
 src/model/jpgraph2
 src/model/img/
 src/model/app/out/*
+webapp/views/src
