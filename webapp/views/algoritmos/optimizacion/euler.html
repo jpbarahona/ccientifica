@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+¡<!DOCTYPE html>
 <html>
 	<head>
 		<title>Computacion Científica UNAB</title>
@@ -71,32 +71,28 @@
 				<div class="btmspace-80 center">
 					<h2 class="font-x2 uppercase">Complete el formulario</h2><hr>
 					<section id="pageintro" class="container clear btminspace-0"> 
-						<div id="kkmolida">
+						<div id="loader">
 							<div id="comments">
-								<div id="fx" class="one_third first">
-									<label>F(x) <span>*</span></label>
-									<input type="text" id="fxx" size="22">
-								</div>
+								<div id="ni" class="one_third">
+									<label>N&uacute;mero de iteraciones <span>*</span></label>
+									<input type="text" id="imax"size="22">
+								</div>          
 								<div id="xi" class="one_third">
 									<label>Xi <span>*</span></label>
 									<input type="text" id="xii" size="22">
+								</div>
+								<div id="yi" class="one_third">
+									<label>yi <span>*</span></label>
+									<input type="text" id="yii" size="22">
 								</div>          
 								<div id="xf" class="one_third">
 									<label>Xf <span>*</span></label>
 									<input type="text" id="xff" size="22">
 								</div>
-								<div id="te" class="one_third first">
-									<label>Tolerancia error <span>*</span></label>
-									<input type="text" id="errto" value="" size="22">
-								</div>
-								<div id="ni" class="one_third">
-									<label>N&uacute;mero de iteraciones <span>*</span></label>
-									<input type="text" id="imax"size="22">
-								</div>          
 								<div class="one_third" style="height: 68px;">
 								</div>
 								<div>
-								<input id="btnEjecutar" type="submit" value="Ejecutar">
+									<input id="btnEjecutar" type="submit" value="Ejecutar">
 								</div>
 							</div>
 						</div>
@@ -196,8 +192,10 @@
 		<script src="../webapp/static/js/jquery.backtotop.js"></script> 
 		<script src="../webapp/static/js/jquery.mobilemenu.js"></script>
 		<script src="../webapp/static/js/owl.carousel.js"></script>
+		<script src="../webapp/static/js/ccientificaalg.js"></script>
 		<script>
 			$(function(){
+				$('#btnEjecutar').bind('click',function(event, ui){ejecutarEuler("Otros", "Euler");});
 				$("#owl-demo").owlCarousel({
 				  autoPlay: 3000, //Set AutoPlay to 3 seconds
 				  items : 3,

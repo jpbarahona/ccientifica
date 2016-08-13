@@ -212,6 +212,53 @@
 		}
 		
 		/**
+		 * @ClassDependency: {'model.Principal'}
+		 */
+		public function exeEuler(){
+			
+			$p_entrada["imax"] = $this->request->getParam('imax');
+			$p_entrada["xi"] = $this->request->getParam('xi');
+			$p_entrada["yi"] = $this->request->getParam('yi');
+			$p_entrada["xf"] = $this->request->getParam('xf');
+			
+			$exeFundamento = $this->request->getParam('exeFundamento');
+			$exeMetodo = $this->request->getParam('exeMetodo');
+
+			$main = new Principal($p_entrada, $exeFundamento, $exeMetodo);
+
+			$str = $main->getrutaArchivo();
+
+			$split = explode('/',$str);
+
+			$newStr = '';
+			$flag = false;
+			$foo = 0;
+
+			// Concatena ruta directa al archivo de salida.
+			foreach ($split as $i){
+				$foo++;
+				if($i == "src")
+					$flag = true;
+				if(!$flag)
+					continue;
+				
+				if($foo == count($split))
+					$newStr .= $i;
+				else
+					$newStr .= $i.'/';
+				
+			}
+
+			$result = array(
+					"rutaArchivo" => '../'.$newStr
+				);
+
+			/*=============================================================================*/
+
+			return $result;
+		}
+
+		/**
 		 * @ClassDependency: {'model.Grafico'}
 		 */
 		public function exeSpline(){
