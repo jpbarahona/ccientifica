@@ -109,10 +109,10 @@
 		<div class="wrapper row3">
 			
 			<div class="container explicacion">
-				<h2>Funciones SPLine</h2>
-				<p>Una función SPline está formada por varios polinomios, cada uno definido sobre un intervalo que se unen obedeciendo ciertas condiciones de continuidad.</p>
-				<p>Los SPline de grado 0 son funciones constantes (de grado 0) en un intervalo dado. </p>
-				<p>Particularmente, aquí se representan funciones SPline de grado 0 (con funciones constantes), de grado 1 (con funciones lineales) y de grado 3 (con funciones cúbicas)</p>
+				<h2>Funciones Spline</h2>
+				<p>Una función Spline está formada por varios polinomios, cada uno definido sobre un intervalo que se unen obedeciendo ciertas condiciones de continuidad.</p>
+				<p>Los Spline de grado 0 son funciones constantes (de grado 0) en un intervalo dado. </p>
+				<p>Particularmente, aquí se representan funciones Spline de grado 0 (con funciones constantes), de grado 1 (con funciones lineales) y de grado 3 (con funciones cúbicas)</p>
 
 			</div>
 
@@ -127,7 +127,7 @@
                             	<form id="formcoordenadas" method="get" >
 	                            	<div class="paresordenados">
 	                            		<div class="grado">
-	                            			Seleccione el grado del SPLine: 
+	                            			Seleccione el grado del Spline: 
 		                            		<select name="gradoSPL" id="gradoSPL">
 		                            			<option value="0">Grado 0</option>
 		                            			<option value="1">Grado 1</option>
@@ -273,6 +273,7 @@
 				               $("#respuesta").html(data); // Mostrar la respuestas del script PHP.
 				               $("#respuesta").slideDown();
 				               $("#respuesta").fadeIn();
+				               console.log(data);
 
 				           }
 				    });

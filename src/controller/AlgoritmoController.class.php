@@ -310,7 +310,7 @@
 				}
 				break;
 			}
-			return $grafico->graficarSPLINE($xdata, $ydata, $grado);
+			echo $grafico->graficarSPLINE($xdata, $ydata, $grado);
 		}
 		
 	}

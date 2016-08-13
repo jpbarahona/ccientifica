@@ -314,6 +314,21 @@
 				
 
 			}
+
+			//$nombrearchivo = implode($xdata).'-'.implode($ydata).'-'.time().'sp0.png';
+			//$nombrearchivo = implode($xdata).'-'.implode($ydata).'-'.time().'sp0.png';
+			//if(!file_exists($name))
+			//	$g->Stroke($name);
+			//$rutaImg = $this->cad->directorios(SAVE_IMAGEN."/ajuste_de_curvas/spline/").$name;
+			//$larutaadevoilver =  "../src/model/img/ajuste_de_curvas/spline/".$nombrearchivo;
+			
+			//echo '<img src="'.$larutaadevoilver.'" />';
+			//$rutaImg = $this->cad->directorios(SAVE_IMAGEN."/ajuste_de_curvas/spline")."/".$nombrearchivo;
+			//$g->Stroke($rutaImg);
+
+			//echo '<img src="'.$this->cad->union(LOAD_IMG."/".$this->p_nombre[0]."/".$this->p_nombre[1])."/".$img.'" />';
+
+			/*
 			$nombrearchivo = implode($xdata).'-'.implode($ydata).'-'.time().'sp0.png';
 			$name = SAVE_IMAGEN."/ajuste_de_curvas/spline/".$nombrearchivo;
 			
@@ -323,6 +338,20 @@
 			$rutaImg = $this->cad->directorios(SAVE_IMAGEN."/ajuste_de_curvas/spline/").$name;
 				
 			$larutaadevoilver =  "../src/model/img/ajuste_de_curvas/spline/".$nombrearchivo;
+			
+			return '<img src="'.$larutaadevoilver.'" />';
+			*/
+
+			$nombrearchivo = implode($xdata).'-'.implode($ydata).'-'.time().'sp0.png';
+			$name = SAVE_IMAGEN."/ajuste_de_curvas/spline/".$nombrearchivo;
+			
+			if(!file_exists($name))
+				$g->Stroke($name);
+
+			$rutaImg = $this->cad->directorios(SAVE_IMAGEN."/ajuste_de_curvas/spline/").$name;
+				
+			$larutaadevoilver =  "../src/model/img/ajuste_de_curvas/spline/".$nombrearchivo;
+			
 			echo '<img src="'.$larutaadevoilver.'" />';
 		}
 	}
