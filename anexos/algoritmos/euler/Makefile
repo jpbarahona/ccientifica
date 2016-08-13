@@ -1,2 +1,2 @@
 make:
-	g++ -o out euler.cpp
+	g++ -o Euler euler.cpp

@@ -8,12 +8,12 @@ using namespace std;
 //
 //Algoritmo que resuelve una funcion con el metodo de euler
 //Los parametros se ingresan a traves de una linea de comandos
-//El orden para ingresar los datos es: "nombre txt", "valor inicial de x", "valor inicial de y", "valor final de x", "cantidad de iteraciones"
+//El orden para ingresar los datos es: "cantidad de iteraciones", "valor inicial de x", "valor inicial de y", "valor final de x", "nombre txt"
 //
 //
 int main(int argc, char *argv[])
 {
-	ofstream fs(argv[1]);
+	ofstream fs(argv[5]);
 	
 	fs<<"Fundamento = optimización"<<endl;
 	fs<<"Metodo = euler"<<endl;
@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     float x0 = atof(argv[2]);
     float y0 = atof(argv[3]);
     float b = atof(argv[4]);
-    int n = atof(argv[5]);
+    int n = atof(argv[1]); // Iteraciones
     int k;
     fs << "f(x) = (2*^(e,x))-x-1" <<endl;
     fs <<"Xi = "<<x0<<endl;
