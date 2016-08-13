@@ -253,4 +253,33 @@ function ejecutarMinimos_cuadrados_discretos(exeFundamento, exeMetodo, i){
 		});
 }
 
-$("#load").remove();
+function ejecutarEuler (exeFundamento, exeMetodo){
+
+	var imax = $("#imax").val();
+	var xii = $("#xii").val();
+	var yii = $("#yii").val();
+	var xff = $("#xff").val();
+
+	noEmpty(imax);
+	validateFormatterNumber(imax);
+	noEmpty(xii);
+	validateFormatterNumber(xii);
+	noEmpty(yii);
+	validateFormatterNumber(yii);
+	noEmpty(xff);
+	validateFormatterNumber(xff);
+
+	$loading = $('#loader').append("<div id='load' style=''><img src='/ccientifica/webapp/views/src/images/ajax-loader.gif'/></div>");
+	$.getJSON('../exeEuler',{'imax': imax, 'xi': xii, 'yi': yii, 'xf': xff,
+							'exeFundamento': exeFundamento, 'exeMetodo': exeMetodo})
+		.fail(function(){
+			$("#load").remove();
+			alert("Ocurrio un error en el servidor");
+		})
+		.done(function(d){
+			$("#load").remove();
+			$("#loader").append(
+				'<a href="'+d.rutaArchivo+'" target="blank_"><button class="btn">Descargar Archivo</button></a>'
+			);
+		});
+}

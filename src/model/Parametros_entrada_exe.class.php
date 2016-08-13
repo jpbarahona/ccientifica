@@ -23,6 +23,10 @@
 					return $this->ajuste_de_curva($p_entrada, $exeMetodo);
 					break;
 
+				case 'Otros':
+					return $this->otros($p_entrada, $exeMetodo);
+					break;
+
 				default:
 					return "fundamento ingresado incorrecto";
 					break;
@@ -80,6 +84,14 @@
 
 				default:
 					return "metodo ingresado incorrecto";
+					break;
+			}
+		}
+
+		private function otros($p_entrada, $exeMetodo){
+			switch ($exeMetodo) {
+				case 'Euler':
+					return " ".$p_entrada["imax"]." ".$p_entrada["xi"]." ".$p_entrada["yi"]." ".$p_entrada["xf"]."";
 					break;
 			}
 		}
