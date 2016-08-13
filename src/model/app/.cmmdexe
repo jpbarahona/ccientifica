@@ -7,3 +7,4 @@ app/Lagrange
 app/Regresion_lineal
 app/Interpolacion_newton
 app/Minimos_cuadrados_discretos
+app/Euler
