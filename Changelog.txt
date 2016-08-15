@@ -1,0 +1,36 @@
+v1.0.0
+
+Ajuste de curva:
++ Regresión polinomial [ELIMINADO]
++ Mínimos continuos [ELIMINADO]
+
+[Entrega enlace con archivo de respuesta]
++ Regresión lineal [LISTO]
+(Ausencia) Imágen (gráfico) y tabla de resultados (en vista).
++ Interpolación de newton [LISTO]
+(Ausencia) Imágen (gráfico) y tabla de resultados (en vista).
+(Advertencia) Requiere ingreso mínimo de 2 coord.
++ Interpolación de lagrange [LISTO]
++ Mínimos discretos [LISTO]
+(Ausencia) Imágen (gráfico) y tabla de resultados (en vista). Documento...
+(Advertencia) Requiere ingreso mínimo de 2 coord.
+- Spline
+
+Ecuaciones Diferenciales:
++ Método de heun [ELIMINADO]
+(Motivo) Nunca existió el código
++ Runge Kuta [ELIMINADO]
+(Motivo) Error compilación "Undefined symbols for architecture x86_64 "_stdscr", referenced from:
+      Kutta() in main-8e9031.o
+      _main in main-8e9031.o
+  "_wgetch", referenced from:
+      Kutta() in main-8e9031.o
+      _main in main-8e9031.o
+ld: symbol(s) not found for architecture x86_64"
+
++ Euler [LISTO]
+(Ausencia) Imágen (gráfico) y tabla de resultados (en vista).
+(Advertencia) Requiere ingreso mínimo de 2 coord.
+
++ Achicar logo Unab.
++ Escribir Manual Instalación en GitHub.
