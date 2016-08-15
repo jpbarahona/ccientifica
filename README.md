@@ -46,7 +46,7 @@ Se debe asegurar el funcionamiento correcto en la clase `src/model/Principal.cla
 
 1. `src/model/Leer_archivo.class.php`.
 2. `src/model/Grafico.class.php`.
-3. `src/model/Crear_archivos_directorios.class.php`.
+3. `src/model/Crear_archivos_directorios.class.php`. (salida de resultados)
 
 ## Requerimientos
 
@@ -54,7 +54,7 @@ El código debe entregar de salida un archivo *.txt plano, sin mensajes de salid
 
 ## Gráfico y Tabla de resultados.
 
-Gráficar los resultados, se utiliza la libreria de código abierto [JsGraph v4.0.1 o última versión](http://jpgraph.net/download/). Para gráficar el método ingresado, es configurado en`src/model/Grafico.class.php`, cuyos parametros provienen en `src/model/Leer_archivo.class.php`.
+Gráficar los resultados, se utiliza la libreria de código abierto [JsGraph v4.0.1 o última versión](http://jpgraph.net/download/). Para gráficar el método ingresado, es configurado en`src/model/Grafico.class.php`, cuyos parametros provienen de `src/model/Leer_archivo.class.php`.
 
 Tabla de resultados, provienen de la lectura de archivo de resultado de salida. Este debe ser configurado correctamente en `src/model/Leer_archivo.class.php`.
 
