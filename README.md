@@ -1,4 +1,4 @@
-#  Métodos Numéricos CCientifica V1.0.0 Unab
+#  Métodos Numéricos CCientifica v1.0.0 Unab
 
 Es un proyecto de 5 estudiantes de la universidad Andrés Bello, donde el cual, se desarrollan en C++ diversos métodos numéricos que son implementados en nuestro sitio [ccientifica](https://cursos.ing.unab.cl/), con el fin de simular y explicar gracias al uso de tablas y gráficos en respuesta a los problemas. Aquí, es posible encontrar toda la fuente de nuestro sitio.
 
@@ -36,12 +36,12 @@ Los ejecutadores del código fuente deben ser generados en el equipo donde arran
 
 Para ellos, se debe seguir los siguientes pasos referenciales.
 
-1. Definir métodos a ejecutar ´src/model/app/.cmmdexe´.
-2. Método a evaluar (entrada y salida) ´webapp/static/js/ccientificaalg.js´.
-3. Indicar que método recibir y donde procesar ´src/controller/site.xml´.
-4. Definir oreden de parametros para ejecutar método ´src/model/Parametros_entrada_exe.class.php´.
-5. Método a procesar y devolver resultados ´src/controller/algoritmoController.class.php´.
+1. Definir métodos a ejecutar `src/model/app/.cmmdexe`.
+2. Método a evaluar (entrada y salida) `webapp/static/js/ccientificaalg.js`.
+3. Indicar que método recibir y donde procesar `src/controller/site.xml`.
+4. Definir oreden de parametros para ejecutar método `src/model/Parametros_entrada_exe.class.php`.
+5. Método a procesar y devolver resultados `src/controller/algoritmoController.class.php`.
 
 ## Requerimientos
 
-El código debe entregar de salida un archivo *.txt plano, sin mensajes de salida por linea de comando p.ej. ´Método finalizado con éxito´. Además, los parametros necesarios para su ejecución, deben ser ingresados por linea de comando y dejando como último parametro requerido el nombre del archivo de salida, p. ej. ´./Brent p1 p2 p3 p4 (ruta/)nombreArchivo.txt´
+El código debe entregar de salida un archivo *.txt plano, sin mensajes de salida por linea de comando p.ej. `Método finalizado con éxito`. Además, los parametros necesarios para su ejecución, deben ser ingresados por linea de comando y dejando como último parametro requerido el nombre del archivo de salida, p. ej. `./Brent p1 p2 p3 p4 (ruta/)nombreArchivo.txt`
