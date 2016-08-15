@@ -1,29 +1,31 @@
-#1. ComputacionCientificaUNAB
+#  Métodos Numéricos CCientifica Unab
 
-It is a project grade by five members that implement numerical methods e.g: nonlinear function, numerical approaches, among others, for simulating math function that used on the engineering. Some these algorithms can be found here and visuality his functions on our web page [ccientifica](https://cursos.ing.unab.cl/).
+Es un proyecto de 5 estudiantes de la universidad Andrés Bello, donde el cual, se desarrollan en C++ diversos métodos numéricos que son implementados en nuestro sitio [ccientifica](https://cursos.ing.unab.cl/), con el fin de simular y explicar gracias al uso de tablas y gráficos en respuesta a los problemas. Aquí, es posible encontrar toda la fuente de nuestro sitio.
 
-In this repository you can found source code C++ for the following numerical method:
+Se podran encontrar el código fuente en anexos > algoritmos para los siguientes métodos:
 
-1. Root-finding algorithm
-  * Bisection
+1. Raices de Ecuaciones
+  * Bisección
   * Brent
-  * False Position
+  * Regla falsa
   * Secant
 
-2. Curve fitting (Numerical analysis & Regression analysis)
-  * Lagrange (Polynomial interpolation)
-  * Newton (Polynomial interpolation)
+2. Ajsute de Curva (analisis numéricos y regresión)
+  * Lagrange (Interpolación polinomial)
+  * Newton (Interpolación polinomial)
   * Spline
-  * Linear regression
-  * Quadratic minimum discrete
+  * Regresión Lineal
+  * Mínimo Cuarado Discreto
 
-3. Differential equation
+3. Ecuaciones Diferenciales
   * Euler
 
-#2. Installation
+# Instalación
 
-## Condition
-Run on omnly Unix/Linux, no ms-DOS.
+Los ejecutadores del código fuente deben ser generados en el equipo donde arrancará el sistema y alojarlos en 'src/model/app/exe-*', donde se debe definir su uso en 'src/model/app/.cmmdexe'.
 
-## Requirement
-If you want run only our numerical method code, need get standart C++ libraries
+## Requerimientos
+
+1. Sistema operativo : sólo Unix/Linux, no soporta MS-DOS.
+2. Librerías : Estandares de C++.
+3. Servidor : Última versión de Apache.
