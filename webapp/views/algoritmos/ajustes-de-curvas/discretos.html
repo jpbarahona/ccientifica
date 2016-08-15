@@ -23,7 +23,7 @@
 		</div>
 		<header id="header" class="clear">
 			<div class="logo" style="float:left;">
-				<img src="../webapp/static/images/logo-unab.png" alt=""></img>
+				<img src="../webapp/static/images/logo-unab.png" width="225px" alt=""></img>
 				</div>
 				<nav id="mainav" class="clear" style="float:right;"> 
 					<ul class="clear">
@@ -48,11 +48,11 @@
 								<li><a href="metodo-spline">Spline</a></li>
 							</ul>
 						</li>
-						<li><a class="drop" href="#">Otros</a>
+						<li><a class="drop" href="#">Ecuaciones Diferenciales</a>
 							<ul>
 								<li><a href="../optimizacion/metodo-euler">Euler</a></li>
-								<li><a href="../ecuacion-diferencial/metodo-runge-kuta">Runge-Kuta </a></li>
-								<li><a href="../ecuacion-diferencial/metodo-heun">Método de Heun</a></li>
+								<!--<li><a href="../ecuacion-diferencial/metodo-runge-kuta">Runge-Kuta </a></li>-->
+								<!--<li><a href="../ecuacion-diferencial/metodo-heun">Método de Heun</a></li>-->
 							</ul>
 						</li>
 					</ul>
@@ -62,10 +62,51 @@
 		<div class="wrapper row3">
 			<div class="container explicacion">
 				<h2 >Regresión lineal</h2><hr>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, officiis. Sint vitae deleniti velit voluptatibus sit, consectetur illum iure ex iste est doloribus porro, ratione, suscipit eligendi nihil recusandae! Rerum.</p>
-				<p>Inventore, maxime! Veniam perspiciatis deleniti, quibusdam ex laudantium unde at ipsa. Inventore provident tempore ducimus nostrum ad eum, quos, accusantium. Fugit vero aut inventore pariatur facilis nihil velit. Eaque, nobis!</p>
-				<p>Officia minima, perspiciatis esse, aperiam eligendi accusantium eius omnis maiores. Dolores natus modi incidunt culpa vero, expedita, sit aut quasi iusto maxime numquam eos amet. Accusantium, amet iure vero odio.</p>
-				<p>Dicta, eos, modi. Praesentium, magni culpa quidem placeat vitae quia nulla repellat veritatis natus ducimus pariatur, soluta, officiis libero ipsum sunt voluptatum eos reiciendis iure eligendi consequuntur animi est totam.</p>			
+				<p>
+					Aproximación discreta por mínimos cuadrados. En general, los problemas que aparecen en la ciencia nos enfrentan a la observación de cantidades que cambian en el tiempo y/o el espacio. Supongamos que este cambio puede ser modelado por una relación matemática y(x) =f(c1,...,cn;x) donde x es el parámetro que describe el cambio y c1,...,cn son n cantidades desconocidas, llamadas parámetros del modelo, cuyos valores queremos determinar. En particular consideremos el caso en que el modelo es lineal en sus parámetros, esto es, la relación funcional f es lineal respecto de los parámetros c1,...,cn y por lo tanto puede expresarse como:
+					<img src="../webapp/static/images/cuadradosDiscretos/picture1.png" alt="Ecuación inicial método secante">
+				</p>
+				<p>
+					para n funciones φj(x) del parámetro x. Un conjunto de m observaciones de f proveerá de valores medidos y i afectados de errores ∈<sub>i</sub>
+					<img src="../webapp/static/images/cuadradosDiscretos/picture2.png" alt="Ecuación inicial método secante">
+				</p>
+				<p>
+					Definiendo la matriz de diseño, m×n, A de elementos aij=φj(xi), el vector de parámetros, n×1, x de elementos ci, el vector de medidas, m×1, b de elementos yi, el vector de residuos, m×1, r de elementosi, el conjunto de ecuaciones anteriores puede escribirse matricialmente como:
+					<br><br>
+					<center>Ax+r=b.</center>	
+				</p>
+				<p>
+					Esta relación constituye nuestro modelo lineal de las observaciones. Si m≥n (más observaciones que parámetros) se trata ahora determinar el conjunto de parámetros x que satisfaga mejor, en algún sentido, el modelo lineal. De acuerdo al método de mínimos cuadrados, los estimadores de mínimos cuadrados de los parámetros son aquellos valores que minimizan la norma euclideana de los residuos.
+					<img src="../webapp/static/images/cuadradosDiscretos/picture3.png" alt="Ecuación inicial método secante">
+				</p>
+				<p>
+					Este requisito conduce a que la solución de mínimos cuadrados debe satisfacer las ecuaciones normales
+					<img src="../webapp/static/images/cuadradosDiscretos/picture4.png" alt="Ecuación inicial método secante">
+				</p>
+				<p>
+					de donde se sigue que, cuando  es no-singular, la solución de mínimos cuadrados existe y es única. La condición necesaria y suficiente para la existencia de una solución única es que las columnas de la matriz A sean linealmente independientes o, dicho en forma equivalente, que el rango de la matriz A sea n. En tal caso, es fácil ver que la matriz  es simétrica y definida positiva, con lo cual un método numérico apropiado para resolver las ecuaciones normales es el método de Choleski. Sin embargo, en la práctica, muy a menudo las columnas de A son aproximadamente linealmente dependientes lo cual conduce a un sistema de ecuaciones normales con una matriz mal condicionada. Por tal motivo resulta fundamental recurrir a otra forma de resolución numérica del problema. En particular el método QR evita la formación de las ecuaciones normales y garantizan la estabilidad de la solución frente a los errores de redondeo. Este método se basa en la existencia de la factorización QR de la matriz A m×n, cuando la misma es de rango n,
+					<br><br>
+					<center>A=QR,</center>
+				</p>
+				<p>
+					Siendo Q es una matriz m×n cuyas columnas son una base ortonormal del espacio columna de A (con lo cual =In) y R es una matriz cuadrada de orden n triangular superior con elementos positivos sobre la diagonal. En tal caso las ecuaciones normales toman la forma:
+					<img src="../webapp/static/images/cuadradosDiscretos/picture5.png" alt="Ecuación inicial método secante">
+				</p>
+				<p>
+					Es decir,
+					<img src="../webapp/static/images/cuadradosDiscretos/picture6.png" alt="Ecuación inicial método secante">
+				</p>
+				<p>
+					y como R es no-singular, se obtiene . Así, conocida la factorización QR de A, la solución de mínimos cuadrados resulta, pues, por sustitución hacia atrás del sistema triangular superior 
+					<img src="../webapp/static/images/cuadradosDiscretos/picture7.png" alt="Ecuación inicial método secante">
+				</p>
+				<p>
+					La teoría anterior puede ser aplicada en particular al caso en que la relación funcional del modelo lineal sea un polinomio de grado a lo más (n−1): 
+					<img src="../webapp/static/images/cuadradosDiscretos/picture8.png" alt="Ecuación inicial método secante">
+				</p>
+				<p>
+					En este caso la matriz A tiene elementos aij=xj−1i. Los estimadores de mínimos cuadrados conducen así al ajuste de los datos observacionales por un polinomio de mínimos cuadradados.
+				</p>
 			</div>
 			<main class="container clear"> 
 				<div class="btmspace-80 center">

@@ -23,7 +23,7 @@
 		</div>
 		<header id="header" class="clear">
 			<div class="logo" style="float:left;">
-				<img src="../webapp/static/images/logo-unab.png" alt=""></img>
+				<img src="../webapp/static/images/logo-unab.png" width="225px" alt=""></img>
 				</div>
 				<nav id="mainav" class="clear" style="float:right;"> 
 					<ul class="clear">
@@ -48,11 +48,11 @@
 								<li><a href="../ajustes-de-curvas/metodo-spline">Spline</a></li>
 							</ul>
 						</li>
-						<li><a class="drop" href="#">Otros</a>
+						<li><a class="drop" href="#">Ecuaciones Diferenciales</a>
 							<ul>
 								<li><a href="../optimizacion/metodo-euler">Euler</a></li>
-								<li><a href="../ecuacion-diferencial/metodo-runge-kuta">Runge-Kuta </a></li>
-								<li><a href="../ecuacion-diferencial/metodo-heun">Método de Heun</a></li>
+								<!--<li><a href="../ecuacion-diferencial/metodo-runge-kuta">Runge-Kuta </a></li>
+								<li><a href="../ecuacion-diferencial/metodo-heun">Método de Heun</a></li>-->
 							</ul>
 						</li>
 					</ul>
@@ -60,6 +60,26 @@
 			</header>
 		</div>
 		<div class="wrapper row3">
+			<div class="container explicacion">
+				<h2>Método Secante</h2><hr>
+				<p>
+					El método Secante, es otro método para aproximar el cero de una función en el que en cada iteración se evalúa la función y no la derivada. A continuación, se presenta el método el cual posee caracteristicas similares al método de Newton :
+					<br><br>
+					<img src="../webapp/static/images/secante/picture1.png" alt="Ecuación inicial método secante">
+					<br><br>
+					pero en lugar de utilizar la derivada f(xn), este valor se aproxima por 
+					<br><br>
+					<img src="../webapp/static/images/secante/picture2.png" alt="Ecuación dos método secante">
+					<br><br>
+					Al reemplazar esta aproximación de f(xn) en la fórmula de Newton resulta: 
+					<br><br>
+					<img src="../webapp/static/images/secante/picture3.png" alt="Ecuación tres método secante">
+					<br><br>
+					Ya que el cálculo de xn+1 requiere conocer xn y xn-1 , se debe dar al principio dos aproximaciones iniciales x0 y x1. 
+					<br><br>
+					La interpretación geométrica del método de la secante es similar a la del método de Newton. La recta tangente a la curva se reemplaza por una recta secante. El cero de f se aproxima por el cero de la recta secante a f. Si x0 y x1 son las aproximaciones iniciales, la aproximación x2 es la intersección de la recta que une los puntos (x0, f(x0)) y (x1,f(x1)). La aproximación x3 es la intersección de la recta que une los puntos (x1, f(x1)) y (x2, f(x2)) y así sucesivamente.
+				</p>
+			</div>
 			<main class="container clear"> 
 				<div class="btmspace-80 center">
 					<h2 class="font-x2 uppercase">Complete el formulario</h2><hr>
