@@ -1,8 +1,8 @@
 #  Métodos Numéricos CCientifica v1.0.0 Unab
 
-Es un proyecto de 5 estudiantes de la universidad Andrés Bello, donde el cual, se desarrollan en C++ diversos métodos numéricos que son implementados en nuestro sitio [ccientifica](https://cursos.ing.unab.cl/) el cual fue desarrollado en PHP, con el fin de simular y explicar gracias al uso de tablas y gráficos en respuesta a los problemas. Aquí, es posible encontrar toda la fuente de nuestro sitio.
+Es un proyecto de 5 estudiantes de la universidad Andrés Bello, donde el cual, se desarrollan en C++ diversos métodos numéricos que son implementados en nuestro sitio [ccientifica](https://cursos.ing.unab.cl/) el cual fue desarrollado en PHP, con el fin de simular y explicar gracias al uso de tablas y gráficos en respuesta a los problemas.
 
-Se podran encontrar el código fuente en anexos/algoritmos para los siguientes métodos:
+En `anexos/algoritmos`, se encuentra el código fuente para los siguientes métodos:
 
 1. Raices de Ecuaciones
   * Bisección
@@ -39,7 +39,7 @@ Para ellos, se debe seguir los siguientes pasos referenciales.
 1. Definir métodos a ejecutar `src/model/app/.cmmdexe`.
 2. Método a evaluar (entrada y salida) `webapp/static/js/ccientificaalg.js`.
 3. Indicar que método recibir y donde procesar `src/controller/site.xml`.
-4. Definir oreden de parametros para ejecutar método `src/model/Parametros_entrada_exe.class.php`.
+4. Definir orden de parametros para ejecutar método `src/model/Parametros_entrada_exe.class.php`.
 5. Método a procesar y devolver resultados `src/controller/algoritmoController.class.php`.
 
 Se debe asegurar el funcionamiento correcto en la clase `src/model/Principal.class.php`, el cual enlaza las siguientes clases:
@@ -50,7 +50,7 @@ Se debe asegurar el funcionamiento correcto en la clase `src/model/Principal.cla
 
 ## Requerimientos
 
-El código debe entregar de salida un archivo *.txt plano, sin mensajes de salida por linea de comando p.ej. `Método finalizado con éxito`. Además, los parametros necesarios para su ejecución, deben ser ingresados por linea de comando y dejando como último parametro requerido el nombre del archivo de salida, p. ej. `./Brent p1 p2 p3 p4 (ruta/)nombreArchivo.txt`
+El código debe entregar de salida un archivo *.txt plano, sin mensajes de salida por linea de comando p.ej. `GitHub:~ jupaba$ Método finalizado con éxito`. Además, los parametros necesarios para su ejecución, deben ser ingresados por linea de comando y dejando como último parametro requerido el nombre del archivo de salida, p. ej. `./Brent p1 p2 p3 p4 (ruta/)nombreArchivo.txt`
 
 ## Gráfico y Tabla de resultados.
 
