@@ -1,6 +1,6 @@
 #  Métodos Numéricos CCientifica v1.0.0 Unab
 
-Es un proyecto de 5 estudiantes de la universidad Andrés Bello, donde el cual, se desarrollan en C++ diversos métodos numéricos que son implementados en nuestro sitio [ccientifica](https://cursos.ing.unab.cl/) el cual fue desarrollado en PHP, con el fin de simular y explicar gracias al uso de tablas y gráficos en respuesta a los problemas.
+Es un proyecto de 5 estudiantes de ingeniería en computación e informática de la universidad Andrés Bello, que desarrollan en lenguaje de programación C/C++ la simulación diversos métodos numéricos que hospedan en el sitio [ccientifica](https://cursos.ing.unab.cl/) brindado por la universidad, y entregando apoyo visual con tablas y gráficos a las respectivas soluciones.
 
 En `anexos/algoritmos`, se encuentra el código fuente para los siguientes métodos:
 
